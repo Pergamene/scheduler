@@ -9,7 +9,7 @@ public class Time {
     }
 
     public int getEndTime() {
-        return endTime:
+        return endTime;
     }
 
     public void setStartTime(int startTime) {
