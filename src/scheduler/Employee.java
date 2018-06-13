@@ -1,7 +1,7 @@
 package scheduler;
 
 public class Employee {
-    //String name;
+    String name;
     int ID;
     int phoneNumber;
     //List <Rank> rank;
@@ -9,25 +9,17 @@ public class Employee {
     int hoursScheduled;
     int hourCap;
 
-    /*public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
-    } */
-
-    public int getID() {
-        return ID;
     }
 
-    public void setID (int ID) {
-        this.ID = ID;
-    }
+    public int getID() { return ID; }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
+    public void setID (int ID) { this.ID = ID; }
+
+    public int getPhoneNumber() { return phoneNumber; }
 
     public void setPhoneNumber(int phoneNumber) {
         //this should probably have some restraints on phoneNumber values
@@ -65,7 +57,7 @@ public class Employee {
         if(hourCap < 41)
             this.hourCap = hourCap;
         else {
-            //System.out.println("Hour cap must be 40 hrs or less.");
+            System.out.println("Hour cap must be 40 hrs or less.");
         }
     }
 }
