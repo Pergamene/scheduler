@@ -1,8 +1,9 @@
 package scheduler;
 
 public class Shift {
+
     String shiftName;
-    Rank requiredRank;
+    WorkProfile requiredWorkProfile;
     Time time;
     Employee assignedEmployee;
 
@@ -14,12 +15,12 @@ public class Shift {
         this.shiftName = shiftName;
     }
 
-    public Rank getRequiredRank() {
-        return requiredRank;
+    public WorkProfile getRequiredWorkProfile() {
+        return requiredWorkProfile;
     }
 
-    public void setRequiredRank(Rank requiredRank) {
-        this.requiredRank = requiredRank;
+    public void setRequiredWorkProfile(WorkProfile requiredWorkProfile) {
+        this.requiredWorkProfile = requiredWorkProfile;
     }
 
     public Time getTime() {

@@ -6,7 +6,7 @@ public class Employee {
     String name;
     int ID;
     int phoneNumber;
-    List<Rank> rank;
+    List<WorkProfile> workProfile;
     Availability availability;
     int hoursScheduled;
     int hourCap;
@@ -27,12 +27,12 @@ public class Employee {
         //this should probably have some restraints on phoneNumber values
         this.phoneNumber = phoneNumber;
     }
-    public Rank getRank() {
-        return rank;
+    public WorkProfile getWorkProfile() {
+        return workProfile;
     }
 
-    public Rank setRank(Rank rank) {
-        this.rank = rank;
+    public WorkProfile setWorkProfile(WorkProfile workProfile) {
+        this.workProfile = workProfile;
     }
 
     public Availability getAvailability() {

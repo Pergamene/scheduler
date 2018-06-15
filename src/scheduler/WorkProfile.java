@@ -1,6 +1,6 @@
 package scheduler;
 
-public class workProfile {
+public class WorkProfile {
     Rank rank;
     Area area;
 

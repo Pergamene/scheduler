@@ -1,6 +1,6 @@
 package scheduler;
 
-public enum Rank {
+public enum WorkProfile {
 
     TEAM_MEMBER, TEAM_LEAD, SUPERVISSOR, SHIFT_MANAGER
 
