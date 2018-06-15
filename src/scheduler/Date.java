@@ -14,25 +14,25 @@ public class Date {
 
     public void setDay(int dayX){
         int feb = 28;
-        switch (monthInt) {
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
+        switch (month) {
+            case January:
+            case March:
+            case May:
+            case July:
+            case August:
+            case October:
+            case December:
                 if (dayX > 0 && dayX < 32)
                     this.day = dayX;
                 break;
-            case 4:
-            case 6:
-            case 9:
-            case 11:
+            case April:
+            case June:
+            case Septemper:
+            case November:
                 if(dayX > 0 && dayX < 31)
                     this.day = dayX;
                 break;
-            case 2:
+            case February:
                 if (year % 4 == 0) {
                     if (year % 100 == 0) {
                         if (year % 400 == 0) {
