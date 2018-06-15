@@ -1,10 +1,12 @@
 package scheduler;
 
+import java.util.List;
+
 public class Employee {
     String name;
     int ID;
     int phoneNumber;
-    //List <Rank> rank;
+    List<Rank> rank;
     Availability availability;
     int hoursScheduled;
     int hourCap;
@@ -25,13 +27,13 @@ public class Employee {
         //this should probably have some restraints on phoneNumber values
         this.phoneNumber = phoneNumber;
     }
-    /*public Rank getRank() {
+    public Rank getRank() {
         return rank;
     }
 
     public Rank setRank(Rank rank) {
         this.rank = rank;
-    } */
+    }
 
     public Availability getAvailability() {
         return availability;
