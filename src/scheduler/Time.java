@@ -19,4 +19,10 @@ public class Time {
     public void setEndTime(int endTime) {
         this.endTime = endTime;
     }
+
+    public int getTotalHours() {
+        return (endTime - startTime);
+    }
+
+    //toString() is in the document but I don't follow what it does.
 }

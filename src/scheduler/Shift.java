@@ -35,6 +35,6 @@ public class Shift {
     }
 
     public void setAssignedEmployee(Employee assignedEmployee) {
-        this.assignedEmployee = assignedEmployee; 
+        this.assignedEmployee = assignedEmployee;
     }
 }
