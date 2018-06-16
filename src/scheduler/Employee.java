@@ -6,33 +6,42 @@ public class Employee {
     String name;
     int ID;
     int phoneNumber;
-    List<WorkProfile> workProfile;
+    List<WorkProfile> workProfiles;
     Availability availability;
     int hoursScheduled;
     int hourCap;
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getID() { return ID; }
+    public int getID() {
+        return ID;
+    }
 
-    public void setID (int ID) { this.ID = ID; }
+    public void setID (int ID) {
+        this.ID = ID;
+    }
 
-    public int getPhoneNumber() { return phoneNumber; }
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
 
     public void setPhoneNumber(int phoneNumber) {
         //this should probably have some restraints on phoneNumber values
         this.phoneNumber = phoneNumber;
     }
-    public WorkProfile getWorkProfile() {
-        return workProfile;
+
+    public List<WorkProfile> getWorkProfile() {
+        return workProfiles;
     }
 
-    public WorkProfile setWorkProfile(WorkProfile workProfile) {
-        this.workProfile = workProfile;
+    public void setWorkProfile(List<WorkProfile> workProfiles) {
+        this.workProfiles = workProfiles;
     }
 
     public Availability getAvailability() {
@@ -56,7 +65,7 @@ public class Employee {
     }
 
     public void setHourCap(int hourCap) {
-        if(hourCap < 41)
+        if(hourCap <= 40)
             this.hourCap = hourCap;
         else {
             System.out.println("Hour cap must be 40 hrs or less.");

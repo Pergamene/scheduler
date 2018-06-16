@@ -24,5 +24,10 @@ public class Time {
         return (endTime - startTime);
     }
 
+    public String toString() {
+
+        return "";
+    }
     //toString() is in the document but I don't follow what it does.
+    //it is to let us control how the string is formatted before it is viewed.
 }
