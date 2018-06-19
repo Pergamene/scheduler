@@ -1,5 +1,5 @@
 package scheduler;
 
 public enum Day {
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+    Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 }
