@@ -1,8 +1,13 @@
 package scheduler;
 
 public class AvailableDay {
-    Day day;
-    Time time;
+    private Day day;
+    private Time time;
+
+    public AvailableDay(Day day, Time time) {
+        this.day = day;
+        this.time = time;
+    }
 
     public Time getTime() {
         return time;

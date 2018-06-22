@@ -1,8 +1,13 @@
 package scheduler;
 
 public class WorkProfile {
-    Rank rank;
-    Area area;
+    private Rank rank;
+    private Area area;
+
+    public WorkProfile(Rank rank, Area area) {
+        this.rank = rank;
+        this.area = area;
+    }
 
     public Rank getRank() {
         return rank;

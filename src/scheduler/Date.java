@@ -4,10 +4,15 @@ package scheduler;
 import java.util.Calendar;
 
 public class Date {
-    int dayOfMonth;
-    Month month;
-    int monthInt;
-    int year;
+    private int dayOfMonth;
+    private Month month;
+    private int year;
+
+    public Date(int dayOfMonth, Month month, int year) {
+        this.dayOfMonth = dayOfMonth;
+        this.month = month;
+        this.year = year;
+    }
 
     public int getDay() {
         return dayOfMonth;
@@ -56,16 +61,7 @@ public class Date {
     }
 
     public int getMonthInt() {
-        return monthInt;
-    }
-
-    public void setMonthInt(int monthIntX) {
-        if (monthIntX > 0 && monthIntX <13) {
-            this.monthInt = monthIntX;
-        }
-        else {
-            System.out.print("Invalid MonthInt");
-        }
+        return month.getValue();
     }
 
     public int getYear() {

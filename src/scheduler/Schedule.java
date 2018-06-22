@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Schedule {
-    Map<Day, DayProfile> schedule;
+    private Map<Day, DayProfile> schedule;
 
     public Schedule() {
         schedule = new HashMap<Day, DayProfile>();
