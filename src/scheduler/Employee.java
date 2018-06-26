@@ -1,15 +1,48 @@
 package scheduler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
-    String name;
-    int ID;
-    int phoneNumber;
-    List<WorkProfile> workProfiles;
-    Availability availability;
-    int hoursScheduled;
-    int hourCap;
+
+    private String name;
+    private int ID;
+    private long phoneNumber;
+    private List<WorkProfile> workProfiles;
+    private Availability availability;
+    private int hoursScheduled;
+    private int hourCap;
+    private boolean overtime;
+
+    public Employee(String name, int ID, long phoneNumber, WorkProfile profile) {
+        this.name = name;
+        this.ID = ID;
+        this.phoneNumber = phoneNumber;
+        workProfiles = new ArrayList<WorkProfile>();
+        workProfiles.add(profile);
+        this.overtime = false;
+    }
+
+    public Employee(String name, int ID, long phoneNumber, WorkProfile profile, int maxHours) {
+        this.name = name;
+        this.ID = ID;
+        this.phoneNumber = phoneNumber;
+        workProfiles = new ArrayList<WorkProfile>();
+        workProfiles.add(profile);
+        this.hourCap = maxHours;
+        this.overtime = false;
+    }
+
+    public Employee(String name, int ID, long phoneNumber, WorkProfile profile, int maxHours, Availability a) {
+        this.name = name;
+        this.ID = ID;
+        this.phoneNumber = phoneNumber;
+        workProfiles = new ArrayList<WorkProfile>();
+        workProfiles.add(profile);
+        this.hourCap = maxHours;
+        this.availability = a;
+        this.overtime = false;
+    }
 
     public String getName() {
         return name;
@@ -27,11 +60,11 @@ public class Employee {
         this.ID = ID;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         //this should probably have some restraints on phoneNumber values
         this.phoneNumber = phoneNumber;
     }
@@ -64,8 +97,12 @@ public class Employee {
         return hourCap;
     }
 
+    public void setOvertime(boolean flag) {
+        this.overtime = flag;
+    }
+
     public void setHourCap(int hourCap) {
-        if(hourCap <= 40)
+        if(hourCap <= 40 || overtime)
             this.hourCap = hourCap;
         else {
             System.out.println("Hour cap must be 40 hrs or less.");

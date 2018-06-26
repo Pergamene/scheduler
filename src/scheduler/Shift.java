@@ -2,10 +2,17 @@ package scheduler;
 
 public class Shift {
 
-    String shiftName;
-    WorkProfile requiredWorkProfile;
-    Time time;
-    Employee assignedEmployee;
+    private String shiftName;
+    private WorkProfile requiredWorkProfile;
+    private Time time;
+    private Employee assignedEmployee;
+
+    public Shift(String shiftName, WorkProfile requiredWorkProfile, Time time) {
+        this.shiftName = shiftName;
+        this.requiredWorkProfile = requiredWorkProfile;
+        this.time = time;
+        this.assignedEmployee = null;
+    }
 
     public String getShiftName() {
         return shiftName;

@@ -2,6 +2,7 @@ package scheduler;
 
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Date {
     private int dayOfMonth;
@@ -9,7 +10,7 @@ public class Date {
     private int year;
 
     public Date(int dayOfMonth, Month month, int year) {
-        this.dayOfMonth = dayOfMonth;
+        setDay(dayOfMonth);
         this.month = month;
         this.year = year;
     }
@@ -77,6 +78,15 @@ public class Date {
         }
     }
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) {
+            return true;
+        }
+        if(o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Date date = (Date) o;
+        return dayOfMonth == date.dayOfMonth && year == date.year && month == date.month;
+    }
 }

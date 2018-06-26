@@ -1,12 +1,20 @@
 package scheduler;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DayProfile {
-    String label;
-    List<Shift> shifts;
-    Day day;
-    Boolean isHoliday;
+
+    private String label;
+    private Map<String, Shift> shifts;
+    private Day day;
+
+    public DayProfile(String label, Day day) {
+        this.label = label;
+        this.day = day;
+        shifts = new HashMap<String, Shift>();
+    }
 
     public String getLabel() {
         return label;
@@ -17,27 +25,22 @@ public class DayProfile {
     }
 
     public void removeShift(String shiftName) {
-        //sift through list of shifts. If shiftName == one of the items, remove it.
+        shifts.remove(shiftName);
     }
 
-    public void addShift(String shiftName) {
+    public void addShift(Shift shift) {
         //sift through list of shifts. If shiftName != one of the items, add it.
         //Otherwise, inform user that it is already being used.
+        if(shifts.put(shift.getShiftName(), shift) != null) {
+            System.out.println("Shift is already in use");
+        }
     }
 
-    public void getShifts() {
-        //Sift through shifts.
-    }
-
-    public Boolean getHoliday() {
-        return isHoliday;
-    }
-
-    public void setHoliday(Boolean isHoliday) {
-        this.isHoliday = isHoliday;
+    public Collection<Shift> getShifts() {
+        return shifts.values();
     }
 
     public void assignEmployee(Shift shift, Employee employee) {
-        //will receive data and determine who should fill this role.
+        shifts.get(shift.getShiftName()).setAssignedEmployee(employee);
     }
 }
