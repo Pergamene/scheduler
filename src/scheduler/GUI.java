@@ -89,9 +89,7 @@ public class GUI {
         buttonW1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-
+                
                 JFrame frame = new JFrame("GUI");
                 frame.setContentPane(new GUI().panelControl);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
