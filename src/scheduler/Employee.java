@@ -6,7 +6,7 @@ import java.util.List;
 public class Employee {
 
     private String name;
-    private int ID;
+    private String ID;
     private long phoneNumber;
     private List<WorkProfile> workProfiles;
     private Availability availability;
@@ -14,7 +14,11 @@ public class Employee {
     private int hourCap;
     private boolean overtime;
 
-    public Employee(String name, int ID, long phoneNumber, WorkProfile profile) {
+    public Employee() {
+
+    }
+
+    public Employee(String name, String ID, long phoneNumber, WorkProfile profile) {
         this.name = name;
         this.ID = ID;
         this.phoneNumber = phoneNumber;
@@ -23,7 +27,7 @@ public class Employee {
         this.overtime = false;
     }
 
-    public Employee(String name, int ID, long phoneNumber, WorkProfile profile, int maxHours) {
+    public Employee(String name, String ID, long phoneNumber, WorkProfile profile, int maxHours) {
         this.name = name;
         this.ID = ID;
         this.phoneNumber = phoneNumber;
@@ -33,7 +37,7 @@ public class Employee {
         this.overtime = false;
     }
 
-    public Employee(String name, int ID, long phoneNumber, WorkProfile profile, int maxHours, Availability a) {
+    public Employee(String name, String ID, long phoneNumber, WorkProfile profile, int maxHours, Availability a) {
         this.name = name;
         this.ID = ID;
         this.phoneNumber = phoneNumber;
@@ -52,11 +56,11 @@ public class Employee {
         this.name = name;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID (int ID) {
+    public void setID (String ID) {
         this.ID = ID;
     }
 
