@@ -1,9 +1,41 @@
 package scheduler;
 
 public class Time {
-    private String startTime;
-    private String endTime;
+    //private String startTime;
+    //private String endTime;
+    private Integer startTime;
+    private Integer endTime;
 
+    public Time() {
+
+    }
+
+    public Time(Integer startTime, Integer endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
+    }
+
+    public Integer getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
+    }
+
+    public int getTotalHours() {
+        return endTime - startTime;
+    }
+
+    /*
     public Time(String startTime, String endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
@@ -56,5 +88,5 @@ public class Time {
             timeInt -= 1200;
         }
         return timeInt;
-    }
+    }*/
 }
