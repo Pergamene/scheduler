@@ -48,6 +48,18 @@ public class Employee {
         this.overtime = false;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", ID='" + ID + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", hoursScheduled=" + hoursScheduled +
+                ", hourCap=" + hourCap +
+                ", overtime=" + overtime +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

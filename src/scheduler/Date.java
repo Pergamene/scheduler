@@ -1,9 +1,5 @@
 package scheduler;
 
-
-import java.util.Calendar;
-import java.util.Objects;
-
 public class Date {
     private int dayOfMonth;
     private Month month;
