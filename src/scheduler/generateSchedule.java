@@ -2,13 +2,13 @@ package scheduler;
 
 import java.util.List;
 
-public class GenerateSchedule {
+public class generateSchedule {
 
     private List<Employee> Employees;
     private List<DayProfile> dayProfiles;
     private Schedule schedule;
 
-    public void GenerateSchedule() {
+    public void generateSchedule() {
         //where it all comes together.
     }
 }
