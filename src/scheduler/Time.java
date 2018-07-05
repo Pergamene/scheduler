@@ -3,11 +3,12 @@ package scheduler;
 public class Time {
     //private String startTime;
     //private String endTime;
-    private Integer startTime;
-    private Integer endTime;
+    private int startTime;
+    private int endTime;
 
     public Time() {
-
+        this.startTime = 0;
+        this.endTime = 0;
     }
 
     public Time(Integer startTime, Integer endTime) {
@@ -15,7 +16,7 @@ public class Time {
         this.endTime = endTime;
     }
 
-    public Integer getStartTime() {
+    public int getStartTime() {
         return startTime;
     }
 
@@ -23,7 +24,7 @@ public class Time {
         this.startTime = startTime;
     }
 
-    public Integer getEndTime() {
+    public int getEndTime() {
         return endTime;
     }
 

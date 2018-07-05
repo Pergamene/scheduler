@@ -8,11 +8,9 @@ public class DayProfile {
 
     private String label;
     private Map<String, Shift> shifts;
-    private Day day;
 
-    public DayProfile(String label, Day day) {
+    public DayProfile(String label) {
         this.label = label;
-        this.day = day;
         shifts = new HashMap<String, Shift>();
     }
 
