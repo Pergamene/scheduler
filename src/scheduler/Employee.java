@@ -73,11 +73,11 @@ public class Employee {
         this.name = name;
     }
 
-    public String getid() {
+    public String getId() {
         return id;
     }
 
-    public void setid (String id) {
+    public void setId (String id) {
         this.id = id;
     }
 
@@ -128,6 +128,14 @@ public class Employee {
         else {
             System.out.println("Hour cap must be 40 hrs or less.");
         }
+    }
+
+    public boolean getTaps() {
+        return taps;
+    }
+
+    public void switchTaps() {
+        taps = !taps;
     }
 
     public boolean canWork(Day d, Shift s) {

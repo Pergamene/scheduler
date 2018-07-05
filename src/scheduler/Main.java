@@ -34,7 +34,7 @@ public class Main {
 
         while (rs.next()) {
             Employee employee = new Employee();
-            employee.setID(rs.getString("employeeId"));
+            employee.setId(rs.getString("employeeId"));
             employee.setName(rs.getString("name"));
             employee.setPhoneNumber(rs.getLong("phoneNumber"));
             employee.setHoursScheduled(rs.getInt("hoursScheduled"));
