@@ -3,7 +3,13 @@ package scheduler;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 
 
 public class GUI {
@@ -129,82 +135,213 @@ public class GUI {
         addEmployeeButton.addActionListener(new ActionListener() { //add employee button
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(nameTextField.getText());
-                System.out.println(IDTextField.getText());
-                System.out.println(Long.parseLong(phoneTextField.getText()));
-                System.out.println(Integer.parseInt(hrsPerWeekTextField.getText()));
-                System.out.println(Integer.parseInt(sun1.getText()));
-                System.out.println(sunAMPM1.getSelectedItem());//AM or PM for First Sunday value
 
-                employee.setName(nameTextField.getText());
-                employee.setID(IDTextField.getText());
-                employee.setPhoneNumber(Long.parseLong(phoneTextField.getText()));
-                employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));
+                try {
 
-                //Sunday Availability
-                if (sunAMPM1.getSelectedItem() == "AM" && sunAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.SUNDAY, new Time(Integer.parseInt(sun1.getText()), Integer.parseInt(sun2.getText())));
-                } else if (sunAMPM1.getSelectedItem() == "AM" && sunAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.SUNDAY, new Time(Integer.parseInt(sun1.getText()), (Integer.parseInt(sun2.getText()) + 12)));
-                } else if (sunAMPM1.getSelectedItem() == "PM" && sunAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.SUNDAY, new Time((Integer.parseInt(sun1.getText()) + 12), (Integer.parseInt(sun2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
+                    System.out.println(nameTextField.getText());
+                    System.out.println(IDTextField.getText());
+                    System.out.println(Long.parseLong(phoneTextField.getText()));
+                    System.out.println(Integer.parseInt(hrsPerWeekTextField.getText()));
+                    System.out.println(Integer.parseInt(sun1.getText()));
+                    System.out.println(sunAMPM1.getSelectedItem());//AM or PM for First Sunday value
 
-                //Monday Availability
-                if (monAMPM1.getSelectedItem() == "AM" && monAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.MONDAY, new Time(Integer.parseInt(mon1.getText()), Integer.parseInt(mon2.getText())));
-                } else if (monAMPM1.getSelectedItem() == "AM" && monAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.MONDAY, new Time(Integer.parseInt(mon1.getText()), (Integer.parseInt(mon2.getText()) + 12)));
-                } else if (monAMPM1.getSelectedItem() == "PM" && monAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.MONDAY, new Time((Integer.parseInt(mon1.getText()) + 12), (Integer.parseInt(mon2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
+                    employee.setName(nameTextField.getText());
+                    employee.setID(IDTextField.getText());
+                    employee.setPhoneNumber(Long.parseLong(phoneTextField.getText()));
+                    employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));
 
-                //Tuesday Availability
-                if (tueAMPM1.getSelectedItem() == "AM" && tueAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.TUESDAY, new Time(Integer.parseInt(tue1.getText()), Integer.parseInt(tue2.getText())));
-                } else if (tueAMPM1.getSelectedItem() == "AM" && tueAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.TUESDAY, new Time(Integer.parseInt(tue1.getText()), (Integer.parseInt(tue2.getText()) + 12)));
-                } else if (tueAMPM1.getSelectedItem() == "PM" && tueAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.TUESDAY, new Time((Integer.parseInt(tue1.getText()) + 12), (Integer.parseInt(tue2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
-
-                //Wednesday Availability
-                if (wedAMPM1.getSelectedItem() == "AM" && wedAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.WEDNESDAY, new Time(Integer.parseInt(wed1.getText()), Integer.parseInt(wed2.getText())));
-                } else if (wedAMPM1.getSelectedItem() == "AM" && wedAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.WEDNESDAY, new Time(Integer.parseInt(wed1.getText()), (Integer.parseInt(wed2.getText()) + 12)));
-                } else if (wedAMPM1.getSelectedItem() == "PM" && wedAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.WEDNESDAY, new Time((Integer.parseInt(wed1.getText()) + 12), (Integer.parseInt(wed2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
-
-                //Thursday Availability
-                if (thurAMPM1.getSelectedItem() == "AM" && thurAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.THURSDAY, new Time(Integer.parseInt(thur1.getText()), Integer.parseInt(thur2.getText())));
-                } else if (thurAMPM1.getSelectedItem() == "AM" && thurAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.THURSDAY, new Time(Integer.parseInt(thur1.getText()), (Integer.parseInt(thur2.getText()) + 12)));
-                } else if (thurAMPM1.getSelectedItem() == "PM" && thurAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.THURSDAY, new Time((Integer.parseInt(thur1.getText()) + 12), (Integer.parseInt(thur2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
-
-                //Friday Availability
-                if (friAMPM1.getSelectedItem() == "AM" && friAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.FRIDAY, new Time(Integer.parseInt(fri1.getText()), Integer.parseInt(fri2.getText())));
-                } else if (friAMPM1.getSelectedItem() == "AM" && friAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.FRIDAY, new Time(Integer.parseInt(fri1.getText()), (Integer.parseInt(fri2.getText()) + 12)));
-                } else if (friAMPM1.getSelectedItem() == "PM" && friAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.FRIDAY, new Time((Integer.parseInt(fri1.getText()) + 12), (Integer.parseInt(fri2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
-
-                //Saturday Availability
-                if (satAMPM1.getSelectedItem() == "AM" && satAMPM2.getSelectedItem() == "AM") {
-                    availability.addAvailableDay(Day.SATURDAY, new Time(Integer.parseInt(sat1.getText()), Integer.parseInt(sat2.getText())));
-                } else if (satAMPM1.getSelectedItem() == "AM" && satAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.SATURDAY, new Time(Integer.parseInt(sat1.getText()), (Integer.parseInt(sat2.getText()) + 12)));
-                } else if (satAMPM1.getSelectedItem() == "PM" && satAMPM2.getSelectedItem() == "PM") {
-                    availability.addAvailableDay(Day.SATURDAY, new Time((Integer.parseInt(sat1.getText()) + 12), (Integer.parseInt(sat2.getText()) + 12)));
-                } System.out.println(availability.getTotalHours());
+                    Integer s1 = 0; Integer s2 = 0;
+                    Integer m1; Integer m2;
+                    Integer t1; Integer t2;
+                    Integer w1; Integer w2;
+                    Integer r1; Integer r2;
+                    Integer f1; Integer f2;
+                    Integer ss1; Integer ss2;
 
 
+                    //Sunday Availability
+                    if (sunAMPM1.getSelectedItem() == "AM" && sunAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.SUNDAY, new Time(Integer.parseInt(sun1.getText()), Integer.parseInt(sun2.getText())));
+                        s1 = Integer.parseInt(sun1.getText()); s2 = Integer.parseInt(sun2.getText());
+                    } else if (sunAMPM1.getSelectedItem() == "AM" && sunAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.SUNDAY, new Time(Integer.parseInt(sun1.getText()), (Integer.parseInt(sun2.getText()) + 12)));
+                        s1 = Integer.parseInt(sun1.getText()); s2 = Integer.parseInt(sun2.getText()) + 12;
+                    } else if (sunAMPM1.getSelectedItem() == "PM" && sunAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.SUNDAY, new Time((Integer.parseInt(sun1.getText()) + 12), (Integer.parseInt(sun2.getText()) + 12)));
+                        s1 = Integer.parseInt(sun1.getText()) + 12; s2 = Integer.parseInt(sun2.getText()) + 12;
+                    } System.out.println(availability.getTotalHours());
+
+                    //Monday Availability
+                    if (monAMPM1.getSelectedItem() == "AM" && monAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.MONDAY, new Time(Integer.parseInt(mon1.getText()), Integer.parseInt(mon2.getText())));
+                    } else if (monAMPM1.getSelectedItem() == "AM" && monAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.MONDAY, new Time(Integer.parseInt(mon1.getText()), (Integer.parseInt(mon2.getText()) + 12)));
+                    } else if (monAMPM1.getSelectedItem() == "PM" && monAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.MONDAY, new Time((Integer.parseInt(mon1.getText()) + 12), (Integer.parseInt(mon2.getText()) + 12)));
+                    } System.out.println(availability.getTotalHours());
+
+                    //Tuesday Availability
+                    if (tueAMPM1.getSelectedItem() == "AM" && tueAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.TUESDAY, new Time(Integer.parseInt(tue1.getText()), Integer.parseInt(tue2.getText())));
+                    } else if (tueAMPM1.getSelectedItem() == "AM" && tueAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.TUESDAY, new Time(Integer.parseInt(tue1.getText()), (Integer.parseInt(tue2.getText()) + 12)));
+                    } else if (tueAMPM1.getSelectedItem() == "PM" && tueAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.TUESDAY, new Time((Integer.parseInt(tue1.getText()) + 12), (Integer.parseInt(tue2.getText()) + 12)));
+                    } System.out.println(availability.getTotalHours());
+
+                    //Wednesday Availability
+                    if (wedAMPM1.getSelectedItem() == "AM" && wedAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.WEDNESDAY, new Time(Integer.parseInt(wed1.getText()), Integer.parseInt(wed2.getText())));
+                    } else if (wedAMPM1.getSelectedItem() == "AM" && wedAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.WEDNESDAY, new Time(Integer.parseInt(wed1.getText()), (Integer.parseInt(wed2.getText()) + 12)));
+                    } else if (wedAMPM1.getSelectedItem() == "PM" && wedAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.WEDNESDAY, new Time((Integer.parseInt(wed1.getText()) + 12), (Integer.parseInt(wed2.getText()) + 12)));
+                    } System.out.println(availability.getTotalHours());
+
+                    //Thursday Availability
+                    if (thurAMPM1.getSelectedItem() == "AM" && thurAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.THURSDAY, new Time(Integer.parseInt(thur1.getText()), Integer.parseInt(thur2.getText())));
+                    } else if (thurAMPM1.getSelectedItem() == "AM" && thurAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.THURSDAY, new Time(Integer.parseInt(thur1.getText()), (Integer.parseInt(thur2.getText()) + 12)));
+                    } else if (thurAMPM1.getSelectedItem() == "PM" && thurAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.THURSDAY, new Time((Integer.parseInt(thur1.getText()) + 12), (Integer.parseInt(thur2.getText()) + 12)));
+                    } System.out.println(availability.getTotalHours());
+
+                    //Friday Availability
+                    if (friAMPM1.getSelectedItem() == "AM" && friAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.FRIDAY, new Time(Integer.parseInt(fri1.getText()), Integer.parseInt(fri2.getText())));
+                    } else if (friAMPM1.getSelectedItem() == "AM" && friAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.FRIDAY, new Time(Integer.parseInt(fri1.getText()), (Integer.parseInt(fri2.getText()) + 12)));
+                    } else if (friAMPM1.getSelectedItem() == "PM" && friAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.FRIDAY, new Time((Integer.parseInt(fri1.getText()) + 12), (Integer.parseInt(fri2.getText()) + 12)));
+                    } System.out.println(availability.getTotalHours());
+
+                    //Saturday Availability
+                    if (satAMPM1.getSelectedItem() == "AM" && satAMPM2.getSelectedItem() == "AM") {
+                        availability.addAvailableDay(Day.SATURDAY, new Time(Integer.parseInt(sat1.getText()), Integer.parseInt(sat2.getText())));
+                    } else if (satAMPM1.getSelectedItem() == "AM" && satAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.SATURDAY, new Time(Integer.parseInt(sat1.getText()), (Integer.parseInt(sat2.getText()) + 12)));
+                    } else if (satAMPM1.getSelectedItem() == "PM" && satAMPM2.getSelectedItem() == "PM") {
+                        availability.addAvailableDay(Day.SATURDAY, new Time((Integer.parseInt(sat1.getText()) + 12), (Integer.parseInt(sat2.getText()) + 12)));
+                    } System.out.println(availability.getTotalHours());
+
+                    String fileName = "employee.xls";
+                    File file = new File(fileName);
+                    HSSFRow row;
+                    HSSFWorkbook workbook;
+                    HSSFSheet sheet;
+
+                    if (!file.exists()) { //If the user has never used this before, create a new excel sheet to work with.
+                        workbook = new HSSFWorkbook();
+                        sheet = workbook.createSheet("EmployeeSheet1");
+                        row = sheet.createRow(0);//row will change based on case of employee (bob, joe, etc)
+                        HSSFCell cellA = row.createCell(0);//column will change based on data piece (Name, ID, etc)
+                        HSSFCell cellB = row.createCell(1);
+                        HSSFCell cellC = row.createCell(2);
+                        HSSFCell cellD = row.createCell(3);
+                        HSSFCell cellE = row.createCell(4);
+                        HSSFCell cellF = row.createCell(5);
+                        HSSFCell cellG = row.createCell(6);
+                        HSSFCell cellH = row.createCell(7);
+                        HSSFCell cellI = row.createCell(8);
+                        HSSFCell cellJ = row.createCell(9);
+                        HSSFCell cellK = row.createCell(10);
+                        HSSFCell cellL = row.createCell(11);
+                        HSSFCell cellM = row.createCell(12);
+                        HSSFCell cellN = row.createCell(13);
+                        HSSFCell cellO = row.createCell(14);
+                        HSSFCell cellP = row.createCell(15);
+                        HSSFCell cellQ = row.createCell(16);
+                        HSSFCell cellR = row.createCell(17);
+                        HSSFCell cellS = row.createCell(18);
+
+                        cellA.setCellValue(2);
+                        cellB.setCellValue("Name");
+                        cellC.setCellValue("ID");
+                        cellD.setCellValue("Phone");
+                        cellE.setCellValue("Hours per Week");
+                        cellF.setCellValue("Sunday1");
+                        cellG.setCellValue("Sunday2");
+                        cellH.setCellValue("Monday1");
+                        cellI.setCellValue("Monday2");
+                        cellJ.setCellValue("Tuesday1");
+                        cellK.setCellValue("Tuesday2");
+                        cellL.setCellValue("Wednesday1");
+                        cellM.setCellValue("Wednesday2");
+                        cellN.setCellValue("Thursday1");
+                        cellO.setCellValue("Thursday2");
+                        cellP.setCellValue("Friday1");
+                        cellQ.setCellValue("Friday2");
+                        cellR.setCellValue("Saturday1");
+                        cellS.setCellValue("Saturday2");
+
+                        workbook.write(new FileOutputStream(fileName));
+
+                    }
+                    //if (file.exists()) {
+                    //    row = sheet.createRow()
+                    //}
+                    //If there is a preexisting sheet set row to the row that we need to insert data
+                    workbook = new HSSFWorkbook(new FileInputStream(fileName));
+                    sheet = workbook.getSheet("EmployeeSheet1");
+
+                    //For some reason, row is
+                    row = sheet.createRow(sheet.getFirstRowNum());//get the row that the new employee needs to be entered at.
+                    System.out.println("A1");
+                    HSSFCell cellA = row.createCell(0);//column will change based on data piece (Name, ID, etc)
+                    System.out.println("A2");
+                    HSSFCell cellB = row.createCell(1);
+                    System.out.println("A3");
+                    HSSFCell cellC = row.createCell(2);
+                    HSSFCell cellD = row.createCell(3);
+                    HSSFCell cellE = row.createCell(4);
+                    HSSFCell cellF = row.createCell(5);
+                    HSSFCell cellG = row.createCell(6);
+                    HSSFCell cellH = row.createCell(7);
+                    HSSFCell cellI = row.createCell(8);
+                    HSSFCell cellJ = row.createCell(9);
+                    HSSFCell cellK = row.createCell(10);
+                    HSSFCell cellL = row.createCell(11);
+                    HSSFCell cellM = row.createCell(12);
+                    HSSFCell cellN = row.createCell(13);
+                    HSSFCell cellO = row.createCell(14);
+                    HSSFCell cellP = row.createCell(15);
+                    HSSFCell cellQ = row.createCell(16);
+                    HSSFCell cellR = row.createCell(17);
+                    HSSFCell cellS = row.createCell(18);
+
+
+                    cellA.setCellValue(row.getCell(0).getNumericCellValue() + 1);
+                    cellB.setCellValue(nameTextField.getText());
+                    cellC.setCellValue(IDTextField.getText());
+                    cellD.setCellValue(Long.parseLong(phoneTextField.getText()));
+                    cellE.setCellValue(Integer.parseInt(hrsPerWeekTextField.getText()));
+                    cellF.setCellValue(s1);
+                    cellG.setCellValue(s2);
+                    cellH.setCellValue("Monday1");
+                    cellI.setCellValue("Monday2");
+                    cellJ.setCellValue("Tuesday1");
+                    cellK.setCellValue("Tuesday2");
+                    cellL.setCellValue("Wednesday1");
+                    cellM.setCellValue("Wednesday2");
+                    cellN.setCellValue("Thursday1");
+                    cellO.setCellValue("Thursday2");
+                    cellP.setCellValue("Friday1");
+                    cellQ.setCellValue("Friday2");
+                    cellR.setCellValue("Saturday1");
+                    cellS.setCellValue("Saturday2");
+
+                    System.out.println("here" + row.getCell(0).getNumericCellValue() + "there" + sheet.getRow(0).getPhysicalNumberOfCells());
+
+
+                    workbook.write(new FileOutputStream(fileName));
+                    workbook.close();
+
+
+                } catch (IOException x) {
+                    x.printStackTrace();
+                    System.out.println("ERROR");
+                }
             }
         });
         IDTextField.addActionListener(new ActionListener() { //IDTextField
