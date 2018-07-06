@@ -1,6 +1,6 @@
 package scheduler;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+//import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        MysqlDataSource dataSource = new MysqlDataSource();
+        /*MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUser("austin");
         dataSource.setPassword("ret2fli9");
         dataSource.setServerName("shardrealms.com");
@@ -23,10 +23,10 @@ public class Main {
             System.out.print(employees);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
-    private static List<Employee> getEmployees(MysqlDataSource dataSource) throws SQLException {
+    /*private static List<Employee> getEmployees(MysqlDataSource dataSource) throws SQLException {
         List<Employee> employees = new ArrayList<Employee>();
         Connection conn = dataSource.getConnection();
         Statement stmt = conn.createStatement();
@@ -48,6 +48,6 @@ public class Main {
         conn.close();
 
         return employees;
-    }
+    }*/
 
 }
