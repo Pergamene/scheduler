@@ -7,6 +7,9 @@ public class Shift {
     private Time time;
     private Employee assignedEmployee;
 
+
+    public Shift(){
+    }
     public Shift(String shiftName, WorkProfile requiredWorkProfile, Time time) {
         this.shiftName = shiftName;
         this.requiredWorkProfile = requiredWorkProfile;
@@ -30,12 +33,22 @@ public class Shift {
         this.requiredWorkProfile = requiredWorkProfile;
     }
 
+    public void setRequiredWorkProfile(Area area, Rank rank) {
+        requiredWorkProfile.setArea(area);
+        requiredWorkProfile.setRank(rank);
+    }
+
     public Time getTime() {
         return time;
     }
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public void setTime(int start, int end) {
+        time.setStartTime(start);
+        time.setEndTime(end);
     }
 
     public Employee getAssignedEmployee() {
