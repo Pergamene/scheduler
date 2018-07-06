@@ -35,7 +35,8 @@ public class GenerateSchedule {
 
     public void generate() {
         Employee e;
-        Shift s;
+        Shift shift;
+        List<Shift> day;
         // Gives employees with 10 or less hours a week a shift.
         for(int i = 0; i < employeesByAvailableHours.size(); i++) {
             e = employeesByAvailableHours.get(i);
@@ -44,9 +45,17 @@ public class GenerateSchedule {
             }
             for(int j = 0; j < 7; j++) {
                 if(e.getAvailability().getDay(Day.getDay(j)).getTotalHours() > 0) {
-                    s = findShift(e, Day.getDay(j));
-                    s.setAssignedEmployee(e);
+                    shift = findShift(e, Day.getDay(j));
+                    shift.setAssignedEmployee(e);
                 }
+            }
+        }
+        updateEmployeesByHoursScheduled();
+        for(int i = 0; i < weekByCoverage.size(); i++) {
+            day = weekByCoverage.get(i);
+            for(Shift s: day) {
+                findEmployee(s, i);
+                updateEmployeesByHoursScheduled();
             }
         }
     }
