@@ -138,18 +138,22 @@ public class Employee {
         taps = !taps;
     }
 
+    public int getTotalHours() {
+        return availability.getTotalHours();
+    }
+
     public boolean canWork(Day d, Shift s) {
         Time employeeTime = availability.getDay(d);
         Time shiftTime = s.getTime();
         if(employeeTime.getStartTime() == 0) {
             return false;
         }
-        else {
-            if(employeeTime.getStartTime() <= shiftTime.getStartTime()
-                    && employeeTime.getEndTime() >= shiftTime.getEndTime()) {
+        else if(employeeTime.getStartTime() <= shiftTime.getStartTime()
+                && employeeTime.getEndTime() >= shiftTime.getEndTime()) {
+            if(hoursScheduled + s.getTime().getTotalHours() < hourCap) {
                 return true;
             }
-            return false;
         }
+            return false;
     }
 }
