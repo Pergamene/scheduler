@@ -1,5 +1,5 @@
 package scheduler;
-
+/*
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -7,11 +7,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.*;
-
+*/
 public class ExcelReader {
 
     public static void main(String[] args) {
-        try {
+       /* try {
             HSSFWorkbook workbook = new HSSFWorkbook();
             HSSFSheet sheet = workbook.createSheet("FirstExcelSheet");
             HSSFRow row = sheet.createRow(0);
@@ -31,7 +31,7 @@ public class ExcelReader {
             workbook.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 }
