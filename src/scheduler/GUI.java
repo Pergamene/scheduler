@@ -607,6 +607,7 @@ public class GUI extends Container {
         comboBox8.addActionListener(new ActionListener() { //THIS IS THE SUNDAY DAY PROFILES
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 comboBox8.addItem("Test");
             }
         });
