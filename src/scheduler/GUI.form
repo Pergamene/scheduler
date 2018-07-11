@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="scheduler.GUI">
   <grid id="27dc6" binding="panelControl" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="1812" height="1039"/>
+      <xy x="20" y="20" width="1812" height="1089"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -21,22 +21,6 @@
             </constraints>
             <properties>
               <text value="Employee Data"/>
-            </properties>
-          </component>
-          <component id="a9025" class="javax.swing.JButton" binding="buttonW2">
-            <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Week Data"/>
-            </properties>
-          </component>
-          <component id="fb40f" class="javax.swing.JButton" binding="buttonS2">
-            <constraints>
-              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Schedule Week"/>
             </properties>
           </component>
           <component id="4d94a" class="javax.swing.JButton" binding="buttonSetWeekNeeds">
@@ -62,106 +46,6 @@
             <properties>
               <text value="Edit Day Needs"/>
             </properties>
-          </component>
-          <component id="ad7d0" class="javax.swing.JLabel" binding="sundayLabelW1">
-            <constraints>
-              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Sunday"/>
-            </properties>
-          </component>
-          <component id="c70d4" class="javax.swing.JLabel" binding="mondayLabelW1">
-            <constraints>
-              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Monday"/>
-            </properties>
-          </component>
-          <component id="a1bac" class="javax.swing.JLabel" binding="tuesdayLabelW1">
-            <constraints>
-              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Tuesday"/>
-            </properties>
-          </component>
-          <component id="7c5bb" class="javax.swing.JLabel" binding="wednesdayLabelW1">
-            <constraints>
-              <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Wednesday"/>
-            </properties>
-          </component>
-          <component id="57880" class="javax.swing.JLabel" binding="thursdayLabelW1">
-            <constraints>
-              <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Thursday"/>
-            </properties>
-          </component>
-          <component id="9a134" class="javax.swing.JLabel" binding="fridayLabelW1">
-            <constraints>
-              <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Friday"/>
-            </properties>
-          </component>
-          <component id="3ecb5" class="javax.swing.JLabel" binding="saturdayLabelW1">
-            <constraints>
-              <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="Saturday"/>
-            </properties>
-          </component>
-          <component id="9f78f" class="javax.swing.JComboBox" binding="comboBox8" default-binding="true">
-            <constraints>
-              <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <model/>
-            </properties>
-          </component>
-          <component id="aaa46" class="javax.swing.JComboBox" binding="comboBox9" default-binding="true">
-            <constraints>
-              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="1b4ae" class="javax.swing.JComboBox" binding="comboBox10" default-binding="true">
-            <constraints>
-              <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="f2020" class="javax.swing.JComboBox" binding="comboBox11" default-binding="true">
-            <constraints>
-              <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="f61bb" class="javax.swing.JComboBox" binding="comboBox12" default-binding="true">
-            <constraints>
-              <grid row="5" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="e8127" class="javax.swing.JComboBox" binding="comboBox13" default-binding="true">
-            <constraints>
-              <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="410dc" class="javax.swing.JComboBox" binding="comboBox14" default-binding="true">
-            <constraints>
-              <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
           </component>
           <component id="bb95" class="javax.swing.JComboBox" binding="comboBoxNDDay">
             <constraints>
@@ -1768,6 +1652,148 @@
               </grid>
             </constraints>
             <properties/>
+          </component>
+          <component id="a9025" class="javax.swing.JButton" binding="buttonW2">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Week Data"/>
+            </properties>
+          </component>
+          <component id="ad7d0" class="javax.swing.JLabel" binding="sundayLabelW1">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Sunday"/>
+            </properties>
+          </component>
+          <component id="c70d4" class="javax.swing.JLabel" binding="mondayLabelW1">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Monday"/>
+            </properties>
+          </component>
+          <component id="a1bac" class="javax.swing.JLabel" binding="tuesdayLabelW1">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Tuesday"/>
+            </properties>
+          </component>
+          <component id="7c5bb" class="javax.swing.JLabel" binding="wednesdayLabelW1">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Wednesday"/>
+            </properties>
+          </component>
+          <component id="57880" class="javax.swing.JLabel" binding="thursdayLabelW1">
+            <constraints>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Thursday"/>
+            </properties>
+          </component>
+          <component id="9a134" class="javax.swing.JLabel" binding="fridayLabelW1">
+            <constraints>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Friday"/>
+            </properties>
+          </component>
+          <component id="3ecb5" class="javax.swing.JLabel" binding="saturdayLabelW1">
+            <constraints>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Saturday"/>
+            </properties>
+          </component>
+          <component id="fb40f" class="javax.swing.JButton" binding="buttonS2">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Schedule Week"/>
+            </properties>
+          </component>
+          <component id="9f78f" class="javax.swing.JComboBox" binding="comboBox8" default-binding="true">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
+          </component>
+          <component id="aaa46" class="javax.swing.JComboBox" binding="comboBox9" default-binding="true">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
+          </component>
+          <component id="1b4ae" class="javax.swing.JComboBox" binding="comboBox10" default-binding="true">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
+          </component>
+          <component id="f2020" class="javax.swing.JComboBox" binding="comboBox11" default-binding="true">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
+          </component>
+          <component id="f61bb" class="javax.swing.JComboBox" binding="comboBox12" default-binding="true">
+            <constraints>
+              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
+          </component>
+          <component id="e8127" class="javax.swing.JComboBox" binding="comboBox13" default-binding="true">
+            <constraints>
+              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
+          </component>
+          <component id="410dc" class="javax.swing.JComboBox" binding="comboBox14" default-binding="true">
+            <constraints>
+              <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model>
+                <item value="Default"/>
+              </model>
+            </properties>
           </component>
         </children>
       </grid>
