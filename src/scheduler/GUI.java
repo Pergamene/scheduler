@@ -1,24 +1,26 @@
 package scheduler;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
+/*import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;*/
 
 
-public class GUI {
+public class GUI extends Container {
 
     private Employee employee = new Employee();
     private Availability availability = new Availability();
     private Time time = new Time();
     private DayProfile dayProfile = new DayProfile();
     private Shift shift = new Shift();
-
+    private String shiftName = new String();
 
     private JPanel Employee;
     private JPanel panelControl;
@@ -72,8 +74,6 @@ public class GUI {
     private JComboBox comboBox13;
     private JComboBox comboBox14;
     private JComboBox comboBoxNDDay;
-    private JComboBox comboBox16;
-    private JTextField textField2;
     private JButton createScheduleButton;
     private JButton saveScheduleButton;
     private JTextField sun1;
@@ -104,31 +104,164 @@ public class GUI {
     private JComboBox thurAMPM2;
     private JComboBox friAMPM2;
     private JComboBox satAMPM2;
-    private JComboBox comboBoxNDArea;
-    private JComboBox comboBoxNDRank;
-    private JComboBox comboBoxNDStartTime;
-    private JComboBox comboBoxNDEndTime;
+    private JComboBox comboBoxNDArea1;
+    private JComboBox comboBoxNDRank1;
+    private JComboBox comboBoxNDStartTime1;
+    private JComboBox comboBoxNDEndTime1;
     private JTextField textFieldNDDayName;
-    private JTextField textFieldNDStartTime;
-    private JTextField textFieldNDEndTime;
-    private JTextField textFieldNDNumberShifts;
+    private JTextField textFieldNDStartTime1;
+    private JTextField textFieldNDEndTime1;
+    private JTextField textFieldNDNumberShifts1;
     private JButton addShiftButtonND;
     private JButton viewShiftButton;
+    private JComboBox comboBoxNDArea2;
+    private JComboBox comboBoxNDRank2;
+    private JComboBox comboBoxNDStartTime2;
+    private JComboBox comboBoxNDEndTime2;
+    private JComboBox comboBoxNDArea3;
+    private JComboBox comboBoxNDRank3;
+    private JComboBox comboBoxNDStartTime3;
+    private JComboBox comboBoxNDEndTime3;
+    private JComboBox comboBoxNDArea4;
+    private JComboBox comboBoxNDRank4;
+    private JComboBox comboBoxNDStartTime4;
+    private JComboBox comboBoxNDEndTime4;
+    private JComboBox comboBoxNDArea5;
+    private JComboBox comboBoxNDRank5;
+    private JComboBox comboBoxNDStartTime5;
+    private JComboBox comboBoxNDEndTime5;
+    private JComboBox comboBoxNDArea6;
+    private JComboBox comboBoxNDRank6;
+    private JComboBox comboBoxNDStartTime6;
+    private JComboBox comboBoxNDEndTime6;
+    private JComboBox comboBoxNDArea7;
+    private JComboBox comboBoxNDRank7;
+    private JComboBox comboBoxNDStartTime7;
+    private JComboBox comboBoxNDEndTime7;
+    private JComboBox comboBoxNDArea8;
+    private JComboBox comboBoxNDRank8;
+    private JComboBox comboBoxNDStartTime8;
+    private JComboBox comboBoxNDEndTime8;
+    private JComboBox comboBoxNDArea9;
+    private JComboBox comboBoxNDRank9;
+    private JComboBox comboBoxNDStartTime9;
+    private JComboBox comboBoxNDEndTime9;
+    private JComboBox comboBoxNDArea10;
+    private JComboBox comboBoxNDRank10;
+    private JComboBox comboBoxNDStartTime10;
+    private JComboBox comboBoxNDEndTime10;
+    private JComboBox comboBoxNDArea11;
+    private JComboBox comboBoxNDRank11;
+    private JComboBox comboBoxNDStartTime11;
+    private JComboBox comboBoxNDEndTime11;
+    private JComboBox comboBoxNDArea12;
+    private JComboBox comboBoxNDRank12;
+    private JComboBox comboBoxNDStartTime12;
+    private JComboBox comboBoxNDEndTime12;
+    private JComboBox comboBoxNDArea13;
+    private JComboBox comboBoxNDRank13;
+    private JComboBox comboBoxNDStartTime13;
+    private JComboBox comboBoxNDEndTime13;
+    private JComboBox comboBoxNDArea14;
+    private JComboBox comboBoxNDRank14;
+    private JComboBox comboBoxNDStartTime14;
+    private JComboBox comboBoxNDEndTime14;
+    private JComboBox comboBoxNDArea15;
+    private JComboBox comboBoxNDRank15;
+    private JComboBox comboBoxNDStartTime15;
+    private JComboBox comboBoxNDEndTime15;
+    private JComboBox comboBoxNDArea16;
+    private JComboBox comboBoxNDRank16;
+    private JComboBox comboBoxNDStartTime16;
+    private JComboBox comboBoxNDEndTime16;
+    private JComboBox comboBoxNDEndTime17;
+    private JComboBox comboBoxNDStartTime17;
+    private JComboBox comboBoxNDRank17;
+    private JComboBox comboBoxNDArea17;
+    private JComboBox comboBoxNDEndTime18;
+    private JComboBox comboBoxNDStartTime18;
+    private JComboBox comboBoxNDRank18;
+    private JComboBox comboBoxNDArea18;
+    private JComboBox comboBoxNDEndTime19;
+    private JComboBox comboBoxNDStartTime19;
+    private JComboBox comboBoxNDRank19;
+    private JComboBox comboBoxNDArea19;
+    private JComboBox comboBoxNDEndTime20;
+    private JComboBox comboBoxNDStartTime20;
+    private JComboBox comboBoxNDRank20;
+    private JComboBox comboBoxNDArea20;
+    private JTextField textFieldNDNumberShifts2;
+    private JTextField textFieldNDNumberShifts3;
+    private JTextField textFieldNDNumberShifts4;
+    private JTextField textFieldNDNumberShifts5;
+    private JTextField textFieldNDNumberShifts6;
+    private JTextField textFieldNDNumberShifts7;
+    private JTextField textFieldNDNumberShifts8;
+    private JTextField textFieldNDNumberShifts9;
+    private JTextField textFieldNDNumberShifts10;
+    private JTextField textFieldNDNumberShifts11;
+    private JTextField textFieldNDNumberShifts12;
+    private JTextField textFieldNDNumberShifts13;
+    private JTextField textFieldNDNumberShifts14;
+    private JTextField textFieldNDNumberShifts15;
+    private JTextField textFieldNDNumberShifts16;
+    private JTextField textFieldNDNumberShifts17;
+    private JTextField textFieldNDNumberShifts18;
+    private JTextField textFieldNDNumberShifts19;
+    private JTextField textFieldNDNumberShifts20;
+    private JTextField textFieldNDEndTime20;
+    private JTextField textFieldNDEndTime19;
+    private JTextField textFieldNDEndTime18;
+    private JTextField textFieldNDEndTime17;
+    private JTextField textFieldNDEndTime16;
+    private JTextField textFieldNDEndTime15;
+    private JTextField textFieldNDEndTime14;
+    private JTextField textFieldNDEndTime13;
+    private JTextField textFieldNDEndTime12;
+    private JTextField textFieldNDEndTime11;
+    private JTextField textFieldNDEndTime10;
+    private JTextField textFieldNDEndTime9;
+    private JTextField textFieldNDEndTime8;
+    private JTextField textFieldNDEndTime7;
+    private JTextField textFieldNDEndTime6;
+    private JTextField textFieldNDEndTime5;
+    private JTextField textFieldNDEndTime4;
+    private JTextField textFieldNDEndTime3;
+    private JTextField textFieldNDEndTime2;
+    private JTextField textFieldNDStartTime2;
+    private JTextField textFieldNDStartTime3;
+    private JTextField textFieldNDStartTime4;
+    private JTextField textFieldNDStartTime5;
+    private JTextField textFieldNDStartTime6;
+    private JTextField textFieldNDStartTime7;
+    private JTextField textFieldNDStartTime8;
+    private JTextField textFieldNDStartTime9;
+    private JTextField textFieldNDStartTime10;
+    private JTextField textFieldNDStartTime11;
+    private JTextField textFieldNDStartTime12;
+    private JTextField textFieldNDStartTime13;
+    private JTextField textFieldNDStartTime14;
+    private JTextField textFieldNDStartTime15;
+    private JTextField textFieldNDStartTime20;
+    private JTextField textFieldNDStartTime19;
+    private JTextField textFieldNDStartTime18;
+    private JTextField textFieldNDStartTime17;
+    private JTextField textFieldNDStartTime16;
 
     public GUI() {
-        buttonE1.addActionListener(new ActionListener() {
+        buttonE1.addActionListener(new ActionListener() { //Employee Button in Employee View
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Clicked on Employee Data from Employee Data Screen");
 
             }
         });
-        buttonW1.addActionListener(new ActionListener() {
+        buttonW1.addActionListener(new ActionListener() { //Week Button in Employee View
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                JFrame frame = new JFrame("GUI");
-                frame.setContentPane(new GUI().panelControl);
+                JFrame frame = new JFrame("Week"); //Name of Program
+                frame.setContentPane(new GUI().Week);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -151,7 +284,7 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                try {
+                //try {
 
                     System.out.println(nameTextField.getText());
                     System.out.println(IDTextField.getText());
@@ -243,7 +376,7 @@ public class GUI {
 
                     /*
                     THIS IS ONLY RELEVANT TO EXCEL FUNCTIONALITY
-                     */
+                     *//*
                     String fileName = "employee.xls";
                     File file = new File(fileName);
                     HSSFRow row;
@@ -356,11 +489,11 @@ public class GUI {
                     workbook.write(new FileOutputStream(fileName));
                     workbook.close();
 
-
-                } catch (IOException x) {
+                */
+                /*} catch (IOException x) {
                     x.printStackTrace();
                     System.out.println("ERROR");
-                }
+                }*/
             }
         });
         IDTextField.addActionListener(new ActionListener() { //IDTextField
@@ -377,42 +510,91 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(textFieldNDDayName.getText()); //name of the new day
                 System.out.println(comboBoxNDDay.getSelectedItem()); //day of the week
-                System.out.println(textFieldNDNumberShifts.getText()); //number of duplicate shifts to be made.
-                System.out.println(comboBoxNDArea.getSelectedItem()); //area of shift
-                System.out.println(comboBoxNDRank.getSelectedItem()); //rank of shift
-                System.out.println(textFieldNDStartTime.getText()); //start time of new shift
-                System.out.println(comboBoxNDStartTime.getSelectedItem()); //AM or PM of start shift
-                System.out.println(textFieldNDEndTime.getText()); //end time of new shift
-                System.out.println(comboBoxNDEndTime.getSelectedItem()); //AM or PM of end shift
+                System.out.println(textFieldNDNumberShifts1.getText()); //number of duplicate shifts to be made.
+                System.out.println(comboBoxNDArea1.getSelectedItem()); //area of shift
+                System.out.println(comboBoxNDRank1.getSelectedItem()); //rank of shift
+                System.out.println(textFieldNDStartTime1.getText()); //start time of new shift
+                System.out.println(comboBoxNDStartTime1.getSelectedItem()); //AM or PM of start shift
+                System.out.println(textFieldNDEndTime1.getText()); //end time of new shift
+                System.out.println(comboBoxNDEndTime1.getSelectedItem()); //AM or PM of end shift
 
                 /*
                 SET UP OUR TIME FROM VARIABLES
                  */
-                if (comboBoxNDStartTime.getSelectedItem() == "AM" && comboBoxNDEndTime.getSelectedItem() == "AM") {
-                    shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime.getText()), Integer.parseInt(textFieldNDEndTime.getText())));
-                } else if (comboBoxNDStartTime.getSelectedItem() == "AM" && comboBoxNDEndTime.getSelectedItem() == "PM") {
-                    shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime.getText()), (Integer.parseInt(textFieldNDEndTime.getText()) + 12)));
-                } else if (comboBoxNDStartTime.getSelectedItem() == "PM" && comboBoxNDEndTime.getSelectedItem() == "PM") {
-                    shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime.getText()) + 12), (Integer.parseInt(textFieldNDEndTime.getText()) + 12)));
+                if (comboBoxNDStartTime1.getSelectedItem() == "AM" && comboBoxNDEndTime1.getSelectedItem() == "AM") {
+                    shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime1.getText()), Integer.parseInt(textFieldNDEndTime1.getText())));
+                } else if (comboBoxNDStartTime1.getSelectedItem() == "AM" && comboBoxNDEndTime1.getSelectedItem() == "PM") {
+                    shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime1.getText()), (Integer.parseInt(textFieldNDEndTime1.getText()) + 12)));
+                } else if (comboBoxNDStartTime1.getSelectedItem() == "PM" && comboBoxNDEndTime1.getSelectedItem() == "PM") {
+                    shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime1.getText()) + 12), (Integer.parseInt(textFieldNDEndTime1.getText()) + 12)));
                 }
 
+                if (comboBoxNDStartTime2.getSelectedItem() == "AM" && comboBoxNDEndTime2.getSelectedItem() == "AM") {
+                    shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime2.getText()), Integer.parseInt(textFieldNDEndTime2.getText())));
+                } else if (comboBoxNDStartTime2.getSelectedItem() == "AM" && comboBoxNDEndTime2.getSelectedItem() == "PM") {
+                    shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime2.getText()), (Integer.parseInt(textFieldNDEndTime2.getText()) + 12)));
+                } else if (comboBoxNDStartTime2.getSelectedItem() == "PM" && comboBoxNDEndTime2.getSelectedItem() == "PM") {
+                    shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime2.getText()) + 12), (Integer.parseInt(textFieldNDEndTime2.getText()) + 12)));
+                }
+
+                int num = 0;
 
                 dayProfile.setLabel(textFieldNDDayName.getText());
+                System.out.println(dayProfile.getLabel());
                 //dayProfile.setDay(Day.valueOf(comboBoxNDDay.getSelectedItem()));
-                for(int i = 0; i < Integer.parseInt(textFieldNDNumberShifts.getText()); i++) //create loop for all duplicate shifts
+
+                /*shiftName = String.valueOf(num) + comboBoxNDArea1.getSelectedItem() + comboBoxNDRank1.getSelectedItem() + textFieldNDStartTime1.getText()
+                        + comboBoxNDStartTime1.getSelectedItem() + textFieldNDEndTime1.getText() + comboBoxNDEndTime1.getSelectedItem();
+                System.out.println(shiftName);
+                System.out.println("WA1");
+                shift.setShiftName(shiftName);
+                System.out.println("WB1");
+                Area areaEnum = Area.valueOf(comboBoxNDArea1.getSelectedItem().toString());
+                System.out.println("WC1");
+                Rank rankEnum = Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString());
+                System.out.println("WD1");
+                shift.setRequiredWorkProfile(areaEnum, rankEnum);
+                System.out.println("W11");
+                dayProfile.addShift(shift); //PROBLEM: this doesn't seem to work. Debug can't find error but normal execution always ends in
+                // "Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException"
+                System.out.println("W21");
+                num++;*/
+
+
+
+
+                for(int i = 0; i < Integer.parseInt(textFieldNDNumberShifts1.getText()); i++) //create loop for all duplicate shifts
                 {
-                    String shiftName = String.valueOf(i) + comboBoxNDArea.getSelectedItem() + comboBoxNDRank.getSelectedItem() + textFieldNDStartTime.getText()
-                            + comboBoxNDStartTime.getSelectedItem() + textFieldNDEndTime.getText() + comboBoxNDEndTime.getSelectedItem();
+                    shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea1.getSelectedItem() + comboBoxNDRank1.getSelectedItem() + textFieldNDStartTime1.getText()
+                            + comboBoxNDStartTime1.getSelectedItem() + textFieldNDEndTime1.getText() + comboBoxNDEndTime1.getSelectedItem();
                     System.out.println(shiftName);
+                    System.out.println("WA");
                     shift.setShiftName(shiftName);
-                    Area areaEnum = Area.valueOf(comboBoxNDArea.getSelectedItem().toString());
-                    Rank rankEnum = Rank.valueOf(comboBoxNDRank.getSelectedItem().toString());
-                    shift.setRequiredWorkProfile(areaEnum, rankEnum);
+                    System.out.println("WB");
+                    shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
                     System.out.println("W1");
                     dayProfile.addShift(shift); //PROBLEM: this doesn't seem to work. Debug can't find error but normal execution always ends in
                                                 // "Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException"
                     System.out.println("W2");
+                    num++;
                 }
+                /*
+                for(int i = 0; i < Integer.parseInt(textFieldNDNumberShifts2.getText()); i++) //create loop for all duplicate shifts
+                {
+                    String shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea2.getSelectedItem() + comboBoxNDRank2.getSelectedItem() + textFieldNDStartTime2.getText()
+                            + comboBoxNDStartTime2.getSelectedItem() + textFieldNDEndTime2.getText() + comboBoxNDEndTime2.getSelectedItem();
+                    System.out.println(shiftName);
+                    shift.setShiftName(shiftName);
+                    areaEnum = Area.valueOf(comboBoxNDArea2.getSelectedItem().toString());
+                    rankEnum = Rank.valueOf(comboBoxNDRank2.getSelectedItem().toString());
+                    shift.setRequiredWorkProfile(areaEnum, rankEnum);
+                    System.out.println("W1");
+                    dayProfile.addShift(shift); //PROBLEM: this doesn't seem to work. Debug can't find error but normal execution always ends in
+                    // "Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException"
+                    System.out.println("W2");
+                    num++;
+                }
+                */
 
                 System.out.println(dayProfile.getDay());
                 System.out.println(dayProfile.getLabel());
@@ -422,13 +604,24 @@ public class GUI {
 
             }
         });
+        comboBox8.addActionListener(new ActionListener() { //THIS IS THE SUNDAY DAY PROFILES
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                comboBox8.addItem("Test");
+            }
+        });
     }
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Scheduler"); //Name of Program
+        //JComboBox comboBox8 = new JComboBox();
+        //comboBox8.addItem("test1");
+        //comboBox8.addItem("test2");
         frame.setContentPane(new GUI().panelControl);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
+
 }
