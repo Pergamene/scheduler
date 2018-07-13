@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 
 /*import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -19,13 +17,15 @@ public class GUI extends Container {
     private Availability availability = new Availability();
     private Time time = new Time();
     private DayProfile dayProfile = new DayProfile();
+    //private List<DayProfile> weekProfile = new ArrayList<DayProfile>();
+    private String[] weekProfile = new String[7];
     private Shift shift = new Shift();
     private String shiftName = new String();
 
-    private JPanel Employee;
+    private JPanel EmployeeJPanel;
     private JPanel panelControl;
-    private JPanel Week;
-    private JPanel Schedule;
+    private JPanel WeekJPanel;
+    private JPanel ScheduleJPanel;
     private JButton buttonE1;
     private JButton buttonW1;
     private JButton buttonS1;
@@ -66,13 +66,13 @@ public class GUI extends Container {
     private JLabel saturdayLabelW1;
 
     //Sunday-Saturday WeekDataSetWeek
-    private JComboBox comboBox8;
-    private JComboBox comboBox9;
-    private JComboBox comboBox10;
-    private JComboBox comboBox11;
-    private JComboBox comboBox12;
-    private JComboBox comboBox13;
-    private JComboBox comboBox14;
+    private JComboBox comboBoxSunday;
+    private JComboBox comboBoxMonday;
+    private JComboBox comboBoxTuesday;
+    private JComboBox comboBoxWednesday;
+    private JComboBox comboBoxThursday;
+    private JComboBox comboBoxFriday;
+    private JComboBox comboBoxSaturday;
     private JComboBox comboBoxNDDay;
     private JButton createScheduleButton;
     private JButton saveScheduleButton;
@@ -261,7 +261,7 @@ public class GUI extends Container {
             public void actionPerformed(ActionEvent e) {
 
                 JFrame frame = new JFrame("Week"); //Name of Program
-                frame.setContentPane(new GUI().Week);
+                frame.setContentPane(new GUI().WeekJPanel);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -293,10 +293,12 @@ public class GUI extends Container {
                     System.out.println(Integer.parseInt(sun1.getText()));
                     System.out.println(sunAMPM1.getSelectedItem());//AM or PM for First Sunday value
 
-                    employee.setName(nameTextField.getText());
+
+                //DO NOT REMOVE
+                    /*employee.setName(nameTextField.getText());
                     employee.setID(IDTextField.getText());
                     employee.setPhoneNumber(Long.parseLong(phoneTextField.getText()));
-                    employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));
+                    employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));*/
 
                     Integer s1 = 0; Integer s2 = 0;
                     Integer m1; Integer m2;
@@ -604,11 +606,13 @@ public class GUI extends Container {
 
             }
         });
-        comboBox8.addActionListener(new ActionListener() { //THIS IS THE SUNDAY DAY PROFILES
+        comboBoxSunday.addActionListener(new ActionListener() { //THIS IS THE SUNDAY DAY PROFILES
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                comboBox8.addItem("Test");
+                comboBoxSunday.addItem("Test");
+                weekProfile[0] = comboBoxSunday.getSelectedItem().toString();
+
             }
         });
     }
@@ -616,13 +620,13 @@ public class GUI extends Container {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Scheduler"); //Name of Program
-        //JComboBox comboBox8 = new JComboBox();
-        //comboBox8.addItem("test1");
-        //comboBox8.addItem("test2");
         frame.setContentPane(new GUI().panelControl);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
