@@ -4,13 +4,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
+import java.util.List;
 //Excel functionality was placed at bottom commented out @# is a key to know where they go should it be desired again.
 //@1
 
 public class GUI extends Container {
 
     private Employee employee = new Employee();
+    private List<Employee> employeeList = new ArrayList<Employee>();
     private Availability availability = new Availability();
     private Time time = new Time();
     private DayProfile dayProfile = new DayProfile();
@@ -240,6 +242,7 @@ public class GUI extends Container {
     private JPanel WeekCard;
     private JPanel EmployeeCard;
     private JPanel ScheduleCard;
+    private JLabel sundayEmployees;
 
     public GUI() {
 
@@ -256,7 +259,7 @@ public class GUI extends Container {
         /*
          ADD EMPLOYEE
          */
-        addEmployeeButton.addActionListener(new ActionListener() { //add employee button
+        addEmployeeButton.addActionListener(new ActionListener() { //ADD EMPLOYEE BUTTON
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -275,26 +278,13 @@ public class GUI extends Container {
                     employee.setPhoneNumber(Long.parseLong(phoneTextField.getText()));
                     employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));
 
-                    Integer s1 = 0; Integer s2 = 0;
-                    Integer m1; Integer m2;
-                    Integer t1; Integer t2;
-                    Integer w1; Integer w2;
-                    Integer r1; Integer r2;
-                    Integer f1; Integer f2;
-                    Integer ss1; Integer ss2;
-
-
-
                     //Sunday Availability
                     if (sunAMPM1.getSelectedItem() == "AM" && sunAMPM2.getSelectedItem() == "AM") {
                         availability.addAvailableDay(Day.SUNDAY, new Time(Integer.parseInt(sun1.getText()), Integer.parseInt(sun2.getText())));
-                        s1 = Integer.parseInt(sun1.getText()); s2 = Integer.parseInt(sun2.getText());
                     } else if (sunAMPM1.getSelectedItem() == "AM" && sunAMPM2.getSelectedItem() == "PM") {
                         availability.addAvailableDay(Day.SUNDAY, new Time(Integer.parseInt(sun1.getText()), (Integer.parseInt(sun2.getText()) + 12)));
-                        s1 = Integer.parseInt(sun1.getText()); s2 = Integer.parseInt(sun2.getText()) + 12;
                     } else if (sunAMPM1.getSelectedItem() == "PM" && sunAMPM2.getSelectedItem() == "PM") {
                         availability.addAvailableDay(Day.SUNDAY, new Time((Integer.parseInt(sun1.getText()) + 12), (Integer.parseInt(sun2.getText()) + 12)));
-                        s1 = Integer.parseInt(sun1.getText()) + 12; s2 = Integer.parseInt(sun2.getText()) + 12;
                     } System.out.println(availability.getTotalHours());
 
                     //Monday Availability
@@ -350,6 +340,9 @@ public class GUI extends Container {
                     } else if (satAMPM1.getSelectedItem() == "PM" && satAMPM2.getSelectedItem() == "PM") {
                         availability.addAvailableDay(Day.SATURDAY, new Time((Integer.parseInt(sat1.getText()) + 12), (Integer.parseInt(sat2.getText()) + 12)));
                     } System.out.println(availability.getTotalHours());
+
+                    employee.setAvailability(availability);
+                    employeeList.add(employee);
 
                     //@2
             }
@@ -961,6 +954,12 @@ public class GUI extends Container {
                 frame.setContentPane(new GUI().Schedule);
                 frame.pack();
                 frame.setVisible(true);
+            }
+        });
+        createScheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sundayEmployees.setText("test");
             }
         });
     }
