@@ -24,7 +24,6 @@ public class GUI extends Container {
     private JPanel Schedule;
     private JButton buttonE1;
     private JButton buttonW1;
-    private JButton buttonS1;
     private JLabel nameLabel;
     private JLabel idLabel;
     private JLabel phoneLabel;
@@ -43,16 +42,10 @@ public class GUI extends Container {
     private JLabel fridayLabel;
     private JLabel saturdayLabel;
     private JButton buttonE2;
-    private JButton buttonW2;
     private JButton buttonS2;
-    private JButton buttonE3;
-    private JButton buttonW3;
-    private JButton buttonS3;
 
     private JLabel availabilityLabel;
     private JButton buttonSetWeekNeeds;
-    private JButton buttonNewDayNeeds;
-    private JButton buttonEditDayNeeds;
     private JLabel sundayLabelW1;
     private JLabel mondayLabelW1;
     private JLabel tuesdayLabelW1;
@@ -109,7 +102,6 @@ public class GUI extends Container {
     private JTextField textFieldNDEndTime1;
     private JTextField textFieldNDNumberShifts1;
     private JButton addShiftButtonND;
-    private JButton viewShiftButton;
     private JComboBox comboBoxNDArea2;
     private JComboBox comboBoxNDRank2;
     private JComboBox comboBoxNDStartTime2;
@@ -244,27 +236,14 @@ public class GUI extends Container {
     private JTextField textFieldNDStartTime17;
     private JTextField textFieldNDStartTime16;
     private JButton loadWeekNeedsButton;
+    private JPanel Test1;
+    private JPanel WeekCard;
+    private JPanel EmployeeCard;
+    private JPanel ScheduleCard;
 
     public GUI() {
-        buttonE1.addActionListener(new ActionListener() { //Employee Button in Employee View
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Clicked on Employee Data from Employee Data Screen");
 
-            }
-        });
-        buttonW1.addActionListener(new ActionListener() { //Week Button in Employee View
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-                JFrame frame = new JFrame("Week"); //Name of Program
-                frame.setContentPane(new GUI().Week);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-
-            }
-        });
         nameTextField.addActionListener(new ActionListener() { //nameTextField in Employee
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -403,6 +382,9 @@ public class GUI extends Container {
 
                 int num = 0;
 
+                dayProfile.setLabel(textFieldNDDayName.getText());
+                dayProfile.setDay(comboBoxNDDay.getSelectedItem().toString());
+
                 //SHIFT 1
                 if(!textFieldNDNumberShifts1.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts1.getText());
@@ -417,19 +399,16 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea1.getSelectedItem() + comboBoxNDRank1.getSelectedItem() + textFieldNDStartTime1.getText()
                                 + comboBoxNDStartTime1.getSelectedItem() + textFieldNDEndTime1.getText() + comboBoxNDEndTime1.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea1.getSelectedItem().toString() + " " + comboBoxNDRank1.getSelectedItem().toString());
+                        ////System.out.println("HERE " + comboBoxNDArea1.getSelectedItem().toString() + " " + comboBoxNDRank1.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea1.getSelectedItem().toString(), comboBoxNDRank1.getSelectedItem().toString());
-                        System.out.println("W1");
-                        dayProfile.addShift(shift); //PROBLEM: this doesn't seem to work. Debug can't find error but normal execution always ends in
-                        // "Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException"
-                        System.out.println("W2");
+                        dayProfile.addShift(shift);
+                        dayProfile.display();
                     }
                     num++;
+
                 }
                 //SHIFT 2
                 if(!textFieldNDNumberShifts2.getText().contains("0")) {
@@ -445,19 +424,16 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea2.getSelectedItem() + comboBoxNDRank2.getSelectedItem() + textFieldNDStartTime2.getText()
                                 + comboBoxNDStartTime2.getSelectedItem() + textFieldNDEndTime2.getText() + comboBoxNDEndTime2.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea2.getSelectedItem().toString() + " " + comboBoxNDRank2.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea2.getSelectedItem().toString() + " " + comboBoxNDRank2.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea2.getSelectedItem().toString(), comboBoxNDRank2.getSelectedItem().toString());
-                        System.out.println("W1");
-                        dayProfile.addShift(shift); //PROBLEM: this doesn't seem to work. Debug can't find error but normal execution always ends in
-                        // "Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException"
-                        System.out.println("W2");
+                        dayProfile.addShift(shift);
+                        dayProfile.display();
                     }
                     num++;
+
                 }
 
                 //SHIFT 3
@@ -474,18 +450,16 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea3.getSelectedItem() + comboBoxNDRank3.getSelectedItem() + textFieldNDStartTime3.getText()
                                 + comboBoxNDStartTime3.getSelectedItem() + textFieldNDEndTime3.getText() + comboBoxNDEndTime3.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea3.getSelectedItem().toString() + " " + comboBoxNDRank3.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea3.getSelectedItem().toString() + " " + comboBoxNDRank3.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea3.getSelectedItem().toString(), comboBoxNDRank3.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
+                        dayProfile.display();
                     }
                     num++;
+
                 }
 
                 //SHIFT 4
@@ -502,16 +476,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea4.getSelectedItem() + comboBoxNDRank4.getSelectedItem() + textFieldNDStartTime4.getText()
                                 + comboBoxNDStartTime4.getSelectedItem() + textFieldNDEndTime4.getText() + comboBoxNDEndTime4.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea4.getSelectedItem().toString() + " " + comboBoxNDRank4.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea4.getSelectedItem().toString() + " " + comboBoxNDRank4.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea4.getSelectedItem().toString(), comboBoxNDRank4.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -530,16 +500,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea5.getSelectedItem() + comboBoxNDRank5.getSelectedItem() + textFieldNDStartTime5.getText()
                                 + comboBoxNDStartTime5.getSelectedItem() + textFieldNDEndTime5.getText() + comboBoxNDEndTime5.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea5.getSelectedItem().toString() + " " + comboBoxNDRank5.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea5.getSelectedItem().toString() + " " + comboBoxNDRank5.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea5.getSelectedItem().toString(), comboBoxNDRank5.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -558,16 +524,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea6.getSelectedItem() + comboBoxNDRank6.getSelectedItem() + textFieldNDStartTime6.getText()
                                 + comboBoxNDStartTime6.getSelectedItem() + textFieldNDEndTime6.getText() + comboBoxNDEndTime6.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea6.getSelectedItem().toString() + " " + comboBoxNDRank6.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea6.getSelectedItem().toString() + " " + comboBoxNDRank6.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea6.getSelectedItem().toString(), comboBoxNDRank6.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -586,16 +548,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea7.getSelectedItem() + comboBoxNDRank7.getSelectedItem() + textFieldNDStartTime7.getText()
                                 + comboBoxNDStartTime7.getSelectedItem() + textFieldNDEndTime7.getText() + comboBoxNDEndTime7.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea7.getSelectedItem().toString() + " " + comboBoxNDRank7.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea7.getSelectedItem().toString() + " " + comboBoxNDRank7.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea7.getSelectedItem().toString(), comboBoxNDRank7.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -614,16 +572,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea8.getSelectedItem() + comboBoxNDRank8.getSelectedItem() + textFieldNDStartTime8.getText()
                                 + comboBoxNDStartTime8.getSelectedItem() + textFieldNDEndTime8.getText() + comboBoxNDEndTime8.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea8.getSelectedItem().toString() + " " + comboBoxNDRank8.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea8.getSelectedItem().toString() + " " + comboBoxNDRank8.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea8.getSelectedItem().toString(), comboBoxNDRank8.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -642,16 +596,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea9.getSelectedItem() + comboBoxNDRank9.getSelectedItem() + textFieldNDStartTime9.getText()
                                 + comboBoxNDStartTime9.getSelectedItem() + textFieldNDEndTime9.getText() + comboBoxNDEndTime9.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea9.getSelectedItem().toString() + " " + comboBoxNDRank9.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea9.getSelectedItem().toString() + " " + comboBoxNDRank9.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea9.getSelectedItem().toString(), comboBoxNDRank9.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -670,16 +620,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea10.getSelectedItem() + comboBoxNDRank10.getSelectedItem() + textFieldNDStartTime10.getText()
                                 + comboBoxNDStartTime10.getSelectedItem() + textFieldNDEndTime10.getText() + comboBoxNDEndTime10.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea10.getSelectedItem().toString() + " " + comboBoxNDRank10.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea10.getSelectedItem().toString() + " " + comboBoxNDRank10.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea10.getSelectedItem().toString(), comboBoxNDRank10.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -698,16 +644,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea11.getSelectedItem() + comboBoxNDRank11.getSelectedItem() + textFieldNDStartTime11.getText()
                                 + comboBoxNDStartTime11.getSelectedItem() + textFieldNDEndTime11.getText() + comboBoxNDEndTime11.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea11.getSelectedItem().toString() + " " + comboBoxNDRank11.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea11.getSelectedItem().toString() + " " + comboBoxNDRank11.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea11.getSelectedItem().toString(), comboBoxNDRank11.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -726,16 +668,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea12.getSelectedItem() + comboBoxNDRank12.getSelectedItem() + textFieldNDStartTime12.getText()
                                 + comboBoxNDStartTime12.getSelectedItem() + textFieldNDEndTime12.getText() + comboBoxNDEndTime12.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea12.getSelectedItem().toString() + " " + comboBoxNDRank12.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea12.getSelectedItem().toString() + " " + comboBoxNDRank12.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea12.getSelectedItem().toString(), comboBoxNDRank12.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -754,16 +692,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea13.getSelectedItem() + comboBoxNDRank13.getSelectedItem() + textFieldNDStartTime13.getText()
                                 + comboBoxNDStartTime13.getSelectedItem() + textFieldNDEndTime13.getText() + comboBoxNDEndTime13.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea13.getSelectedItem().toString() + " " + comboBoxNDRank13.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea13.getSelectedItem().toString() + " " + comboBoxNDRank13.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea13.getSelectedItem().toString(), comboBoxNDRank13.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -782,16 +716,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea14.getSelectedItem() + comboBoxNDRank14.getSelectedItem() + textFieldNDStartTime14.getText()
                                 + comboBoxNDStartTime14.getSelectedItem() + textFieldNDEndTime14.getText() + comboBoxNDEndTime14.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea14.getSelectedItem().toString() + " " + comboBoxNDRank14.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea14.getSelectedItem().toString() + " " + comboBoxNDRank14.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea14.getSelectedItem().toString(), comboBoxNDRank14.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -810,16 +740,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea15.getSelectedItem() + comboBoxNDRank15.getSelectedItem() + textFieldNDStartTime15.getText()
                                 + comboBoxNDStartTime15.getSelectedItem() + textFieldNDEndTime15.getText() + comboBoxNDEndTime15.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea15.getSelectedItem().toString() + " " + comboBoxNDRank15.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea15.getSelectedItem().toString() + " " + comboBoxNDRank15.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea15.getSelectedItem().toString(), comboBoxNDRank15.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -838,16 +764,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea16.getSelectedItem() + comboBoxNDRank16.getSelectedItem() + textFieldNDStartTime16.getText()
                                 + comboBoxNDStartTime16.getSelectedItem() + textFieldNDEndTime16.getText() + comboBoxNDEndTime16.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea16.getSelectedItem().toString() + " " + comboBoxNDRank16.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea16.getSelectedItem().toString() + " " + comboBoxNDRank16.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea16.getSelectedItem().toString(), comboBoxNDRank16.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -866,16 +788,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea17.getSelectedItem() + comboBoxNDRank17.getSelectedItem() + textFieldNDStartTime17.getText()
                                 + comboBoxNDStartTime17.getSelectedItem() + textFieldNDEndTime17.getText() + comboBoxNDEndTime17.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea17.getSelectedItem().toString() + " " + comboBoxNDRank17.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea17.getSelectedItem().toString() + " " + comboBoxNDRank17.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea17.getSelectedItem().toString(), comboBoxNDRank17.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -894,16 +812,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea18.getSelectedItem() + comboBoxNDRank18.getSelectedItem() + textFieldNDStartTime18.getText()
                                 + comboBoxNDStartTime18.getSelectedItem() + textFieldNDEndTime18.getText() + comboBoxNDEndTime18.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea18.getSelectedItem().toString() + " " + comboBoxNDRank18.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea18.getSelectedItem().toString() + " " + comboBoxNDRank18.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea18.getSelectedItem().toString(), comboBoxNDRank18.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -922,16 +836,12 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea19.getSelectedItem() + comboBoxNDRank19.getSelectedItem() + textFieldNDStartTime19.getText()
                                 + comboBoxNDStartTime19.getSelectedItem() + textFieldNDEndTime19.getText() + comboBoxNDEndTime19.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea19.getSelectedItem().toString() + " " + comboBoxNDRank19.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea19.getSelectedItem().toString() + " " + comboBoxNDRank19.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea19.getSelectedItem().toString(), comboBoxNDRank19.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
@@ -950,23 +860,19 @@ public class GUI extends Container {
                     {
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea20.getSelectedItem() + comboBoxNDRank20.getSelectedItem() + textFieldNDStartTime20.getText()
                                 + comboBoxNDStartTime20.getSelectedItem() + textFieldNDEndTime20.getText() + comboBoxNDEndTime20.getSelectedItem();
-                        System.out.println(shiftName);
-                        System.out.println("WA");
+                        //System.out.println(shiftName);
                         shift.setShiftName(shiftName);
-                        System.out.println("WB");
                         //shift.setRequiredWorkProfile(Area.valueOf(comboBoxNDArea1.getSelectedItem().toString()), Rank.valueOf(comboBoxNDRank1.getSelectedItem().toString()));
-                        System.out.println("HERE " + comboBoxNDArea20.getSelectedItem().toString() + " " + comboBoxNDRank20.getSelectedItem().toString());
+                        //System.out.println("HERE " + comboBoxNDArea20.getSelectedItem().toString() + " " + comboBoxNDRank20.getSelectedItem().toString());
                         shift.setRequiredWorkProfile(comboBoxNDArea20.getSelectedItem().toString(), comboBoxNDRank20.getSelectedItem().toString());
-                        System.out.println("W1");
                         dayProfile.addShift(shift);
-                        System.out.println("W2");
                     }
                     num++;
                 }
 
 
-                dayProfile.setLabel(textFieldNDDayName.getText());
-                System.out.println(dayProfile.getLabel());
+
+                dayProfile.display(); //SHOW CONTENTS OF DAY PROFILE
 
                 //@3
 
@@ -1037,11 +943,31 @@ public class GUI extends Container {
                 weekProfile[6] = comboBoxSaturday.getSelectedItem().toString();
             }
         });
+        buttonE2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("pressed E2");
+                JFrame frame = new JFrame("Employee Data");
+                frame.setContentPane(new GUI().Employee);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        buttonS2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("pressed E2");
+                JFrame frame = new JFrame("Schedule Week");
+                frame.setContentPane(new GUI().Schedule);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("GUI");
+        JFrame frame = new JFrame("Set Up Week Data");
         frame.setContentPane(new GUI().panelControl);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -1190,7 +1116,7 @@ public class GUI extends Container {
 
                 /*shiftName = String.valueOf(num) + comboBoxNDArea1.getSelectedItem() + comboBoxNDRank1.getSelectedItem() + textFieldNDStartTime1.getText()
                         + comboBoxNDStartTime1.getSelectedItem() + textFieldNDEndTime1.getText() + comboBoxNDEndTime1.getSelectedItem();
-                System.out.println(shiftName);
+                //System.out.println(shiftName);
                 System.out.println("WA1");
                 shift.setShiftName(shiftName);
                 System.out.println("WB1");
@@ -1211,15 +1137,15 @@ public class GUI extends Container {
                 {
                     String shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea2.getSelectedItem() + comboBoxNDRank2.getSelectedItem() + textFieldNDStartTime2.getText()
                             + comboBoxNDStartTime2.getSelectedItem() + textFieldNDEndTime2.getText() + comboBoxNDEndTime2.getSelectedItem();
-                    System.out.println(shiftName);
+                    //System.out.println(shiftName);
                     shift.setShiftName(shiftName);
                     areaEnum = Area.valueOf(comboBoxNDArea2.getSelectedItem().toString());
                     rankEnum = Rank.valueOf(comboBoxNDRank2.getSelectedItem().toString());
                     shift.setRequiredWorkProfile(areaEnum, rankEnum);
-                    System.out.println("W1");
+
                     dayProfile.addShift(shift); //PROBLEM: this doesn't seem to work. Debug can't find error but normal execution always ends in
                     // "Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException"
-                    System.out.println("W2");
+
                     num++;
                 }
                 */
