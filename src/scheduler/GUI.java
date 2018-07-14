@@ -20,6 +20,9 @@ public class GUI extends Container {
     private Shift shift = new Shift();
     private String shiftName = new String();
 
+    //private JFrame frameTest = new JFrame("Test");
+
+
     private JPanel Employee;
     private JPanel panelControl;
     private JPanel Week;
@@ -274,7 +277,7 @@ public class GUI extends Container {
 
 
                     employee.setName(nameTextField.getText());
-                    employee.setID(IDTextField.getText());
+                    employee.setId(IDTextField.getText());
                     employee.setPhoneNumber(Long.parseLong(phoneTextField.getText()));
                     employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));
 
@@ -939,6 +942,11 @@ public class GUI extends Container {
         buttonE2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*frameTest = new JFrame("Employee DataXX");
+                frameTest.setContentPane(new GUI().Week);
+                frameTest.pack();
+                frameTest.setVisible(true);*/
+
                 System.out.println("pressed E2");
                 JFrame frame = new JFrame("Employee Data");
                 frame.setContentPane(new GUI().Employee);
@@ -949,6 +957,13 @@ public class GUI extends Container {
         buttonS2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*frameTest = new JFrame("Schedule WeekXX");
+                frameTest.setContentPane(new GUI().Schedule);
+                frameTest.pack();
+                frameTest.setVisible(true);*/
+
+
+
                 System.out.println("pressed E2");
                 JFrame frame = new JFrame("Schedule Week");
                 frame.setContentPane(new GUI().Schedule);
@@ -956,10 +971,11 @@ public class GUI extends Container {
                 frame.setVisible(true);
             }
         });
+        //CREATE SCHEDULE BUTTON IN SCHEDULE
         createScheduleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                sundayEmployees.setText("test");
+                sundayEmployees.setText(dayProfile.display2());
             }
         });
     }
