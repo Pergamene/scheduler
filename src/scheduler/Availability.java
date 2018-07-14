@@ -31,6 +31,10 @@ public class Availability {
         return totalHours;
     }
 
+    public Time getDay(Day d) {
+        return availableDays.get(d);
+    }
+
     public void requestTimeOff(Date date) {
         ro.add(date);
     }

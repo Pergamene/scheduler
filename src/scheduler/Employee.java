@@ -6,53 +6,58 @@ import java.util.List;
 public class Employee {
 
     private String name;
-    private String ID;
+    private String id;
     private long phoneNumber;
     private List<WorkProfile> workProfiles;
     private Availability availability;
     private int hoursScheduled;
     private int hourCap;
     private boolean overtime;
+    private boolean taps;
 
     public Employee() {
 
     }
 
-    public Employee(String name, String ID, long phoneNumber, WorkProfile profile) {
+    public Employee(String name, String id, long phoneNumber, WorkProfile profile) {
         this.name = name;
-        this.ID = ID;
+        this.id = id;
         this.phoneNumber = phoneNumber;
-        workProfiles = new ArrayList<WorkProfile>();
-        workProfiles.add(profile);
+        this.workProfiles = new ArrayList<WorkProfile>();
+        this.workProfiles.add(profile);
+        this.hourCap = 30;
         this.overtime = false;
+        this.taps = false;
     }
 
-    public Employee(String name, String ID, long phoneNumber, WorkProfile profile, int maxHours) {
+    public Employee(String name, String id, long phoneNumber, WorkProfile profile, int maxHours) {
         this.name = name;
-        this.ID = ID;
+        this.id = id;
         this.phoneNumber = phoneNumber;
-        workProfiles = new ArrayList<WorkProfile>();
-        workProfiles.add(profile);
+        this.workProfiles = new ArrayList<WorkProfile>();
+        this.workProfiles.add(profile);
         this.hourCap = maxHours;
         this.overtime = false;
+        this.taps = false;
     }
 
-    public Employee(String name, String ID, long phoneNumber, WorkProfile profile, int maxHours, Availability a) {
+    public Employee(String name, String id, long phoneNumber, WorkProfile profile, int maxHours, Availability a) {
         this.name = name;
-        this.ID = ID;
+        this.id = id;
         this.phoneNumber = phoneNumber;
-        workProfiles = new ArrayList<WorkProfile>();
-        workProfiles.add(profile);
+        this.workProfiles = new ArrayList<WorkProfile>();
+        this.workProfiles.add(profile);
         this.hourCap = maxHours;
         this.availability = a;
         this.overtime = false;
+        this.taps = false;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
-                ", ID='" + ID + '\'' +
+                ", id='" + id + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", hoursScheduled=" + hoursScheduled +
                 ", hourCap=" + hourCap +
@@ -68,12 +73,12 @@ public class Employee {
         this.name = name;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID (String ID) {
-        this.ID = ID;
+    public void setId (String id) {
+        this.id = id;
     }
 
     public long getPhoneNumber() {
@@ -123,5 +128,32 @@ public class Employee {
         else {
             System.out.println("Hour cap must be 40 hrs or less.");
         }
+    }
+
+    public boolean getTaps() {
+        return taps;
+    }
+
+    public void switchTaps() {
+        taps = !taps;
+    }
+
+    public int getTotalHours() {
+        return availability.getTotalHours();
+    }
+
+    public boolean canWork(Day d, Shift s) {
+        Time employeeTime = availability.getDay(d);
+        Time shiftTime = s.getTime();
+        if(employeeTime.getStartTime() == 0) {
+            return false;
+        }
+        else if(employeeTime.getStartTime() <= shiftTime.getStartTime()
+                && employeeTime.getEndTime() >= shiftTime.getEndTime()) {
+            if(hoursScheduled + s.getTime().getTotalHours() < hourCap) {
+                return true;
+            }
+        }
+            return false;
     }
 }

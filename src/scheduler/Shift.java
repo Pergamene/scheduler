@@ -6,6 +6,7 @@ public class Shift {
     private WorkProfile requiredWorkProfile;
     private Time time;
     private Employee assignedEmployee;
+    private int coverage;
 
 
     public Shift(){
@@ -15,6 +16,7 @@ public class Shift {
         this.requiredWorkProfile = requiredWorkProfile;
         this.time = time;
         this.assignedEmployee = null;
+        this.coverage = 0;
     }
 
     public String getShiftName() {
@@ -57,5 +59,13 @@ public class Shift {
 
     public void setAssignedEmployee(Employee assignedEmployee) {
         this.assignedEmployee = assignedEmployee;
+    }
+
+    public void incrementCoverage() {
+        coverage++;
+    }
+
+    public int getCoverage() {
+        return coverage;
     }
 }

@@ -25,7 +25,7 @@ public class generateSchedule {
     private List<Shift> fByCoverage;
     private List<Shift> saByCoverage;
 
-    public generateSchedule(List<Employee> employees, Schedule schedule) {
+    public GenerateSchedule(List<Employee> employees, Schedule schedule) {
         this.employeesByAvailableHours = new ArrayList<Employee>(employees);
         this.employeesByHoursScheduled = new ArrayList<Employee>(employees);
         this.schedule = schedule;
@@ -162,6 +162,5 @@ public class generateSchedule {
             return false;
         }
         return true;
-
     }
 }
