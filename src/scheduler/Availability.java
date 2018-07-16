@@ -39,6 +39,10 @@ public class Availability {
         ro.add(date);
     }
 
+    public void addRequestedTimeOff(List<Date> dates) {
+        ro.addAll(dates);
+    }
+
     public int getTimeOff(Date date) {
         for(int i = 0; i < ro.size(); i++) {
             if(ro.get(i).equals(date)) {

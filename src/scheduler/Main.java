@@ -40,6 +40,7 @@ public class Main {
             employee.setHoursScheduled(rs.getInt("hoursScheduled"));
             employee.setHourCap(rs.getInt("hourCap"));
             employee.setOvertime(rs.getBoolean("overtime"));
+            employee.setTaps(rs.getBoolean("taps"));
             employees.add(employee);
         }
 

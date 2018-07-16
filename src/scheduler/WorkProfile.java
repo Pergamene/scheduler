@@ -4,6 +4,10 @@ public class WorkProfile {
     private Rank rank;
     private Area area;
 
+    public WorkProfile() {
+
+    }
+
     public WorkProfile(Rank rank, Area area) {
         this.rank = rank;
         this.area = area;

@@ -134,6 +134,10 @@ public class Employee {
         return taps;
     }
 
+    public void setTaps(boolean taps) {
+        this.taps = taps;
+    }
+
     public void switchTaps() {
         taps = !taps;
     }
