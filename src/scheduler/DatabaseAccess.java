@@ -77,6 +77,20 @@ public class DatabaseAccess {
         return employees;
     }
 
+    public void addEmployee(Employee employee) {
+        try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+//            ResultSet rs = statement.executeQuery("SELECT * FROM workProfiles WHERE employeeId = " + employeeId);
+            statement.execute("");
+//            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private List<WorkProfile> getWorkProfiles(String employeeId) {
         List<WorkProfile> profiles = new ArrayList<WorkProfile>();
         WorkProfile profile;
@@ -206,44 +220,30 @@ public class DatabaseAccess {
     }
 
     private Month setMonth(String month) {
-        Month m;
         switch(month) {
             case "January":
-                m = Month.JANUARY;
-                break;
+                return Month.JANUARY;
             case "February":
-                m = Month.FEBRUARY;
-                break;
+                return Month.FEBRUARY;
             case "March":
-                m = Month.MARCH;
-                break;
+                return Month.MARCH;
             case "April":
-                m = Month.APRIL;
-                break;
+                return Month.APRIL;
             case "May":
-                m = Month.MAY;
-                break;
+                return Month.MAY;
             case "June":
-                m = Month.JUNE;
-                break;
+                return Month.JUNE;
             case "July":
-                m = Month.JULY;
-                break;
+                return Month.JULY;
             case "August":
-                m = Month.AUGUST;
-                break;
+                return Month.AUGUST;
             case "September":
-                m = Month.SEPTEMBER;
-                break;
+                return Month.SEPTEMBER;
             case "October":
-                m = Month.OCTOBER;
-                break;
+                return Month.OCTOBER;
             case "November":
-                m = Month.NOVEMBER;
-                break;
-            default:
-                m = Month.DECEMBER;
+                return Month.NOVEMBER;
         }
-        return m;
+        return Month.DECEMBER;
     }
 }
