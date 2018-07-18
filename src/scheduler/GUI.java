@@ -16,6 +16,7 @@ public class GUI extends Container {
     private Availability availability = new Availability();
     private Time time = new Time();
     private DayProfile dayProfile = new DayProfile();
+    private List<DayProfile> dayProfiles = new ArrayList<>();
     private String[] weekProfile = new String[7];
     private Shift shift = new Shift();
     private String shiftName = new String();
@@ -30,7 +31,6 @@ public class GUI extends Container {
     private JButton buttonE1;
     private JButton buttonW1;
     private JLabel nameLabel;
-    private JLabel idLabel;
     private JLabel phoneLabel;
     private JLabel hrsPerWeekLabel;
     private JTextField nameTextField;
@@ -377,7 +377,6 @@ public class GUI extends Container {
                  */
 
                 int num = 0;
-
                 dayProfile.setLabel(textFieldNDDayName.getText());
                 dayProfile.setDay(comboBoxNDDay.getSelectedItem().toString());
 
@@ -869,15 +868,15 @@ public class GUI extends Container {
 
 
                 dayProfile.display(); //SHOW CONTENTS OF DAY PROFILE
-
+                dayProfiles.add(dayProfile);
                 //@3
 
 
                 //@4
 
-                System.out.println(dayProfile.getDay());
-                System.out.println(dayProfile.getLabel());
-                System.out.println(dayProfile.getShifts());
+                //System.out.println(dayProfile.getDay());
+                //System.out.println(dayProfile.getLabel());
+                //System.out.println(dayProfile.getShifts());
 
             }
         });
@@ -885,13 +884,80 @@ public class GUI extends Container {
         loadWeekNeedsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                comboBoxSunday.addItem("Test0");
+                comboBoxSunday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    System.out.println("test" + dayProfiles.get(i).getDay().toString());
+                    if (dayProfiles.get(i).getDay().toString() == "SUNDAY") {
+                            comboBoxSunday.addItem(dayProfiles.get(i).getLabel().toString());
+                    }
+                }
+                comboBoxMonday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    if (dayProfiles.get(i).getDay().toString() == "MONDAY") {
+                        boolean match = false;
+                        if (match == false) {
+                            comboBoxMonday.addItem(dayProfiles.get(i).getLabel().toString());
+                        }
+                    }
+                }
+
+                comboBoxTuesday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    if (dayProfiles.get(i).getDay().toString() == "TUESDAY") {
+                        boolean match = false;
+                        if (match == false) {
+                            comboBoxTuesday.addItem(dayProfiles.get(i).getLabel().toString());
+                        }
+                    }
+                }
+
+                comboBoxWednesday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    if (dayProfiles.get(i).getDay().toString() == "WEDNESDAY") {
+                        boolean match = false;
+                        if (match == false) {
+                            comboBoxWednesday.addItem(dayProfiles.get(i).getLabel().toString());
+                        }
+                    }
+                }
+
+                comboBoxThursday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    if (dayProfiles.get(i).getDay().toString() == "THURSDAY") {
+                        boolean match = false;
+                        if (match == false) {
+                            comboBoxThursday.addItem(dayProfiles.get(i).getLabel().toString());
+                        }
+                    }
+                }
+
+                comboBoxFriday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    if (dayProfiles.get(i).getDay().toString() == "FRIDAY") {
+                        boolean match = false;
+                        if (match == false) {
+                            comboBoxFriday.addItem(dayProfiles.get(i).getLabel().toString());
+                        }
+                    }
+                }
+
+                comboBoxSaturday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    if (dayProfiles.get(i).getDay().toString() == "SATURDAY") {
+                        boolean match = false;
+                        if (match == false) {
+                            comboBoxSaturday.addItem(dayProfiles.get(i).getLabel().toString());
+                        }
+                    }
+                }
+
+                /*comboBoxSunday.addItem("Test0");
                 comboBoxMonday.addItem("Test1");
                 comboBoxTuesday.addItem("Test2");
                 comboBoxWednesday.addItem("Test3");
                 comboBoxThursday.addItem("Test4");
                 comboBoxFriday.addItem("Test5");
-                comboBoxSaturday.addItem("Test6");
+                comboBoxSaturday.addItem("Test6");*/
             }
         });
 
@@ -939,13 +1005,13 @@ public class GUI extends Container {
                 weekProfile[6] = comboBoxSaturday.getSelectedItem().toString();
             }
         });
-        buttonE2.addActionListener(new ActionListener() {
+        /*buttonE2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 /*frameTest = new JFrame("Employee DataXX");
                 frameTest.setContentPane(new GUI().Week);
                 frameTest.pack();
-                frameTest.setVisible(true);*/
+                frameTest.setVisible(true);
 
                 System.out.println("pressed E2");
                 JFrame frame = new JFrame("Employee Data");
@@ -953,14 +1019,14 @@ public class GUI extends Container {
                 frame.pack();
                 frame.setVisible(true);
             }
-        });
-        buttonS2.addActionListener(new ActionListener() {
+        });*/
+/*        buttonS2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 /*frameTest = new JFrame("Schedule WeekXX");
                 frameTest.setContentPane(new GUI().Schedule);
                 frameTest.pack();
-                frameTest.setVisible(true);*/
+                frameTest.setVisible(true);
 
 
 
@@ -970,9 +1036,9 @@ public class GUI extends Container {
                 frame.pack();
                 frame.setVisible(true);
             }
-        });
+        });*/
         //CREATE SCHEDULE BUTTON IN SCHEDULE
-        createScheduleButton.addActionListener(new ActionListener() {
+        createScheduleButton.addActionListener(new ActionListener() { //BROKEN
             @Override
             public void actionPerformed(ActionEvent e) {
                 sundayEmployees.setText(dayProfile.display2());
