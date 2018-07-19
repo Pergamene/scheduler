@@ -17,14 +17,19 @@ class DatabaseAccessTest {
     }
 
     @Test
-    void getEmployee() {
+    void getEmployeeTest() {
         e = dba.getEmployee("Austin");
         System.out.println(e);
         assertTrue(true);
     }
 
     @Test
-    void addEmployee() {
+    void addEmployeeTest() {
         dba.addEmployee(e);
+    }
+
+    @Test
+    void getDayProfileTest() {
+        DayProfile profile = dba.getDayProfile("Monday Morning");
     }
 }
