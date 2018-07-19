@@ -13,30 +13,18 @@ class DatabaseAccessTest {
     @BeforeEach
     void setUp() {
         dba = new DatabaseAccess();
+        e = new Employee("Nena", "812", 888888888, new WorkProfile(Rank.SHIFT_MANAGER, Area.CASHIER));
     }
 
     @Test
     void getEmployee() {
-        e = dba.getEmployee(804);
-        assertTrue(e.toString().equals("Employee{" +
-                "name='" + "Austin" + '\'' +
-                ", id='" + "804" + '\'' +
-                ", phoneNumber=" + 801434343 +
-                ", hoursScheduled=" + 0 +
-                ", hourCap=" + 1 +
-                ", overtime=" + 0 +
-                '}'));
-    }
-
-    @Test
-    void getEmployee1() {
-    }
-
-    @Test
-    void getEmployees() {
+        e = dba.getEmployee("Austin");
+        System.out.println(e);
+        assertTrue(true);
     }
 
     @Test
     void addEmployee() {
+        dba.addEmployee(e);
     }
 }

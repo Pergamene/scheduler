@@ -61,6 +61,10 @@ public class Date {
         return month.getValue();
     }
 
+    public Month getMont() {
+        return month;
+    }
+
     public int getYear() {
         return year;
     }

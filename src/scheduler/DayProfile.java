@@ -14,6 +14,10 @@ public class DayProfile {
         shifts = new HashMap<String, Shift>();
     }
 
+    public DayProfile() {
+
+    }
+
     public String getLabel() {
         return label;
     }

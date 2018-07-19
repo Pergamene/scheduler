@@ -28,6 +28,7 @@ public class Employee {
         this.hourCap = 30;
         this.overtime = false;
         this.taps = false;
+        this.availability = new Availability();
     }
 
     public Employee(String name, String id, long phoneNumber, WorkProfile profile, int maxHours) {
@@ -39,6 +40,7 @@ public class Employee {
         this.hourCap = maxHours;
         this.overtime = false;
         this.taps = false;
+        this.availability = new Availability();
     }
 
     public Employee(String name, String id, long phoneNumber, WorkProfile profile, int maxHours, Availability a) {
@@ -51,6 +53,7 @@ public class Employee {
         this.availability = a;
         this.overtime = false;
         this.taps = false;
+        this.availability = new Availability();
     }
 
     @Override
@@ -116,6 +119,10 @@ public class Employee {
 
     public int getHourCap() {
         return hourCap;
+    }
+
+    public boolean getOvertime() {
+        return overtime;
     }
 
     public void setOvertime(boolean flag) {

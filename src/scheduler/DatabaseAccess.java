@@ -2,10 +2,7 @@ package scheduler;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +24,17 @@ public class DatabaseAccess {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM employees WHERE name = '" + employeeName + "'");
-            employee.setId(rs.getString("employeeId"));
-            employee.setName(rs.getString("name"));
-            employee.setPhoneNumber(rs.getLong("phoneNumber"));
-            employee.setHoursScheduled(rs.getInt("hoursScheduled"));
-            employee.setHourCap(rs.getInt("hourCap"));
-            employee.setOvertime(rs.getBoolean("overtime"));
-            employee.setTaps(rs.getBoolean("taps"));
-            employee.setWorkProfile(getWorkProfiles(employee.getId()));
+            while(rs.next()) {
+                employee.setId(rs.getString("employeeId"));
+                employee.setName(rs.getString("name"));
+                employee.setPhoneNumber(rs.getLong("phoneNumber"));
+                employee.setHoursScheduled(rs.getInt("hoursScheduled"));
+                employee.setHourCap(rs.getInt("hourCap"));
+                employee.setOvertime(rs.getBoolean("overtime"));
+                employee.setTaps(rs.getBoolean("taps"));
+                employee.setWorkProfile(getWorkProfiles(employee.getId()));
+                employee.setAvailability(getAvailability(employeeName));
+            }
             rs.close();
             statement.close();
             connection.close();
@@ -50,7 +50,9 @@ public class DatabaseAccess {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM employees WHERE employeeid = " + employeeId);
-            employee = getEmployee(rs.getString("employeeId"));
+            while(rs.next()) {
+                employee = getEmployee(rs.getString("employeeId"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,7 +66,7 @@ public class DatabaseAccess {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM employees");
-            while (rs.next()) {
+            while(rs.next()) {
                 employee = getEmployee(rs.getString("employeeName"));
                 employees.add(employee);
             }
@@ -80,11 +82,117 @@ public class DatabaseAccess {
     public void addEmployee(Employee employee) {
         try {
             Connection connection = dataSource.getConnection();
-            Statement statement = connection.createStatement();
-//            ResultSet rs = statement.executeQuery("SELECT * FROM workProfiles WHERE employeeId = " + employeeId);
-            statement.execute("");
-//            rs.close();
-            statement.close();
+            //Populate employees table
+            String query = "INSERT INTO employees(employeeId, name, hourCap, overtime, phoneNumber) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, employee.getId());
+            preparedStatement.setString(2, employee.getName());
+            preparedStatement.setInt(3, employee.getHourCap());
+            preparedStatement.setBoolean(4, employee.getOvertime());
+            preparedStatement.setLong(5, employee.getPhoneNumber());
+            preparedStatement.execute();
+            //Populate workProfiles table
+            query = "INSERT INTO workProfiles(employeeId, rank, area) " +
+                    "VALUES (?, ?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+            for(WorkProfile profile: employee.getWorkProfile()) {
+                preparedStatement.setString(1, employee.getId());
+                preparedStatement.setString(2, "" + profile.getRank());
+                preparedStatement.setString(3, "" + profile.getArea());
+                preparedStatement.execute();
+            }
+            //Populate availability table
+            query = "INSERT INTO availability(employeeId, dayOfWeek, startTime, endTime, totalHours) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+            Availability a = employee.getAvailability();
+            if(a != null) {
+                for (Day d : a.getAvailableDays().keySet()) {
+                    preparedStatement.setString(1, employee.getId());
+                    preparedStatement.setString(2, "" + d);
+                    preparedStatement.setInt(3, a.getDay(d).getStartTime());
+                    preparedStatement.setInt(4, a.getDay(d).getEndTime());
+                    preparedStatement.setInt(5, a.getDay(d).getTotalHours());
+                    preparedStatement.execute();
+                }
+            }
+            //Populate requestedTimeOff table
+            query = "INSERT INTO requestedTimeOff(employeeId, dayOfMonth, month, year) " +
+                    "VALUES (?, ?, ?, ?)";
+            preparedStatement = connection.prepareStatement(query);
+            if(a.getRo() != null) {
+                for (Date d : a.getRo()) {
+                    preparedStatement.setString(1, employee.getId());
+                    preparedStatement.setInt(2, d.getDay());
+                    preparedStatement.setString(3, "" + d.getMont());
+                    preparedStatement.setInt(4, d.getYear());
+                    preparedStatement.execute();
+                }
+            }
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateEmployee(Employee employee) {
+        try {
+            Connection connection = dataSource.getConnection();
+            //Populate employees table
+            String query = "UPDATE employees SET employeeId = ?, name = ?, hourCap = ?, overtime = ?" +
+                    "phoneNumber = ?, taps = ?" +
+                    "WHERE employeeId = " + employee.getId();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, employee.getId());
+            preparedStatement.setString(2, employee.getName());
+            preparedStatement.setInt(3, employee.getHourCap());
+            preparedStatement.setBoolean(4, employee.getOvertime());
+            preparedStatement.setLong(5, employee.getPhoneNumber());
+            preparedStatement.setBoolean(6, employee.getTaps());
+            preparedStatement.execute();
+            //Populate workProfiles table
+            query = "UPDATE workProfiles SET employeeId = ?, rank = ?, area = ?" +
+                    "WHERE employeeId = " + employee.getId() + " AND area = ?";
+            preparedStatement = connection.prepareStatement(query);
+            for(WorkProfile profile: employee.getWorkProfile()) {
+                preparedStatement.setString(1, employee.getId());
+                preparedStatement.setString(2, "" + profile.getRank());
+                preparedStatement.setString(3, "" + profile.getArea());
+                preparedStatement.setString(4, "" + profile.getArea());
+                preparedStatement.execute();
+            }
+            //Populate availability table
+            query = "UPDATE availability SET employeeId = ?, dayOfWeek = ?, startTime = ?, endTime = ?, totalHours = ?" +
+                    "WHERE employeeId = " + employee.getId() + " AND dayOfWeek = ?";
+            preparedStatement = connection.prepareStatement(query);
+            Availability a = employee.getAvailability();
+            if(a != null) {
+                for (Day d : a.getAvailableDays().keySet()) {
+                    preparedStatement.setString(1, employee.getId());
+                    preparedStatement.setString(2, "" + d);
+                    preparedStatement.setInt(3, a.getDay(d).getStartTime());
+                    preparedStatement.setInt(4, a.getDay(d).getEndTime());
+                    preparedStatement.setInt(5, a.getDay(d).getTotalHours());
+                    preparedStatement.setString(6, "" + d);
+                    preparedStatement.execute();
+                }
+            }
+            //Populate requestedTimeOff table
+            query = "UPDATE requestedTimeOff SET employeeId = ?, dayOfMonth = ?, month = ?, year = ?" +
+                    "WHERE employeeId = " + employee.getId() + " AND dayOfMonth = ? AND month = ?";
+            preparedStatement = connection.prepareStatement(query);
+            if(a.getRo() != null) {
+                for (Date d : a.getRo()) {
+                    preparedStatement.setString(1, employee.getId());
+                    preparedStatement.setInt(2, d.getDay());
+                    preparedStatement.setString(3, "" + d.getMont());
+                    preparedStatement.setInt(4, d.getYear());
+                    preparedStatement.setInt(5, d.getDay());
+                    preparedStatement.setString(6, "" + d.getMont());
+                    preparedStatement.execute();
+                }
+            }
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -98,7 +206,7 @@ public class DatabaseAccess {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM workProfiles WHERE employeeId = " + employeeId);
-            while (rs.next()) {
+            while(rs.next()) {
                 profile = setProfile(rs.getString("rank"), rs.getString("area"));
                 profiles.add(profile);
             }
@@ -111,6 +219,7 @@ public class DatabaseAccess {
         return profiles;
     }
 
+    //TODO: Remove
     private WorkProfile setProfile(String rank, String area) {
         Rank r;
         Area a;
@@ -154,7 +263,7 @@ public class DatabaseAccess {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM workProfiles WHERE employeeId = " + employeeId);
-            while (rs.next()) {
+            while(rs.next()) {
                 d = getDay(rs.getString("dayOfWeek"));
                 t = new Time(rs.getInt("startTime"), rs.getInt("endTime"));
                 a.addRequestedTimeOff(getRo(employeeId));
@@ -169,6 +278,7 @@ public class DatabaseAccess {
         return a;
     }
 
+    //TODO: Remove
     private Day getDay(String dayOfWeek) {
         Day d;
         switch(dayOfWeek) {
@@ -205,8 +315,8 @@ public class DatabaseAccess {
         try {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM requestedTimeOff WHERE employeeid = " + employeeId);
-            while (rs.next()) {
+            ResultSet rs = statement.executeQuery("SELECT * FROM requestedTimeOff WHERE employeeId = " + employeeId);
+            while(rs.next()) {
                 dayOfMonth = rs.getInt("dayOfMonth");
                 m = setMonth(rs.getString("month"));
                 y = rs.getInt("year");
@@ -219,6 +329,7 @@ public class DatabaseAccess {
         return roDates;
     }
 
+    //TODO: Remove
     private Month setMonth(String month) {
         switch(month) {
             case "January":

@@ -17,6 +17,10 @@ public class Availability {
         ro = new ArrayList<Date>();
     }
 
+    public Map<Day, Time> getAvailableDays() {
+        return availableDays;
+    }
+
     public void addAvailableDay(Day d, Time t) {
         availableDays.put(d, t);
         updateTotalHours();
@@ -43,7 +47,11 @@ public class Availability {
         ro.addAll(dates);
     }
 
-    public int getTimeOff(Date date) {
+    public List<Date> getRo() {
+        return ro;
+    }
+
+    public int needTimeOff(Date date) {
         for(int i = 0; i < ro.size(); i++) {
             if(ro.get(i).equals(date)) {
                 return i;

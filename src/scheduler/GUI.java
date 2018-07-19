@@ -294,7 +294,7 @@ public class GUI extends Container {
                     System.out.println(sunAMPM1.getSelectedItem());//AM or PM for First Sunday value
 
                     employee.setName(nameTextField.getText());
-                    employee.setID(IDTextField.getText());
+                    employee.setId(IDTextField.getText());
                     employee.setPhoneNumber(Long.parseLong(phoneTextField.getText()));
                     employee.setHourCap(Integer.parseInt(hrsPerWeekTextField.getText()));
 
@@ -596,7 +596,7 @@ public class GUI extends Container {
                 }
                 */
 
-                System.out.println(dayProfile.getDay());
+//                System.out.println(dayProfile.getDay());
                 System.out.println(dayProfile.getLabel());
                 System.out.println(dayProfile.getShifts());
 
