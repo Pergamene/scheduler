@@ -6,8 +6,8 @@ public class Date {
     private int year;
 
     public Date(int dayOfMonth, Month month, int year) {
-        setDay(dayOfMonth);
         this.month = month;
+        setDay(dayOfMonth);
         this.year = year;
     }
 

@@ -3,7 +3,7 @@ package scheduler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class generateSchedule {
+public class GenerateSchedule {
 
     private List<Employee> employeesByAvailableHours;
     private List<Employee> employeesByHoursScheduled;

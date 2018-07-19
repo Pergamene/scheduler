@@ -33,7 +33,7 @@ public class DatabaseAccess {
                 employee.setOvertime(rs.getBoolean("overtime"));
                 employee.setTaps(rs.getBoolean("taps"));
                 employee.setWorkProfile(getWorkProfiles(employee.getId()));
-                employee.setAvailability(getAvailability(employeeName));
+                employee.setAvailability(getAvailability(employee.getId()));
             }
             rs.close();
             statement.close();
@@ -199,6 +199,53 @@ public class DatabaseAccess {
         }
     }
 
+    public DayProfile getDayProfile(String profileLabel) {
+        DayProfile profile = new DayProfile(profileLabel);
+        Shift s;
+        try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM dayProfiles WHERE profileLabel = '"
+                    + profileLabel + "'");
+            while(rs.next()) {
+                s = getShift(rs.getString("shiftName"), rs.getInt("shiftKey"));
+                profile.addShift(s);
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return profile;
+    }
+
+    private Shift getShift(String shiftName, int shiftKey) {
+        Shift s = new Shift();
+        Rank r;
+        Area a;
+        Time t;
+        try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM shifts WHERE shiftName = '" + shiftName + "'");
+            while(rs.next()) {
+                s.setShiftName(rs.getString("shiftName"));
+                r = Rank.valueOf(rs.getString("rank"));
+                a = Area.valueOf(rs.getString("area"));
+                s.setRequiredWorkProfile(new WorkProfile(r, a));
+                t = new Time(rs.getInt("startTime"), rs.getInt("endTime"));
+                s.setTime(t);
+            }
+            rs.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
+
     private List<WorkProfile> getWorkProfiles(String employeeId) {
         List<WorkProfile> profiles = new ArrayList<WorkProfile>();
         WorkProfile profile;
@@ -207,7 +254,8 @@ public class DatabaseAccess {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM workProfiles WHERE employeeId = " + employeeId);
             while(rs.next()) {
-                profile = setProfile(rs.getString("rank"), rs.getString("area"));
+                profile = new WorkProfile(Rank.valueOf(rs.getString("rank")),
+                        Area.valueOf(rs.getString("area")));
                 profiles.add(profile);
             }
             rs.close();
@@ -219,42 +267,6 @@ public class DatabaseAccess {
         return profiles;
     }
 
-    //TODO: Remove
-    private WorkProfile setProfile(String rank, String area) {
-        Rank r;
-        Area a;
-        rank = rank.toLowerCase();
-        area = area.toLowerCase();
-        if(rank.equals("team member")) {
-            r = Rank.TEAM_MEMBER;
-        }
-        else if(rank.equals("team leader")) {
-            r = Rank.TEAM_LEADER;
-        }
-        else if(rank.equals("supervisor")) {
-            r = Rank.SUPERVISOR;
-        }
-        else {
-            r = Rank.SHIFT_MANAGER;
-        }
-        if(area.equals("cashier")) {
-            a = Area.CASHIER;
-        }
-        else if(area.equals("arcade")) {
-            a = Area.ARCADE;
-        }
-        else if(area.equals("outside")) {
-            a = Area.OUTSIDE;
-        }
-        else if(area.equals("server")) {
-            a = Area.SERVER;
-        }
-        else {
-            a = Area.COOK;
-        }
-        return new WorkProfile(r, a);
-    }
-
     private Availability getAvailability(String employeeId) {
         Availability a = new Availability();
         Day d;
@@ -262,9 +274,9 @@ public class DatabaseAccess {
         try {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM workProfiles WHERE employeeId = " + employeeId);
+            ResultSet rs = statement.executeQuery("SELECT * FROM availability WHERE employeeId = " + employeeId);
             while(rs.next()) {
-                d = getDay(rs.getString("dayOfWeek"));
+                d = Day.valueOf(rs.getString("dayOfWeek"));
                 t = new Time(rs.getInt("startTime"), rs.getInt("endTime"));
                 a.addRequestedTimeOff(getRo(employeeId));
                 a.addAvailableDay(d, t);
@@ -278,34 +290,6 @@ public class DatabaseAccess {
         return a;
     }
 
-    //TODO: Remove
-    private Day getDay(String dayOfWeek) {
-        Day d;
-        switch(dayOfWeek) {
-            case "Sunday":
-                d = Day.SUNDAY;
-                break;
-            case "Monday":
-                d = Day.MONDAY;
-                break;
-            case "Tuesday":
-                d = Day.TUESDAY;
-                break;
-            case "Wednesday":
-                d = Day.WEDNESDAY;
-                break;
-            case "Thursday":
-                d = Day.THURSDAY;
-                break;
-            case "Friday":
-                d = Day.FRIDAY;
-                break;
-            default:
-                d = Day.SATURDAY;
-        }
-        return d;
-    }
-
     private List<Date> getRo(String employeeId) {
         List<Date> roDates = new ArrayList<Date>();
         Date d;
@@ -315,10 +299,11 @@ public class DatabaseAccess {
         try {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM requestedTimeOff WHERE employeeId = " + employeeId);
-            while(rs.next()) {
+            ResultSet rs = statement.executeQuery("SELECT * FROM requestedTimeOff WHERE employeeId = "
+                    + employeeId);
+            while (rs.next()) {
                 dayOfMonth = rs.getInt("dayOfMonth");
-                m = setMonth(rs.getString("month"));
+                m = Month.valueOf(rs.getString("month"));
                 y = rs.getInt("year");
                 d = new Date(dayOfMonth, m, y);
                 roDates.add(d);
@@ -327,34 +312,5 @@ public class DatabaseAccess {
             e.printStackTrace();
         }
         return roDates;
-    }
-
-    //TODO: Remove
-    private Month setMonth(String month) {
-        switch(month) {
-            case "January":
-                return Month.JANUARY;
-            case "February":
-                return Month.FEBRUARY;
-            case "March":
-                return Month.MARCH;
-            case "April":
-                return Month.APRIL;
-            case "May":
-                return Month.MAY;
-            case "June":
-                return Month.JUNE;
-            case "July":
-                return Month.JULY;
-            case "August":
-                return Month.AUGUST;
-            case "September":
-                return Month.SEPTEMBER;
-            case "October":
-                return Month.OCTOBER;
-            case "November":
-                return Month.NOVEMBER;
-        }
-        return Month.DECEMBER;
     }
 }

@@ -8,9 +8,10 @@ public class Shift {
     private Employee assignedEmployee;
     private int coverage;
 
-
     public Shift(){
+
     }
+
     public Shift(String shiftName, WorkProfile requiredWorkProfile, Time time) {
         this.shiftName = shiftName;
         this.requiredWorkProfile = requiredWorkProfile;
