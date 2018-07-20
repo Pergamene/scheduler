@@ -3,7 +3,7 @@ package scheduler;
 public class Shift {
 
     private String shiftName;
-    private WorkProfile requiredWorkProfile;
+    private WorkProfile requiredWorkProfile = new WorkProfile();
     private Time time;
     private Employee assignedEmployee;
     private int coverage;
