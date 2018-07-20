@@ -29,6 +29,8 @@ public class GUI extends Container {
     private List<Employee> employeeListS1 = new ArrayList<Employee>();
     private String displayEmployees = new String();
 
+    private List<DayProfile> dayProfilesDefault = new ArrayList<>();
+    private Schedule schedule = new Schedule();
     //private JFrame frameTest = new JFrame("Test");
 
 
@@ -265,6 +267,8 @@ public class GUI extends Container {
     private JComboBox comboBoxFridaySchedule;
     private JComboBox comboBoxSaturdaySchedule;
     private JComboBox comboBoxViewEmployees;
+    private JButton defaultWeekNeedsButton;
+    private JButton createDefaultScheduleButton;
 
     public GUI() {
 
@@ -1104,6 +1108,248 @@ public class GUI extends Container {
                             employeeListS1.get(i).getAvailability().getTotalHours());
                     comboBoxViewEmployees.addItem(displayEmployees);
                 }
+            }
+        });
+        defaultWeekNeedsButton.addActionListener(new ActionListener() { //THIS CREATES THE DEFAULT SCHEDULE FOR THE GENERATOR.
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dayProfile.setLabel("Default Sunday"); //DEFAULT SUNDAY
+                dayProfile.setDay("SUNDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("sun1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("sun2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("sun3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("sun4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("sun5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxSunday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+
+                dayProfile.setLabel("Default Monday"); //DEFAULT MONDAY
+                dayProfile.setDay("MONDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("mon1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("mon2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("mon3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("mon4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("mon5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxMonday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+
+                dayProfile.setLabel("Default Tuesday");  //DEFAULT TUESDAY
+                dayProfile.setDay("TUESDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("tue1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("tue2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("tue3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("tue4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("tue5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxTuesday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+
+                dayProfile.setLabel("Default Sunday"); //DEFAULT WEDNESDAY
+                dayProfile.setDay("WEDNESDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("wed1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("wed2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("wed3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("wed4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("wed5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxWednesday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+
+                dayProfile.setLabel("Default Thursday"); //DEFAULT THURSDAY
+                dayProfile.setDay("THURSDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("thur1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("thur2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("thur3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("thur4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("thur5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxThursday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+
+                dayProfile.setLabel("Default Friday"); //DEFAULT FRIDAY
+                dayProfile.setDay("FRIDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("fri1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(6, 14);
+                shift.setShiftName("fri2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("fri3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("fri4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("fri5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxFriday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+
+                dayProfile.setLabel("Default Saturday");  //DEFAULT SATURDAY
+                dayProfile.setDay("SATURDAY");
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(10, 16);
+                shift.setShiftName("sat1");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(10, 16);
+                shift.setShiftName("sat2");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(12, 20);
+                shift.setShiftName("sat3");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 23);
+                shift.setShiftName("sat4");
+                dayProfile.addShift(shift);
+
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setTime(14, 22);
+                shift.setShiftName("sat5");
+                dayProfile.addShift(shift);
+
+                dayProfilesDefault.add(dayProfile);
+                comboBoxSaturday.addItem(dayProfile.getLabel());
+                schedule.addDayProfile(dayProfile.getDay(), dayProfile);
+            }
+        });
+        createDefaultScheduleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                employeeListS = databaseAccess.getEmployees();
+                GenerateSchedule generateSchedule = new GenerateSchedule(employeeListS, schedule);
+                generateSchedule.generate();
+                //for(int i = 0; i < employeeListS.size(); i++) {
+                //    displayEmployees = (employeeListS.get(i).getName() + " " + employeeListS.get(i).getId() + " " + employeeListS.get(i).getPhoneNumber() + " " +
+                //            employeeListS.get(i).getAvailability().getTotalHours());
+                //    comboBoxSundaySchedule.addItem(displayEmployees);
+                //}
+
             }
         });
     }
