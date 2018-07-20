@@ -1,5 +1,6 @@
 package scheduler;
 
+import javax.naming.NamingException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,7 @@ public class DayProfile {
 
     private String label;
     private Map<String, Shift> shifts;
+    private Day day;
 
     public DayProfile(String label) {
         this.label = label;
@@ -44,5 +46,21 @@ public class DayProfile {
 
     public void assignEmployee(Shift shift, Employee employee) {
         shifts.get(shift.getShiftName()).setAssignedEmployee(employee);
+    }
+
+    public void setDay(String s) {
+        this.day = Day.valueOf(s);
+    }
+
+    public void display() {
+
+    }
+
+    public String display2() {
+        return "test";
+    }
+
+    public Day getDay() {
+        return day;
     }
 }
