@@ -13,6 +13,11 @@ public class WorkProfile {
         this.area = area;
     }
 
+    public WorkProfile(String rank, String area) {
+        this.rank = Rank.valueOf(rank);
+        this.area = Area.valueOf(area);
+    }
+
     public Rank getRank() {
         return rank;
     }
@@ -27,6 +32,11 @@ public class WorkProfile {
 
     public void setArea(Area area) {
         this.area = area;
+    }
+
+    public void setWorkProfile(String area, String rank) {
+        this.rank = Rank.valueOf(rank);
+        this.area = Area.valueOf(area);
     }
 
 }
