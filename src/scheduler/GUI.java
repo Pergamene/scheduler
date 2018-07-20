@@ -21,6 +21,8 @@ public class GUI extends Container {
     private Shift shift = new Shift();
     private String shiftName = new String();
     private DatabaseAccess databaseAccess = new DatabaseAccess();
+    private WorkProfile workProfile = new WorkProfile();
+    private List<WorkProfile> workProfiles = new ArrayList<>();
 
     //private JFrame frameTest = new JFrame("Test");
 
@@ -247,6 +249,8 @@ public class GUI extends Container {
     private JPanel EmployeeCard;
     private JPanel ScheduleCard;
     private JLabel sundayEmployees;
+    private JComboBox comboBoxEmployeeArea;
+    private JComboBox comboBoxEmployeeRank;
 
     public GUI() {
 
@@ -345,6 +349,9 @@ public class GUI extends Container {
                         availability.addAvailableDay(Day.SATURDAY, new Time((Integer.parseInt(sat1.getText()) + 12), (Integer.parseInt(sat2.getText()) + 12)));
                     } System.out.println(availability.getTotalHours());
 
+                    workProfile.setWorkProfile(comboBoxEmployeeArea.getSelectedItem().toString(), comboBoxEmployeeRank.getSelectedItem().toString());
+                    workProfiles.add(workProfile);
+                    employee.setWorkProfile(workProfiles);
                     employee.setAvailability(availability);
                     employeeList.add(employee);
                     databaseAccess.addEmployee(employee);
