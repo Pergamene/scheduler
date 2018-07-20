@@ -3,6 +3,8 @@ package scheduler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseAccessTest {
@@ -18,9 +20,14 @@ class DatabaseAccessTest {
 
     @Test
     void getEmployeeTest() {
-        e = dba.getEmployee("Austin");
+        e = dba.getEmployee("Bob Rice");
         System.out.println(e);
         assertTrue(true);
+    }
+
+    @Test
+    void getEmployeesTest() {
+        List<Employee> employees = dba.getEmployees();
     }
 
     @Test

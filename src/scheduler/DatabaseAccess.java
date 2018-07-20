@@ -67,7 +67,7 @@ public class DatabaseAccess {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM employees");
             while(rs.next()) {
-                employee = getEmployee(rs.getString("employeeName"));
+                employee = getEmployee(rs.getString("name"));
                 employees.add(employee);
             }
             rs.close();
