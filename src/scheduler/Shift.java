@@ -41,6 +41,11 @@ public class Shift {
         requiredWorkProfile.setRank(rank);
     }
 
+    public void setRequiredWorkProfile(String area, String rank) {
+        requiredWorkProfile.setArea(Area.valueOf(area));
+        requiredWorkProfile.setRank(Rank.valueOf(rank));
+    }
+
     public Time getTime() {
         return time;
     }
