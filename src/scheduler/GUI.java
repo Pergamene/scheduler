@@ -26,6 +26,7 @@ public class GUI extends Container {
     private List<WorkProfile> workProfiles = new ArrayList<>();
 
     private List<Employee> employeeListS = new ArrayList<Employee>();
+    private List<Employee> employeeListS1 = new ArrayList<Employee>();
     private String displayEmployees = new String();
 
     //private JFrame frameTest = new JFrame("Test");
@@ -45,7 +46,7 @@ public class GUI extends Container {
     private JTextField phoneTextField;
     private JTextField hrsPerWeekTextField;
     private JButton addEmployeeButton;
-    private JButton editEmployeeButton;
+    private JButton viewEmployeeButton;
     private JLabel tuesdayLabel;
     private JLabel wednesdayLabel;
     private JLabel mondayLabel;
@@ -252,9 +253,18 @@ public class GUI extends Container {
     private JPanel WeekCard;
     private JPanel EmployeeCard;
     private JPanel ScheduleCard;
-    private JLabel sundayEmployees;
     private JComboBox comboBoxEmployeeArea;
     private JComboBox comboBoxEmployeeRank;
+    private JLabel labelTest;
+    private JPanel SchedulePrime;
+    private JComboBox comboBoxSundaySchedule;
+    private JComboBox comboBoxMondaySchedule;
+    private JComboBox comboBoxTuesdaySchedule;
+    private JComboBox comboBoxWednesdaySchedule;
+    private JComboBox comboBoxThursdaySchedule;
+    private JComboBox comboBoxFridaySchedule;
+    private JComboBox comboBoxSaturdaySchedule;
+    private JComboBox comboBoxViewEmployees;
 
     public GUI() {
 
@@ -1065,13 +1075,35 @@ public class GUI extends Container {
         createScheduleButton.addActionListener(new ActionListener() { //BROKEN
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 employeeListS = databaseAccess.getEmployees();
                 for(int i = 0; i < employeeListS.size(); i++) {
-                    displayEmployees += (employeeListS.get(i).getName() + " " + employeeListS.get(i).getId() + " " + employeeListS.get(i).getPhoneNumber() + " " +
-                            employeeListS.get(i).getAvailability().getTotalHours() + "\n");
+                    displayEmployees = (employeeListS.get(i).getName() + " " + employeeListS.get(i).getId() + " " + employeeListS.get(i).getPhoneNumber() + " " +
+                            employeeListS.get(i).getAvailability().getTotalHours());
+                    comboBoxSundaySchedule.addItem(displayEmployees);
                 }
 
-                sundayEmployees.setText(displayEmployees);
+                /*sundayEmployees.setText(displayEmployees);
+
+                comboBoxSunday.removeAllItems();
+                for (int i = 0; i < dayProfiles.size(); i++) {
+                    System.out.println("test" + dayProfiles.get(i).getDay().toString());
+                    if (dayProfiles.get(i).getDay().toString() == "SUNDAY") {
+                        comboBoxSunday.addItem(dayProfiles.get(i).getLabel().toString());
+                    }
+                }*/
+            }
+        });
+        viewEmployeeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                employeeListS1 = databaseAccess.getEmployees();
+                comboBoxViewEmployees.removeAllItems();
+                for(int i = 0; i < employeeListS1.size(); i++) {
+                    displayEmployees = (employeeListS1.get(i).getName() + " " + employeeListS1.get(i).getId() + " " + employeeListS1.get(i).getPhoneNumber() + " " +
+                            employeeListS1.get(i).getAvailability().getTotalHours());
+                    comboBoxViewEmployees.addItem(displayEmployees);
+                }
             }
         });
     }
