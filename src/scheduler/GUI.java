@@ -12,6 +12,7 @@ import java.util.List;
 public class GUI extends Container {
 
     private Employee employee = new Employee();
+    private Employee employeeTest = new Employee();
     private List<Employee> employeeList = new ArrayList<Employee>();
     private Availability availability = new Availability();
     private Time time = new Time();
@@ -23,6 +24,9 @@ public class GUI extends Container {
     private DatabaseAccess databaseAccess = new DatabaseAccess();
     private WorkProfile workProfile = new WorkProfile();
     private List<WorkProfile> workProfiles = new ArrayList<>();
+
+    private List<Employee> employeeListS = new ArrayList<Employee>();
+    private String displayEmployees = new String();
 
     //private JFrame frameTest = new JFrame("Test");
 
@@ -354,8 +358,19 @@ public class GUI extends Container {
                     employee.setWorkProfile(workProfiles);
                     employee.setAvailability(availability);
                     employeeList.add(employee);
+
+                    //ADD EMPLOYEE TO DATABASE
                     databaseAccess.addEmployee(employee);
-                    databaseAccess.getEmployee(employee.getName());
+
+                    //TEST RETRIVAL OF NEW EMPLOYEE
+                    System.out.println("database get employee");
+                    employeeTest = databaseAccess.getEmployee(employee.getName());
+                    System.out.println(employeeTest.getName());
+                    System.out.println(employeeTest.getId());
+                    System.out.println(employeeTest.getHourCap());
+                    System.out.println(employeeTest.getPhoneNumber());
+                System.out.println(employeeTest.getWorkProfile());
+
                     //@2
             }
         });
@@ -1050,7 +1065,13 @@ public class GUI extends Container {
         createScheduleButton.addActionListener(new ActionListener() { //BROKEN
             @Override
             public void actionPerformed(ActionEvent e) {
-                sundayEmployees.setText(dayProfile.display2());
+                employeeListS = databaseAccess.getEmployees();
+                for(int i = 0; i < employeeListS.size(); i++) {
+                    displayEmployees += (employeeListS.get(i).getName() + " " + employeeListS.get(i).getId() + " " + employeeListS.get(i).getPhoneNumber() + " " +
+                            employeeListS.get(i).getAvailability().getTotalHours() + "\n");
+                }
+
+                sundayEmployees.setText(displayEmployees);
             }
         });
     }
