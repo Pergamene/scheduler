@@ -8,7 +8,7 @@ import java.util.Map;
 public class DayProfile {
 
     private String label;
-    private Map<String, Shift> shifts;
+    private Map<String, Shift> shifts = new HashMap<>();
     private Day day;
 
     public DayProfile(String label) {
@@ -37,6 +37,9 @@ public class DayProfile {
         //Otherwise, inform user that it is already being used.
         if(shifts.put(shift.getShiftName(), shift) != null) {
             System.out.println("Shift is already in use");
+        }
+        else {
+            this.shifts.put(shift.getShiftName(), shift);
         }
     }
 
