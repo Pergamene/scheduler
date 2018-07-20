@@ -20,6 +20,7 @@ public class GUI extends Container {
     private String[] weekProfile = new String[7];
     private Shift shift = new Shift();
     private String shiftName = new String();
+    private DatabaseAccess databaseAccess = new DatabaseAccess();
 
     //private JFrame frameTest = new JFrame("Test");
 
@@ -346,7 +347,8 @@ public class GUI extends Container {
 
                     employee.setAvailability(availability);
                     employeeList.add(employee);
-
+                    databaseAccess.addEmployee(employee);
+                    databaseAccess.getEmployee(employee.getName());
                     //@2
             }
         });
