@@ -16,14 +16,14 @@ public class GenerateSchedule {
 //    private List<Shift> thByRank;
 //    private List<Shift> fByRank;
 //    private List<Shift> saByRank;
-    private List<List<Shift>> weekByCoverage;
-    private List<Shift> sByCoverage;
-    private List<Shift> mByCoverage;
-    private List<Shift> tByCoverage;
-    private List<Shift> wByCoverage;
-    private List<Shift> thByCoverage;
-    private List<Shift> fByCoverage;
-    private List<Shift> saByCoverage;
+    private List<List<Shift>> weekByCoverage = new ArrayList<>();
+    private List<Shift> sByCoverage = new ArrayList<>();
+    private List<Shift> mByCoverage = new ArrayList<>();
+    private List<Shift> tByCoverage = new ArrayList<>();
+    private List<Shift> wByCoverage = new ArrayList<>();
+    private List<Shift> thByCoverage = new ArrayList<>();
+    private List<Shift> fByCoverage = new ArrayList<>();
+    private List<Shift> saByCoverage = new ArrayList<>();
 
     public GenerateSchedule(List<Employee> employees, Schedule schedule) {
         this.employeesByAvailableHours = new ArrayList<Employee>(employees);
