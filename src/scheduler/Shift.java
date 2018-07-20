@@ -4,7 +4,7 @@ public class Shift {
 
     private String shiftName;
     private WorkProfile requiredWorkProfile = new WorkProfile();
-    private Time time;
+    private Time time = new Time();
     private Employee assignedEmployee;
     private int coverage;
 
