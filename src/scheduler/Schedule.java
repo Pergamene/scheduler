@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Schedule {
-    private Map<Day, DayProfile> schedule;
+    private Map<Day, DayProfile> schedule = new HashMap<>();
 
     public Schedule() {
         schedule = new HashMap<Day, DayProfile>();
@@ -14,10 +14,20 @@ public class Schedule {
         //This will accept the day of week that the new profile is to be created for and the name
         //that the new profile will be known as. We should verify that there are no others of the
         //same name.
-        if(!schedule.get(day).equals(null)) {
+        if(schedule.get(day) != null) {
             System.err.println("There is already a day profile for that day.");
         }
         schedule.put(day, dayProfile);
+    }
+
+    public void addDayProfile(String day, DayProfile dayProfile) {
+        //This will accept the day of week that the new profile is to be created for and the name
+        //that the new profile will be known as. We should verify that there are no others of the
+        //same name.
+        if(!schedule.get(Day.valueOf(day)).equals(null)) {
+            System.err.println("There is already a day profile for that day.");
+        }
+        schedule.put(Day.valueOf(day), dayProfile);
     }
 
     public DayProfile getDayProfile(Day day) {
