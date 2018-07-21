@@ -16,7 +16,7 @@ public class GenerateSchedule {
 //    private List<Shift> thByRank;
 //    private List<Shift> fByRank;
 //    private List<Shift> saByRank;
-    private List<List<Shift>> weekByCoverage = new ArrayList<>();
+    private List<List<Shift>> weekByCoverage = new ArrayList<>(); //INITIATED THESE VARIABLES SINCE THEY WERE CAUSING NULL POINT EXCEPTIONS
     private List<Shift> sByCoverage = new ArrayList<>();
     private List<Shift> mByCoverage = new ArrayList<>();
     private List<Shift> tByCoverage = new ArrayList<>();
@@ -46,7 +46,7 @@ public class GenerateSchedule {
             for(int j = 0; j < 7; j++) {
                 if(e.getAvailability().getDay(Day.getDay(j)).getTotalHours() > 0) {
                     shift = findShift(e, Day.getDay(j));
-                    shift.setAssignedEmployee(e); //shift is null causing null point exception error
+                    shift.setAssignedEmployee(e); //SHIFT IS NULL CAUSING NULL POINT EXCEPTION ERROR
                 }
             }
         }
@@ -102,7 +102,7 @@ public class GenerateSchedule {
     }
 
     private void checkCoverage() {
-        for(List<Shift> day: weekByCoverage) {
+        for(List<Shift> day: weekByCoverage) {  //NEVER ENTERS THIS LOOP, WEEKBYCOVERAGE SIZE IS 0
             for(Shift s: day) {
                 for(Employee e: employeesByHoursScheduled) {
                     if(e.canWork(setDayEnum(day), s)) {
