@@ -8,6 +8,10 @@ import org.apache.poi.ss.usermodel.*;
 
 import java.io.*;
 */
+
+/**
+ * Permits app to use excel. Temporarily removed for scope.
+ */
 public class ExcelReader {
 
     public static void main(String[] args) {
