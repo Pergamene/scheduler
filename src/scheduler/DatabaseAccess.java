@@ -6,10 +6,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DatabaseAccess interacts with the set up MySQL database so that data may persist between sessions.
+ */
 public class DatabaseAccess {
 
     private MysqlDataSource dataSource;
 
+    /**
+     * Sets database to the precreated database.
+     */
     public DatabaseAccess() {
         dataSource = new MysqlDataSource();
         dataSource.setUser("austin");
@@ -18,6 +24,11 @@ public class DatabaseAccess {
         dataSource.setDatabaseName("austin_stuff");
     }
 
+    /**
+     * Interacts with the database to get a specific employee based ont the name provided. Returns employee
+     * @param employeeName
+     * @return
+     */
     public Employee getEmployee(String employeeName) {
         Employee employee = new Employee();
         try {
@@ -44,6 +55,11 @@ public class DatabaseAccess {
         return employee;
     }
 
+    /**
+     * Interacts with the database to get a specific employee based ont the ID provided. Returns employee
+     * @param employeeId
+     * @return
+     */
     public Employee getEmployee(int employeeId) {
         Employee employee = new Employee();
         try {
@@ -59,6 +75,10 @@ public class DatabaseAccess {
         return employee;
     }
 
+    /**
+     * Returns all employees found in the database. Returns employees (list)
+     * @return
+     */
     public List<Employee> getEmployees() {
         List<Employee> employees = new ArrayList<Employee>();
         Employee employee;
@@ -79,6 +99,10 @@ public class DatabaseAccess {
         return employees;
     }
 
+    /**
+     * Takes an employee value and adds it to the database.
+     * @param employee
+     */
     public void addEmployee(Employee employee) {
         try {
             Connection connection = dataSource.getConnection();
@@ -136,6 +160,10 @@ public class DatabaseAccess {
         }
     }
 
+    /**
+     * Receives an employee and then allows edits of that employee
+     * @param employee
+     */
     public void updateEmployee(Employee employee) {
         try {
             Connection connection = dataSource.getConnection();
@@ -199,6 +227,11 @@ public class DatabaseAccess {
         }
     }
 
+    /**
+     * Returns a dayProfile that matches the given profileLabel received.
+     * @param profileLabel
+     * @return
+     */
     public DayProfile getDayProfile(String profileLabel) {
         DayProfile profile = new DayProfile(profileLabel);
         Shift s;
@@ -220,6 +253,12 @@ public class DatabaseAccess {
         return profile;
     }
 
+    /**
+     * Receives the name and key of a shift and then returns the matching shift in the database
+     * @param shiftName
+     * @param shiftKey
+     * @return
+     */
     private Shift getShift(String shiftName, int shiftKey) {
         Shift s = new Shift();
         Rank r;
@@ -246,6 +285,11 @@ public class DatabaseAccess {
         return s;
     }
 
+    /**
+     * Receives an employeeID and returns the list of employee workProfiles in the database.
+     * @param employeeId
+     * @return
+     */
     private List<WorkProfile> getWorkProfiles(String employeeId) {
         List<WorkProfile> profiles = new ArrayList<WorkProfile>();
         WorkProfile profile;
@@ -267,6 +311,11 @@ public class DatabaseAccess {
         return profiles;
     }
 
+    /**
+     * Receives an employeeID and returns the employee's availability in the database.
+     * @param employeeId
+     * @return
+     */
     private Availability getAvailability(String employeeId) {
         Availability a = new Availability();
         Day d;
@@ -290,6 +339,11 @@ public class DatabaseAccess {
         return a;
     }
 
+    /**
+     * Receives an employeeID and returns the list of requested time off by the employee in the database.
+     * @param employeeId
+     * @return
+     */
     private List<Date> getRo(String employeeId) {
         List<Date> roDates = new ArrayList<Date>();
         Date d;
