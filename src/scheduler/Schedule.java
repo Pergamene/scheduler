@@ -1,6 +1,8 @@
 package scheduler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,13 +71,22 @@ public class Schedule {
         schedule.remove(day);
     }
 
+    public List<String> format() {
+        List<String> shiftsList = new ArrayList<String>();
+        for(DayProfile profile: schedule.values()) {
+            for(Shift shift: profile.getShifts()) {
+                shiftsList.add(shift.toString());
+            }
+        }
+        return shiftsList;
+    }
+
     @Override
     public String toString() {
         String s = "";
-        for(DayProfile profile: schedule.values()) {
-            for(Shift shift: profile.getShifts()) {
-                s += shift + "\n";
-            }
+        List<String> strings = format();
+        for(String s1: strings) {
+            s += s1 + "\n";
         }
         return s;
     }

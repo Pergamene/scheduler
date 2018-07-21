@@ -91,11 +91,7 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "name='" + name + '\'' +
-                ", id='" + id + '\'' +
                 ", phoneNumber=" + phoneNumber +
-                ", hoursScheduled=" + hoursScheduled +
-                ", hourCap=" + hourCap +
-                ", overtime=" + overtime +
                 '}';
     }
 
@@ -196,6 +192,14 @@ public class Employee {
     }
 
     /**
+     * updates hoursScheduled
+     * @param newHours
+     */
+    public void updateHoursScheduled(int newHours) {
+        this.hoursScheduled += newHours;
+    }
+
+    /**
      * returns hourCap
      * @return
      */
@@ -271,15 +275,23 @@ public class Employee {
     public boolean canWork(Day d, Shift s) {
         Time employeeTime = availability.getDay(d);
         Time shiftTime = s.getTime();
-        if(employeeTime.getStartTime() == 0) {
-            return false;
-        }
-        else if(employeeTime.getStartTime() <= shiftTime.getStartTime()
-                && employeeTime.getEndTime() >= shiftTime.getEndTime()) {
-            if(hoursScheduled + s.getTime().getTotalHours() < hourCap) {
-                return true;
+        boolean canWork = false;
+        for(WorkProfile profile: workProfiles) {
+            if(s.getRequiredWorkProfile().meetsRequirement(profile)) {
+                canWork = true;
+                break;
             }
         }
-            return false;
+        if(canWork) {
+            if(employeeTime.getStartTime() == 0) {
+                return false;
+            } else if (employeeTime.getStartTime() <= shiftTime.getStartTime()
+                    && employeeTime.getEndTime() >= shiftTime.getEndTime()) {
+                if(hoursScheduled + s.getTime().getTotalHours() < hourCap) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

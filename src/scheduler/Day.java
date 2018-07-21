@@ -16,9 +16,9 @@ public enum Day {
      * Returns day value
      * @return
      */
-    public int getValue() {
-        return this.value;
-    }
+//    public int getValue() {
+//        return this.value;
+//    }
 
     /**
      * Returns the day based on a number provided

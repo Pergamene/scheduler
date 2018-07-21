@@ -125,6 +125,7 @@ public class Shift {
      */
     public void setAssignedEmployee(Employee assignedEmployee) {
         this.assignedEmployee = assignedEmployee;
+        assignedEmployee.updateHoursScheduled(time.getTotalHours());
     }
 
     /**
@@ -149,7 +150,9 @@ public class Shift {
     @Override
     public String toString() {
         return "Shift{" +
-                "shiftName='" + shiftName + '\'' +
+                "shiftName='" + shiftName + "' startTime='" +
+                time.getStartTime() + "' endTime='" +
+                time.getEndTime() + '\'' +
                 ", assignedEmployee=" + assignedEmployee +
                 '}';
     }

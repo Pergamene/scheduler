@@ -1,5 +1,7 @@
 package scheduler;
 
+import java.util.Objects;
+
 /**
  * Contains Enums Area and Rank
  */
@@ -76,4 +78,19 @@ public class WorkProfile {
         this.area = Area.valueOf(area);
     }
 
+    /**
+     * Checks to see if p is the right area with at least the right rank.
+     * @param p
+     * @return
+     */
+    public boolean meetsRequirement(WorkProfile p) {
+        if(p.getRank().equals(Rank.SHIFT_MANAGER))
+            return true;
+        if(this.area.equals(p.getArea())) {
+            if(this.rank.getValue() <= p.getRank().getValue()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

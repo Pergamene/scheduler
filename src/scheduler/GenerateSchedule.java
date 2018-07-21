@@ -28,6 +28,8 @@ public class GenerateSchedule {
     public GenerateSchedule(List<Employee> employees, Schedule schedule) {
         this.employeesByAvailableHours = new ArrayList<Employee>(employees);
         this.employeesByHoursScheduled = new ArrayList<Employee>(employees);
+        updateEmployeesByAvailableHours();
+        updateEmployeesByHoursScheduled();
         this.schedule = schedule;
         checkCoverage();
         populateWeek();
@@ -45,7 +47,7 @@ public class GenerateSchedule {
             }
             for(int j = 0; j < 7; j++) {
                 if(e.getAvailability().getDay(Day.getDay(j)).getTotalHours() > 0) {
-                    shift = findShift(e, Day.getDay(j));
+                    shift = findShift(e, j);
                     if(shift != null) {
                         shift.setAssignedEmployee(e); //SHIFT IS NULL CAUSING NULL POINT EXCEPTION ERROR
                     }
@@ -66,6 +68,10 @@ public class GenerateSchedule {
 
     private void printSchedule() {
         System.out.println(schedule);
+    }
+
+    public List<String> formatSchedule() {
+        return schedule.format();
     }
 
     private void populateWeek() {
@@ -107,6 +113,10 @@ public class GenerateSchedule {
 
     private void updateEmployeesByHoursScheduled() {
         employeesByHoursScheduled.sort(new SortByHoursScheduled());
+    }
+
+    private void updateEmployeesByAvailableHours() {
+        employeesByAvailableHours.sort(new SortByAvailableHours());
     }
 
     private void checkCoverage() {
@@ -155,11 +165,13 @@ public class GenerateSchedule {
         return null;
     }
 
-    private Shift findShift(Employee e, Day d) {
-        List<Shift> shifts = weekByCoverage.get(d.getValue());
+    private Shift findShift(Employee e, int dayValue) {
+        List<Shift> shifts = weekByCoverage.get(dayValue);
         for(Shift s: shifts) {
-            if(e.canWork(d, s)) {
-                return s;
+            if(s.getAssignedEmployee() == null) {
+                if (e.canWork(Day.getDay(dayValue), s)) {
+                    return s;
+                }
             }
         }
         return null;

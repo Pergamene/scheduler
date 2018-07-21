@@ -1148,7 +1148,7 @@ public class GUI extends Container {
                 dayProfile.addShift(shift);
 
                 shift = new Shift();
-                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setRequiredWorkProfile("CASHIER", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("sun5");
                 dayProfile.addShift(shift);
@@ -1186,7 +1186,7 @@ public class GUI extends Container {
                 dayProfile.addShift(shift);
 
                 shift = new Shift();
-                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setRequiredWorkProfile("ARCADE", "SHIFT_MANAGER");
                 shift.setTime(14, 22);
                 shift.setShiftName("mon5");
                 dayProfile.addShift(shift);
@@ -1212,13 +1212,13 @@ public class GUI extends Container {
                 dayProfile.addShift(shift);
 
                 shift = new Shift();
-                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setRequiredWorkProfile("COOK", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("tue3");
                 dayProfile.addShift(shift);
 
                 shift = new Shift();
-                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setRequiredWorkProfile("ARCADE", "SUPERVISOR");
                 shift.setTime(14, 22);
                 shift.setShiftName("tue4");
                 dayProfile.addShift(shift);
@@ -1244,7 +1244,7 @@ public class GUI extends Container {
                 dayProfile.addShift(shift);
 
                 shift = new Shift();
-                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setRequiredWorkProfile("ARCADE", "TEAM_LEADER");
                 shift.setTime(6, 14);
                 shift.setShiftName("wed2");
                 dayProfile.addShift(shift);
@@ -1256,7 +1256,7 @@ public class GUI extends Container {
                 dayProfile.addShift(shift);
 
                 shift = new Shift();
-                shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
+                shift.setRequiredWorkProfile("SERVER", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("wed4");
                 dayProfile.addShift(shift);
