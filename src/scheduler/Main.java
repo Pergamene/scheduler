@@ -9,6 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SQL test class. Used for experimentation but not in overall app.
+ */
 public class Main {
 
     public static void main(String[] args) {
