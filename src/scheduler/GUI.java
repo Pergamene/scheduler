@@ -9,6 +9,9 @@ import java.util.List;
 //Excel functionality was placed at bottom commented out @# is a key to know where they go should it be desired again.
 //@1
 
+/**
+ * GUI is the interface the user interacts with. All controls the user uses are stored and manipulated in GUI.
+ */
 public class GUI extends Container {
 
     private Employee employee = new Employee();
@@ -271,19 +274,18 @@ public class GUI extends Container {
     private JButton createDefaultScheduleButton;
 
     public GUI() {
-
-
         nameTextField.addActionListener(new ActionListener() { //nameTextField in Employee
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println(nameTextField.getText());
-
-
             }
         });
 
         /*
          ADD EMPLOYEE
+         */
+        /**
+         * The addEmployeeButton ActionListener takes all inserted data and puts it into the SQL database.
          */
         addEmployeeButton.addActionListener(new ActionListener() { //ADD EMPLOYEE BUTTON
             @Override
@@ -396,6 +398,10 @@ public class GUI extends Container {
         });
         /*
         THIS ADDS EACH SHIFT TO A DAYPROFILE ONE AT A TIME.
+         */
+        /**
+         * The addShiftButtonND ActionListener takes all inserted data into the addShift section of controls and
+         * puts them into a list of dayProfiles. Time constrains prevented us from integrating them into the database.
          */
         addShiftButtonND.addActionListener(new ActionListener() {
             @Override
@@ -918,7 +924,10 @@ public class GUI extends Container {
 
             }
         });
-
+        /**
+         * The loadWeekNeedsButton ActionListener loads inserted dayProfiles inserted into the day profile selection
+         * comboBoxes
+         */
         loadWeekNeedsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1043,6 +1052,8 @@ public class GUI extends Container {
                 weekProfile[6] = comboBoxSaturday.getSelectedItem().toString();
             }
         });
+        //PREVIOUSLY USED FOR SEPARATE VIEWS OF ADD EMPLOYEE ETC. THERE WAS A PROBLEM WITH MAINTAINING DATA BETWEEN
+        //WINDOWS SO IT WAS REMOVED FOR THE MOMENT
         /*buttonE2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1087,15 +1098,7 @@ public class GUI extends Container {
                     comboBoxSundaySchedule.addItem(displayEmployees);
                 }
 
-                /*sundayEmployees.setText(displayEmployees);
 
-                comboBoxSunday.removeAllItems();
-                for (int i = 0; i < dayProfiles.size(); i++) {
-                    System.out.println("test" + dayProfiles.get(i).getDay().toString());
-                    if (dayProfiles.get(i).getDay().toString() == "SUNDAY") {
-                        comboBoxSunday.addItem(dayProfiles.get(i).getLabel().toString());
-                    }
-                }*/
             }
         });
         viewEmployeeButton.addActionListener(new ActionListener() {
@@ -1110,6 +1113,9 @@ public class GUI extends Container {
                 }
             }
         });
+        /**
+         * Inserts the default weeks needs. This should represent an average week needed by Boondocks
+         */
         defaultWeekNeedsButton.addActionListener(new ActionListener() { //THIS CREATES THE DEFAULT SCHEDULE FOR THE GENERATOR.
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1380,6 +1386,10 @@ public class GUI extends Container {
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
             }
         });
+
+        /**
+         * Takes the default Schedule and database of employees to generate the week's schedule
+         */
         createDefaultScheduleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1396,9 +1406,12 @@ public class GUI extends Container {
         });
     }
 
-
+    /**
+     * Sets up GUI work environment so that the user can insert data.
+     * @param args
+     */
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Set Up Week Data");
+        JFrame frame = new JFrame("Week Scheduler");
         frame.setContentPane(new GUI().panelControl);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
