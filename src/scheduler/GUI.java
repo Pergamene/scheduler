@@ -1261,7 +1261,7 @@ public class GUI extends Container {
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
                 dayProfile = new DayProfile();
-                dayProfile.setLabel("Default Sunday"); //DEFAULT WEDNESDAY
+                dayProfile.setLabel("Default Wednesday"); //DEFAULT WEDNESDAY
                 dayProfile.setDay("WEDNESDAY");
 
                 shift = new Shift();
