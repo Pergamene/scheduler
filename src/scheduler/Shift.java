@@ -142,6 +142,10 @@ public class Shift {
         return coverage;
     }
 
+    /**
+     * Returns shift contents in a String.
+     * @return
+     */
     @Override
     public String toString() {
         return "Shift{" +
