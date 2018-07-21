@@ -41,4 +41,15 @@ public class Schedule {
         //would be appropriate.
         schedule.remove(day);
     }
+
+    @Override
+    public String toString() {
+        String s = "";
+        for(DayProfile profile: schedule.values()) {
+            for(Shift shift: profile.getShifts()) {
+                s += shift + "\n";
+            }
+        }
+        return s;
+    }
 }

@@ -1113,29 +1113,35 @@ public class GUI extends Container {
         defaultWeekNeedsButton.addActionListener(new ActionListener() { //THIS CREATES THE DEFAULT SCHEDULE FOR THE GENERATOR.
             @Override
             public void actionPerformed(ActionEvent e) {
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Sunday"); //DEFAULT SUNDAY
                 dayProfile.setDay("SUNDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("sun1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("sun2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("sun3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("sun4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("sun5");
@@ -1145,29 +1151,35 @@ public class GUI extends Container {
                 comboBoxSunday.addItem(dayProfile.getLabel());
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Monday"); //DEFAULT MONDAY
                 dayProfile.setDay("MONDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("mon1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("mon2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("mon3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("mon4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("mon5");
@@ -1177,29 +1189,35 @@ public class GUI extends Container {
                 comboBoxMonday.addItem(dayProfile.getLabel());
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Tuesday");  //DEFAULT TUESDAY
                 dayProfile.setDay("TUESDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("tue1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("tue2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("tue3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("tue4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("tue5");
@@ -1209,29 +1227,35 @@ public class GUI extends Container {
                 comboBoxTuesday.addItem(dayProfile.getLabel());
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Sunday"); //DEFAULT WEDNESDAY
                 dayProfile.setDay("WEDNESDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("wed1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("wed2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("wed3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("wed4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("wed5");
@@ -1241,29 +1265,35 @@ public class GUI extends Container {
                 comboBoxWednesday.addItem(dayProfile.getLabel());
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Thursday"); //DEFAULT THURSDAY
                 dayProfile.setDay("THURSDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("thur1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("thur2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("thur3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("thur4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("thur5");
@@ -1273,29 +1303,35 @@ public class GUI extends Container {
                 comboBoxThursday.addItem(dayProfile.getLabel());
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Friday"); //DEFAULT FRIDAY
                 dayProfile.setDay("FRIDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("fri1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(6, 14);
                 shift.setShiftName("fri2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("fri3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("fri4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("fri5");
@@ -1305,29 +1341,35 @@ public class GUI extends Container {
                 comboBoxFriday.addItem(dayProfile.getLabel());
                 schedule.addDayProfile(dayProfile.getDay(), dayProfile);
 
+                dayProfile = new DayProfile();
                 dayProfile.setLabel("Default Saturday");  //DEFAULT SATURDAY
                 dayProfile.setDay("SATURDAY");
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(10, 16);
                 shift.setShiftName("sat1");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(10, 16);
                 shift.setShiftName("sat2");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(12, 20);
                 shift.setShiftName("sat3");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 23);
                 shift.setShiftName("sat4");
                 dayProfile.addShift(shift);
 
+                shift = new Shift();
                 shift.setRequiredWorkProfile("ARCADE", "TEAM_MEMBER");
                 shift.setTime(14, 22);
                 shift.setShiftName("sat5");

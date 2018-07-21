@@ -74,4 +74,12 @@ public class Shift {
     public int getCoverage() {
         return coverage;
     }
+
+    @Override
+    public String toString() {
+        return "Shift{" +
+                "shiftName='" + shiftName + '\'' +
+                ", assignedEmployee=" + assignedEmployee +
+                '}';
+    }
 }

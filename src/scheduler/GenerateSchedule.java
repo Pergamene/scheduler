@@ -46,7 +46,9 @@ public class GenerateSchedule {
             for(int j = 0; j < 7; j++) {
                 if(e.getAvailability().getDay(Day.getDay(j)).getTotalHours() > 0) {
                     shift = findShift(e, Day.getDay(j));
-                    shift.setAssignedEmployee(e); //SHIFT IS NULL CAUSING NULL POINT EXCEPTION ERROR
+                    if(shift != null) {
+                        shift.setAssignedEmployee(e); //SHIFT IS NULL CAUSING NULL POINT EXCEPTION ERROR
+                    }
                 }
             }
         }
@@ -58,6 +60,12 @@ public class GenerateSchedule {
                 updateEmployeesByHoursScheduled();
             }
         }
+        printSchedule();
+        System.out.println("DONE");
+    }
+
+    private void printSchedule() {
+        System.out.println(schedule);
     }
 
     private void populateWeek() {
