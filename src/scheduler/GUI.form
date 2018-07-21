@@ -1629,55 +1629,7 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Sunday"/>
-                </properties>
-              </component>
-              <component id="dd104" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Monday"/>
-                </properties>
-              </component>
-              <component id="7778" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="5" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Tuesday"/>
-                </properties>
-              </component>
-              <component id="5e33e" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Wednesday"/>
-                </properties>
-              </component>
-              <component id="ffe52" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Thursday"/>
-                </properties>
-              </component>
-              <component id="2e431" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Saturday"/>
-                </properties>
-              </component>
-              <component id="cc13c" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="Friday"/>
+                  <text value="Generated Schedule"/>
                 </properties>
               </component>
               <component id="66d9f" class="javax.swing.JButton" binding="addShiftButtonND">
@@ -2344,42 +2296,6 @@
               <component id="a1843" class="javax.swing.JComboBox" binding="comboBoxSundaySchedule">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="29de4" class="javax.swing.JComboBox" binding="comboBoxMondaySchedule">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="b97dc" class="javax.swing.JComboBox" binding="comboBoxTuesdaySchedule">
-                <constraints>
-                  <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="c8b1d" class="javax.swing.JComboBox" binding="comboBoxWednesdaySchedule">
-                <constraints>
-                  <grid row="1" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="f0d25" class="javax.swing.JComboBox" binding="comboBoxThursdaySchedule">
-                <constraints>
-                  <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="6f3c9" class="javax.swing.JComboBox" binding="comboBoxFridaySchedule">
-                <constraints>
-                  <grid row="1" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="3acf8" class="javax.swing.JComboBox" binding="comboBoxSaturdaySchedule">
-                <constraints>
-                  <grid row="1" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties/>
               </component>
