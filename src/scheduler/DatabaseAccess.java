@@ -69,6 +69,9 @@ public class DatabaseAccess {
             while(rs.next()) {
                 employee = getEmployee(rs.getString("employeeId"));
             }
+            rs.close();
+            statement.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -154,6 +157,7 @@ public class DatabaseAccess {
                     preparedStatement.execute();
                 }
             }
+            preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -221,6 +225,7 @@ public class DatabaseAccess {
                     preparedStatement.execute();
                 }
             }
+            preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -362,6 +367,9 @@ public class DatabaseAccess {
                 d = new Date(dayOfMonth, m, y);
                 roDates.add(d);
             }
+            rs.close();
+            statement.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
