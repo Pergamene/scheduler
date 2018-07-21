@@ -71,6 +71,10 @@ public class Schedule {
         schedule.remove(day);
     }
 
+    /**
+     * Creates a list of shift strings for the GUI to display.
+     * @return
+     */
     public List<String> format() {
         List<String> shiftsList = new ArrayList<String>();
         for(DayProfile profile: schedule.values()) {
@@ -81,6 +85,10 @@ public class Schedule {
         return shiftsList;
     }
 
+    /**
+     * Formats the schedule into a string.
+     * @return
+     */
     @Override
     public String toString() {
         String s = "";

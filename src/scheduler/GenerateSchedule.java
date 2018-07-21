@@ -8,15 +8,7 @@ public class GenerateSchedule {
     private List<Employee> employeesByAvailableHours;
     private List<Employee> employeesByHoursScheduled;
     private Schedule schedule;
-    //    private List<List<Shift>> weekByRank;
-//    private List<Shift> sByRank;
-//    private List<Shift> mByRank;
-//    private List<Shift> tByRank;
-//    private List<Shift> wByRank;
-//    private List<Shift> thByRank;
-//    private List<Shift> fByRank;
-//    private List<Shift> saByRank;
-    private List<List<Shift>> weekByCoverage = new ArrayList<>(); //INITIATED THESE VARIABLES SINCE THEY WERE CAUSING NULL POINT EXCEPTIONS
+    private List<List<Shift>> weekByCoverage = new ArrayList<>();
     private List<Shift> sByCoverage = new ArrayList<>();
     private List<Shift> mByCoverage = new ArrayList<>();
     private List<Shift> tByCoverage = new ArrayList<>();
@@ -25,6 +17,11 @@ public class GenerateSchedule {
     private List<Shift> fByCoverage = new ArrayList<>();
     private List<Shift> saByCoverage = new ArrayList<>();
 
+    /**
+     * Default constructor.
+     * @param employees
+     * @param schedule
+     */
     public GenerateSchedule(List<Employee> employees, Schedule schedule) {
         this.employeesByAvailableHours = new ArrayList<Employee>(employees);
         this.employeesByHoursScheduled = new ArrayList<Employee>(employees);
@@ -35,6 +32,9 @@ public class GenerateSchedule {
         populateWeek();
     }
 
+    /**
+     * Generates a schedule as completely as possible with the given shifts and employees.
+     */
     public void generate() {
         Employee e;
         Shift shift = new Shift();
@@ -66,32 +66,25 @@ public class GenerateSchedule {
         System.out.println("DONE");
     }
 
+    /**
+     * Prints the schedule for debugging purposes.
+     */
     private void printSchedule() {
         System.out.println(schedule);
     }
 
+    /**
+     * Formats the schedule for the GUI to display.
+     * @return
+     */
     public List<String> formatSchedule() {
         return schedule.format();
     }
 
+    /**
+     * Creates the lists used to generate the schedule.
+     */
     private void populateWeek() {
-//        sByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.SUNDAY).getShifts());
-//        mByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.MONDAY).getShifts());
-//        tByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.TUESDAY).getShifts());
-//        wByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.WEDNESDAY).getShifts());
-//        thByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.THURSDAY).getShifts());
-//        fByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.FRIDAY).getShifts());
-//        saByRank = new ArrayList<Shift>(schedule.getDayProfile(Day.SATURDAY).getShifts());
-//        weekByRank.add(sByRank);
-//        weekByRank.add(mByRank);
-//        weekByRank.add(tByRank);
-//        weekByRank.add(wByRank);
-//        weekByRank.add(thByRank);
-//        weekByRank.add(fByRank);
-//        weekByRank.add(saByRank);
-//        for(List day: weekByRank) {
-//            day.sort(new SortByRank());
-//        }
         sByCoverage = new ArrayList<Shift>(schedule.getDayProfile(Day.SUNDAY).getShifts());
         mByCoverage = new ArrayList<Shift>(schedule.getDayProfile(Day.MONDAY).getShifts());
         tByCoverage = new ArrayList<Shift>(schedule.getDayProfile(Day.TUESDAY).getShifts());
@@ -111,14 +104,23 @@ public class GenerateSchedule {
         }
     }
 
+    /**
+     * Re-sorts the employeesByHoursScheduled list.
+     */
     private void updateEmployeesByHoursScheduled() {
         employeesByHoursScheduled.sort(new SortByHoursScheduled());
     }
 
+    /**
+     * Re-sorts the employeesByAvailableHours list.
+     */
     private void updateEmployeesByAvailableHours() {
         employeesByAvailableHours.sort(new SortByAvailableHours());
     }
 
+    /**
+     * Checks the coverage for each shift in the schedule.
+     */
     private void checkCoverage() {
         for(List<Shift> day: weekByCoverage) {  //NEVER ENTERS THIS LOOP, WEEKBYCOVERAGE SIZE IS 0
             for(Shift s: day) {
@@ -131,23 +133,28 @@ public class GenerateSchedule {
         }
     }
 
+    /**
+     * Sets the Day.
+     * @param l
+     * @return
+     */
     private Day setDayEnum(List<Shift> l) {
-        if(/*l == sByRank ||*/ l == saByCoverage) {
+        if(l == saByCoverage) {
             return Day.SUNDAY;
         }
-        else if(/*l == mByRank ||*/ l == mByCoverage) {
+        else if(l == mByCoverage) {
             return Day.MONDAY;
         }
-        else if(/*l == tByRank ||*/ l == tByCoverage) {
+        else if(l == tByCoverage) {
             return Day.TUESDAY;
         }
-        else if(/*l == wByRank ||*/ l == wByCoverage) {
+        else if(l == wByCoverage) {
             return Day.WEDNESDAY;
         }
-        else if(/*l == thByRank ||*/ l == thByCoverage) {
+        else if(l == thByCoverage) {
             return Day.THURSDAY;
         }
-        else if(/*l == fByRank ||*/ l == fByCoverage) {
+        else if(l == fByCoverage) {
             return Day.FRIDAY;
         }
         else {
@@ -155,6 +162,12 @@ public class GenerateSchedule {
         }
     }
 
+    /**
+     * Finds an employee who is able to fill the given shift.
+     * @param s
+     * @param dayOfWeek
+     * @return
+     */
     private Employee findEmployee(Shift s, int dayOfWeek) {
         Day d = Day.getDay(dayOfWeek);
         for(Employee e: employeesByHoursScheduled) {
@@ -165,6 +178,12 @@ public class GenerateSchedule {
         return null;
     }
 
+    /**
+     * Finds a shift for the given employee.
+     * @param e
+     * @param dayValue
+     * @return
+     */
     private Shift findShift(Employee e, int dayValue) {
         List<Shift> shifts = weekByCoverage.get(dayValue);
         for(Shift s: shifts) {
@@ -177,6 +196,11 @@ public class GenerateSchedule {
         return null;
     }
 
+    /**
+     * Checks to see if the shift is assigned.
+     * @param s
+     * @return
+     */
     private boolean isScheduled(Shift s) {
         if(s.getAssignedEmployee().equals(null)) {
             return false;
