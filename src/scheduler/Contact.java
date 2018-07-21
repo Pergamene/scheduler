@@ -6,6 +6,13 @@ public class Contact {
     private String mobile;
     private String email;
 
+    /**
+     * Creates contact. Unimplemented as of yet.
+     * @param givenNames
+     * @param surname
+     * @param mobile
+     * @param email
+     */
     public Contact(String givenNames, String surname, String mobile, String email) {
 
         this.givenNames = givenNames;
