@@ -34,8 +34,10 @@ public class GUI extends Container {
 
     private List<DayProfile> dayProfilesDefault = new ArrayList<>();
     private Schedule schedule = new Schedule();
+    private Schedule scheduleS = new Schedule();
     //private JFrame frameTest = new JFrame("Test");
 
+    private List<String> format = new ArrayList<>();
 
     private JPanel Employee;
     private JPanel panelControl;
@@ -406,6 +408,7 @@ public class GUI extends Container {
         addShiftButtonND.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                dayProfile = new DayProfile();
                 System.out.println(textFieldNDDayName.getText()); //name of the new day
                 System.out.println(comboBoxNDDay.getSelectedItem()); //day of the week
                 System.out.println(textFieldNDNumberShifts1.getText()); //number of duplicate shifts to be made.
@@ -421,6 +424,7 @@ public class GUI extends Container {
                  */
 
                 int num = 0;
+
                 dayProfile.setLabel(textFieldNDDayName.getText());
                 dayProfile.setDay(comboBoxNDDay.getSelectedItem().toString());
 
@@ -913,6 +917,8 @@ public class GUI extends Container {
 
                 dayProfile.display(); //SHOW CONTENTS OF DAY PROFILE
                 dayProfiles.add(dayProfile);
+                scheduleS.addDayProfile(dayProfile.getDay(), dayProfile);
+
                 //@3
 
 
@@ -1090,15 +1096,15 @@ public class GUI extends Container {
         createScheduleButton.addActionListener(new ActionListener() { //BROKEN
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 employeeListS = databaseAccess.getEmployees();
-                for(int i = 0; i < employeeListS.size(); i++) {
-                    displayEmployees = (employeeListS.get(i).getName() + " " + employeeListS.get(i).getId() + " " + employeeListS.get(i).getPhoneNumber() + " " +
-                            employeeListS.get(i).getAvailability().getTotalHours());
-                    comboBoxSundaySchedule.addItem(displayEmployees);
+
+                GenerateSchedule generateSchedule = new GenerateSchedule(employeeListS, scheduleS);
+                generateSchedule.generate();
+
+                format = scheduleS.format();
+                for (String s : format) {
+                    comboBoxSundaySchedule.addItem(s);
                 }
-
-
             }
         });
         viewEmployeeButton.addActionListener(new ActionListener() {
@@ -1396,6 +1402,14 @@ public class GUI extends Container {
                 employeeListS = databaseAccess.getEmployees();
                 GenerateSchedule generateSchedule = new GenerateSchedule(employeeListS, schedule);
                 generateSchedule.generate();
+
+                format = schedule.format();
+                for(String s: format) {
+                    comboBoxSundaySchedule.addItem(s);
+                }
+
+
+
                 //for(int i = 0; i < employeeListS.size(); i++) {
                 //    displayEmployees = (employeeListS.get(i).getName() + " " + employeeListS.get(i).getId() + " " + employeeListS.get(i).getPhoneNumber() + " " +
                 //            employeeListS.get(i).getAvailability().getTotalHours());
