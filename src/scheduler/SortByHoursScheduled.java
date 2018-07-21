@@ -2,6 +2,9 @@ package scheduler;
 
 import java.util.Comparator;
 
+/**
+ * Sorts the employee priority according to the hours an employee is already scheduled
+ */
 public class SortByHoursScheduled implements Comparator<Employee> {
 
     @Override
