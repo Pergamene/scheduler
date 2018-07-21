@@ -5,16 +5,31 @@ public class Date {
     private Month month;
     private int year;
 
+    /**
+     * Date allows employee's to request time off.
+     * @param dayOfMonth
+     * @param month
+     * @param year
+     */
     public Date(int dayOfMonth, Month month, int year) {
         this.month = month;
         setDay(dayOfMonth);
         this.year = year;
     }
 
+    /**
+     * Get the day of the month.
+     * @return
+     */
     public int getDay() {
         return dayOfMonth;
     }
 
+    /**
+     * Sets the day of the month. This checks for month constraints to ensure a day isn't outside the max number
+     * of days in a given month.
+     * @param dayX
+     */
     public void setDay(int dayX){
         switch (month) {
             case JANUARY:
@@ -57,18 +72,34 @@ public class Date {
         }
     }
 
+    /**
+     * Returns month based on integer value (Ex: Jan = 1)
+     * @return
+     */
     public int getMonthInt() {
         return month.getValue();
     }
 
+    /**
+     * Returns the month
+     * @return
+     */
     public Month getMont() {
         return month;
     }
 
+    /**
+     * Returns the year
+     * @return
+     */
     public int getYear() {
         return year;
     }
 
+    /**
+     * Sets the year to the int value sent.
+     * @param year
+     */
     public void setYear(int year) {
         if (year > 2017) {
             this.year = year;
@@ -78,6 +109,11 @@ public class Date {
         }
     }
 
+    /**
+     * Determines if an object is equal to another.
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if(this == o) {
