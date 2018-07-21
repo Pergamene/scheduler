@@ -35,7 +35,7 @@ public class GenerateSchedule {
 
     public void generate() {
         Employee e;
-        Shift shift;
+        Shift shift = new Shift();
         List<Shift> day;
         // Gives employees with 10 or less hours a week a shift.
         for(int i = 0; i < employeesByAvailableHours.size(); i++) {
@@ -46,7 +46,7 @@ public class GenerateSchedule {
             for(int j = 0; j < 7; j++) {
                 if(e.getAvailability().getDay(Day.getDay(j)).getTotalHours() > 0) {
                     shift = findShift(e, Day.getDay(j));
-                    shift.setAssignedEmployee(e);
+                    shift.setAssignedEmployee(e); //shift is null causing null point exception error
                 }
             }
         }
