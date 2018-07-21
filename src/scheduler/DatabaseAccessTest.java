@@ -7,6 +7,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Simple test class to verify access to database.
+ */
 class DatabaseAccessTest {
 
     private DatabaseAccess dba;
