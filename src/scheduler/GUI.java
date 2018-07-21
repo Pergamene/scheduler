@@ -431,15 +431,16 @@ public class GUI extends Container {
                 //SHIFT 1
                 if(!textFieldNDNumberShifts1.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts1.getText());
-                    if (comboBoxNDStartTime1.getSelectedItem() == "AM" && comboBoxNDEndTime1.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime1.getText()), Integer.parseInt(textFieldNDEndTime1.getText())));
-                    } else if (comboBoxNDStartTime1.getSelectedItem() == "AM" && comboBoxNDEndTime1.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime1.getText()), (Integer.parseInt(textFieldNDEndTime1.getText()) + 12)));
-                    } else if (comboBoxNDStartTime1.getSelectedItem() == "PM" && comboBoxNDEndTime1.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime1.getText()) + 12), (Integer.parseInt(textFieldNDEndTime1.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts1.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime1.getSelectedItem() == "AM" && comboBoxNDEndTime1.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime1.getText()), Integer.parseInt(textFieldNDEndTime1.getText())));
+                        } else if (comboBoxNDStartTime1.getSelectedItem() == "AM" && comboBoxNDEndTime1.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime1.getText()), (Integer.parseInt(textFieldNDEndTime1.getText()) + 12)));
+                        } else if (comboBoxNDStartTime1.getSelectedItem() == "PM" && comboBoxNDEndTime1.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime1.getText()) + 12), (Integer.parseInt(textFieldNDEndTime1.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea1.getSelectedItem() + comboBoxNDRank1.getSelectedItem() + textFieldNDStartTime1.getText()
                                 + comboBoxNDStartTime1.getSelectedItem() + textFieldNDEndTime1.getText() + comboBoxNDEndTime1.getSelectedItem();
                         //System.out.println(shiftName);
@@ -454,17 +455,19 @@ public class GUI extends Container {
 
                 }
                 //SHIFT 2
+
                 if(!textFieldNDNumberShifts2.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts2.getText());
-                    if (comboBoxNDStartTime2.getSelectedItem() == "AM" && comboBoxNDEndTime2.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime2.getText()), Integer.parseInt(textFieldNDEndTime2.getText())));
-                    } else if (comboBoxNDStartTime2.getSelectedItem() == "AM" && comboBoxNDEndTime2.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime2.getText()), (Integer.parseInt(textFieldNDEndTime2.getText()) + 12)));
-                    } else if (comboBoxNDStartTime2.getSelectedItem() == "PM" && comboBoxNDEndTime2.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime2.getText()) + 12), (Integer.parseInt(textFieldNDEndTime2.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts2.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime2.getSelectedItem() == "AM" && comboBoxNDEndTime2.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime2.getText()), Integer.parseInt(textFieldNDEndTime2.getText())));
+                        } else if (comboBoxNDStartTime2.getSelectedItem() == "AM" && comboBoxNDEndTime2.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime2.getText()), (Integer.parseInt(textFieldNDEndTime2.getText()) + 12)));
+                        } else if (comboBoxNDStartTime2.getSelectedItem() == "PM" && comboBoxNDEndTime2.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime2.getText()) + 12), (Integer.parseInt(textFieldNDEndTime2.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea2.getSelectedItem() + comboBoxNDRank2.getSelectedItem() + textFieldNDStartTime2.getText()
                                 + comboBoxNDStartTime2.getSelectedItem() + textFieldNDEndTime2.getText() + comboBoxNDEndTime2.getSelectedItem();
                         //System.out.println(shiftName);
@@ -482,15 +485,16 @@ public class GUI extends Container {
                 //SHIFT 3
                 if(!textFieldNDNumberShifts3.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts3.getText());
-                    if (comboBoxNDStartTime3.getSelectedItem() == "AM" && comboBoxNDEndTime3.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime3.getText()), Integer.parseInt(textFieldNDEndTime3.getText())));
-                    } else if (comboBoxNDStartTime3.getSelectedItem() == "AM" && comboBoxNDEndTime3.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime3.getText()), (Integer.parseInt(textFieldNDEndTime3.getText()) + 12)));
-                    } else if (comboBoxNDStartTime3.getSelectedItem() == "PM" && comboBoxNDEndTime3.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime3.getText()) + 12), (Integer.parseInt(textFieldNDEndTime3.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts3.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime3.getSelectedItem() == "AM" && comboBoxNDEndTime3.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime3.getText()), Integer.parseInt(textFieldNDEndTime3.getText())));
+                        } else if (comboBoxNDStartTime3.getSelectedItem() == "AM" && comboBoxNDEndTime3.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime3.getText()), (Integer.parseInt(textFieldNDEndTime3.getText()) + 12)));
+                        } else if (comboBoxNDStartTime3.getSelectedItem() == "PM" && comboBoxNDEndTime3.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime3.getText()) + 12), (Integer.parseInt(textFieldNDEndTime3.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea3.getSelectedItem() + comboBoxNDRank3.getSelectedItem() + textFieldNDStartTime3.getText()
                                 + comboBoxNDStartTime3.getSelectedItem() + textFieldNDEndTime3.getText() + comboBoxNDEndTime3.getSelectedItem();
                         //System.out.println(shiftName);
@@ -508,15 +512,16 @@ public class GUI extends Container {
                 //SHIFT 4
                 if(!textFieldNDNumberShifts4.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts4.getText());
-                    if (comboBoxNDStartTime4.getSelectedItem() == "AM" && comboBoxNDEndTime4.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime4.getText()), Integer.parseInt(textFieldNDEndTime4.getText())));
-                    } else if (comboBoxNDStartTime4.getSelectedItem() == "AM" && comboBoxNDEndTime4.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime4.getText()), (Integer.parseInt(textFieldNDEndTime4.getText()) + 12)));
-                    } else if (comboBoxNDStartTime4.getSelectedItem() == "PM" && comboBoxNDEndTime4.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime4.getText()) + 12), (Integer.parseInt(textFieldNDEndTime4.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts4.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime4.getSelectedItem() == "AM" && comboBoxNDEndTime4.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime4.getText()), Integer.parseInt(textFieldNDEndTime4.getText())));
+                        } else if (comboBoxNDStartTime4.getSelectedItem() == "AM" && comboBoxNDEndTime4.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime4.getText()), (Integer.parseInt(textFieldNDEndTime4.getText()) + 12)));
+                        } else if (comboBoxNDStartTime4.getSelectedItem() == "PM" && comboBoxNDEndTime4.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime4.getText()) + 12), (Integer.parseInt(textFieldNDEndTime4.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea4.getSelectedItem() + comboBoxNDRank4.getSelectedItem() + textFieldNDStartTime4.getText()
                                 + comboBoxNDStartTime4.getSelectedItem() + textFieldNDEndTime4.getText() + comboBoxNDEndTime4.getSelectedItem();
                         //System.out.println(shiftName);
@@ -532,15 +537,16 @@ public class GUI extends Container {
                 //SHIFT 5
                 if(!textFieldNDNumberShifts5.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts5.getText());
-                    if (comboBoxNDStartTime5.getSelectedItem() == "AM" && comboBoxNDEndTime5.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime5.getText()), Integer.parseInt(textFieldNDEndTime5.getText())));
-                    } else if (comboBoxNDStartTime5.getSelectedItem() == "AM" && comboBoxNDEndTime5.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime5.getText()), (Integer.parseInt(textFieldNDEndTime5.getText()) + 12)));
-                    } else if (comboBoxNDStartTime5.getSelectedItem() == "PM" && comboBoxNDEndTime5.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime5.getText()) + 12), (Integer.parseInt(textFieldNDEndTime5.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts5.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime5.getSelectedItem() == "AM" && comboBoxNDEndTime5.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime5.getText()), Integer.parseInt(textFieldNDEndTime5.getText())));
+                        } else if (comboBoxNDStartTime5.getSelectedItem() == "AM" && comboBoxNDEndTime5.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime5.getText()), (Integer.parseInt(textFieldNDEndTime5.getText()) + 12)));
+                        } else if (comboBoxNDStartTime5.getSelectedItem() == "PM" && comboBoxNDEndTime5.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime5.getText()) + 12), (Integer.parseInt(textFieldNDEndTime5.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea5.getSelectedItem() + comboBoxNDRank5.getSelectedItem() + textFieldNDStartTime5.getText()
                                 + comboBoxNDStartTime5.getSelectedItem() + textFieldNDEndTime5.getText() + comboBoxNDEndTime5.getSelectedItem();
                         //System.out.println(shiftName);
@@ -556,15 +562,16 @@ public class GUI extends Container {
                 //SHIFT 6
                 if(!textFieldNDNumberShifts6.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts6.getText());
-                    if (comboBoxNDStartTime6.getSelectedItem() == "AM" && comboBoxNDEndTime6.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime6.getText()), Integer.parseInt(textFieldNDEndTime6.getText())));
-                    } else if (comboBoxNDStartTime6.getSelectedItem() == "AM" && comboBoxNDEndTime6.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime6.getText()), (Integer.parseInt(textFieldNDEndTime6.getText()) + 12)));
-                    } else if (comboBoxNDStartTime6.getSelectedItem() == "PM" && comboBoxNDEndTime6.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime6.getText()) + 12), (Integer.parseInt(textFieldNDEndTime6.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts6.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime6.getSelectedItem() == "AM" && comboBoxNDEndTime6.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime6.getText()), Integer.parseInt(textFieldNDEndTime6.getText())));
+                        } else if (comboBoxNDStartTime6.getSelectedItem() == "AM" && comboBoxNDEndTime6.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime6.getText()), (Integer.parseInt(textFieldNDEndTime6.getText()) + 12)));
+                        } else if (comboBoxNDStartTime6.getSelectedItem() == "PM" && comboBoxNDEndTime6.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime6.getText()) + 12), (Integer.parseInt(textFieldNDEndTime6.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea6.getSelectedItem() + comboBoxNDRank6.getSelectedItem() + textFieldNDStartTime6.getText()
                                 + comboBoxNDStartTime6.getSelectedItem() + textFieldNDEndTime6.getText() + comboBoxNDEndTime6.getSelectedItem();
                         //System.out.println(shiftName);
@@ -580,15 +587,16 @@ public class GUI extends Container {
                 //SHIFT 7
                 if(!textFieldNDNumberShifts7.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts7.getText());
-                    if (comboBoxNDStartTime7.getSelectedItem() == "AM" && comboBoxNDEndTime7.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime7.getText()), Integer.parseInt(textFieldNDEndTime7.getText())));
-                    } else if (comboBoxNDStartTime7.getSelectedItem() == "AM" && comboBoxNDEndTime7.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime7.getText()), (Integer.parseInt(textFieldNDEndTime7.getText()) + 12)));
-                    } else if (comboBoxNDStartTime7.getSelectedItem() == "PM" && comboBoxNDEndTime7.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime7.getText()) + 12), (Integer.parseInt(textFieldNDEndTime7.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts7.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime7.getSelectedItem() == "AM" && comboBoxNDEndTime7.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime7.getText()), Integer.parseInt(textFieldNDEndTime7.getText())));
+                        } else if (comboBoxNDStartTime7.getSelectedItem() == "AM" && comboBoxNDEndTime7.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime7.getText()), (Integer.parseInt(textFieldNDEndTime7.getText()) + 12)));
+                        } else if (comboBoxNDStartTime7.getSelectedItem() == "PM" && comboBoxNDEndTime7.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime7.getText()) + 12), (Integer.parseInt(textFieldNDEndTime7.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea7.getSelectedItem() + comboBoxNDRank7.getSelectedItem() + textFieldNDStartTime7.getText()
                                 + comboBoxNDStartTime7.getSelectedItem() + textFieldNDEndTime7.getText() + comboBoxNDEndTime7.getSelectedItem();
                         //System.out.println(shiftName);
@@ -604,15 +612,16 @@ public class GUI extends Container {
                 //SHIFT 8
                 if(!textFieldNDNumberShifts8.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts8.getText());
-                    if (comboBoxNDStartTime8.getSelectedItem() == "AM" && comboBoxNDEndTime8.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime8.getText()), Integer.parseInt(textFieldNDEndTime8.getText())));
-                    } else if (comboBoxNDStartTime8.getSelectedItem() == "AM" && comboBoxNDEndTime8.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime8.getText()), (Integer.parseInt(textFieldNDEndTime8.getText()) + 12)));
-                    } else if (comboBoxNDStartTime8.getSelectedItem() == "PM" && comboBoxNDEndTime8.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime8.getText()) + 12), (Integer.parseInt(textFieldNDEndTime8.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts8.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime8.getSelectedItem() == "AM" && comboBoxNDEndTime8.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime8.getText()), Integer.parseInt(textFieldNDEndTime8.getText())));
+                        } else if (comboBoxNDStartTime8.getSelectedItem() == "AM" && comboBoxNDEndTime8.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime8.getText()), (Integer.parseInt(textFieldNDEndTime8.getText()) + 12)));
+                        } else if (comboBoxNDStartTime8.getSelectedItem() == "PM" && comboBoxNDEndTime8.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime8.getText()) + 12), (Integer.parseInt(textFieldNDEndTime8.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea8.getSelectedItem() + comboBoxNDRank8.getSelectedItem() + textFieldNDStartTime8.getText()
                                 + comboBoxNDStartTime8.getSelectedItem() + textFieldNDEndTime8.getText() + comboBoxNDEndTime8.getSelectedItem();
                         //System.out.println(shiftName);
@@ -628,15 +637,16 @@ public class GUI extends Container {
                 //SHIFT 9
                 if(!textFieldNDNumberShifts9.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts9.getText());
-                    if (comboBoxNDStartTime9.getSelectedItem() == "AM" && comboBoxNDEndTime9.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime9.getText()), Integer.parseInt(textFieldNDEndTime9.getText())));
-                    } else if (comboBoxNDStartTime9.getSelectedItem() == "AM" && comboBoxNDEndTime9.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime9.getText()), (Integer.parseInt(textFieldNDEndTime9.getText()) + 12)));
-                    } else if (comboBoxNDStartTime9.getSelectedItem() == "PM" && comboBoxNDEndTime9.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime9.getText()) + 12), (Integer.parseInt(textFieldNDEndTime9.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts9.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime9.getSelectedItem() == "AM" && comboBoxNDEndTime9.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime9.getText()), Integer.parseInt(textFieldNDEndTime9.getText())));
+                        } else if (comboBoxNDStartTime9.getSelectedItem() == "AM" && comboBoxNDEndTime9.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime9.getText()), (Integer.parseInt(textFieldNDEndTime9.getText()) + 12)));
+                        } else if (comboBoxNDStartTime9.getSelectedItem() == "PM" && comboBoxNDEndTime9.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime9.getText()) + 12), (Integer.parseInt(textFieldNDEndTime9.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea9.getSelectedItem() + comboBoxNDRank9.getSelectedItem() + textFieldNDStartTime9.getText()
                                 + comboBoxNDStartTime9.getSelectedItem() + textFieldNDEndTime9.getText() + comboBoxNDEndTime9.getSelectedItem();
                         //System.out.println(shiftName);
@@ -652,15 +662,16 @@ public class GUI extends Container {
                 //SHIFT 10
                 if(!textFieldNDNumberShifts10.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts10.getText());
-                    if (comboBoxNDStartTime10.getSelectedItem() == "AM" && comboBoxNDEndTime10.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime10.getText()), Integer.parseInt(textFieldNDEndTime10.getText())));
-                    } else if (comboBoxNDStartTime10.getSelectedItem() == "AM" && comboBoxNDEndTime10.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime10.getText()), (Integer.parseInt(textFieldNDEndTime10.getText()) + 12)));
-                    } else if (comboBoxNDStartTime10.getSelectedItem() == "PM" && comboBoxNDEndTime10.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime10.getText()) + 12), (Integer.parseInt(textFieldNDEndTime10.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts10.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime10.getSelectedItem() == "AM" && comboBoxNDEndTime10.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime10.getText()), Integer.parseInt(textFieldNDEndTime10.getText())));
+                        } else if (comboBoxNDStartTime10.getSelectedItem() == "AM" && comboBoxNDEndTime10.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime10.getText()), (Integer.parseInt(textFieldNDEndTime10.getText()) + 12)));
+                        } else if (comboBoxNDStartTime10.getSelectedItem() == "PM" && comboBoxNDEndTime10.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime10.getText()) + 12), (Integer.parseInt(textFieldNDEndTime10.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea10.getSelectedItem() + comboBoxNDRank10.getSelectedItem() + textFieldNDStartTime10.getText()
                                 + comboBoxNDStartTime10.getSelectedItem() + textFieldNDEndTime10.getText() + comboBoxNDEndTime10.getSelectedItem();
                         //System.out.println(shiftName);
@@ -676,15 +687,16 @@ public class GUI extends Container {
                 //SHIFT 11
                 if(!textFieldNDNumberShifts11.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts11.getText());
-                    if (comboBoxNDStartTime11.getSelectedItem() == "AM" && comboBoxNDEndTime11.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime11.getText()), Integer.parseInt(textFieldNDEndTime11.getText())));
-                    } else if (comboBoxNDStartTime11.getSelectedItem() == "AM" && comboBoxNDEndTime11.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime11.getText()), (Integer.parseInt(textFieldNDEndTime11.getText()) + 12)));
-                    } else if (comboBoxNDStartTime11.getSelectedItem() == "PM" && comboBoxNDEndTime11.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime11.getText()) + 12), (Integer.parseInt(textFieldNDEndTime11.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts11.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime11.getSelectedItem() == "AM" && comboBoxNDEndTime11.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime11.getText()), Integer.parseInt(textFieldNDEndTime11.getText())));
+                        } else if (comboBoxNDStartTime11.getSelectedItem() == "AM" && comboBoxNDEndTime11.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime11.getText()), (Integer.parseInt(textFieldNDEndTime11.getText()) + 12)));
+                        } else if (comboBoxNDStartTime11.getSelectedItem() == "PM" && comboBoxNDEndTime11.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime11.getText()) + 12), (Integer.parseInt(textFieldNDEndTime11.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea11.getSelectedItem() + comboBoxNDRank11.getSelectedItem() + textFieldNDStartTime11.getText()
                                 + comboBoxNDStartTime11.getSelectedItem() + textFieldNDEndTime11.getText() + comboBoxNDEndTime11.getSelectedItem();
                         //System.out.println(shiftName);
@@ -700,15 +712,16 @@ public class GUI extends Container {
                 //SHIFT 12
                 if(!textFieldNDNumberShifts12.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts12.getText());
-                    if (comboBoxNDStartTime12.getSelectedItem() == "AM" && comboBoxNDEndTime12.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime12.getText()), Integer.parseInt(textFieldNDEndTime12.getText())));
-                    } else if (comboBoxNDStartTime12.getSelectedItem() == "AM" && comboBoxNDEndTime12.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime12.getText()), (Integer.parseInt(textFieldNDEndTime12.getText()) + 12)));
-                    } else if (comboBoxNDStartTime12.getSelectedItem() == "PM" && comboBoxNDEndTime12.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime12.getText()) + 12), (Integer.parseInt(textFieldNDEndTime12.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts12.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime12.getSelectedItem() == "AM" && comboBoxNDEndTime12.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime12.getText()), Integer.parseInt(textFieldNDEndTime12.getText())));
+                        } else if (comboBoxNDStartTime12.getSelectedItem() == "AM" && comboBoxNDEndTime12.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime12.getText()), (Integer.parseInt(textFieldNDEndTime12.getText()) + 12)));
+                        } else if (comboBoxNDStartTime12.getSelectedItem() == "PM" && comboBoxNDEndTime12.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime12.getText()) + 12), (Integer.parseInt(textFieldNDEndTime12.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea12.getSelectedItem() + comboBoxNDRank12.getSelectedItem() + textFieldNDStartTime12.getText()
                                 + comboBoxNDStartTime12.getSelectedItem() + textFieldNDEndTime12.getText() + comboBoxNDEndTime12.getSelectedItem();
                         //System.out.println(shiftName);
@@ -724,15 +737,16 @@ public class GUI extends Container {
                 //SHIFT 13
                 if(!textFieldNDNumberShifts13.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts13.getText());
-                    if (comboBoxNDStartTime13.getSelectedItem() == "AM" && comboBoxNDEndTime13.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime13.getText()), Integer.parseInt(textFieldNDEndTime13.getText())));
-                    } else if (comboBoxNDStartTime13.getSelectedItem() == "AM" && comboBoxNDEndTime13.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime13.getText()), (Integer.parseInt(textFieldNDEndTime13.getText()) + 12)));
-                    } else if (comboBoxNDStartTime13.getSelectedItem() == "PM" && comboBoxNDEndTime13.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime13.getText()) + 12), (Integer.parseInt(textFieldNDEndTime13.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts13.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime13.getSelectedItem() == "AM" && comboBoxNDEndTime13.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime13.getText()), Integer.parseInt(textFieldNDEndTime13.getText())));
+                        } else if (comboBoxNDStartTime13.getSelectedItem() == "AM" && comboBoxNDEndTime13.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime13.getText()), (Integer.parseInt(textFieldNDEndTime13.getText()) + 12)));
+                        } else if (comboBoxNDStartTime13.getSelectedItem() == "PM" && comboBoxNDEndTime13.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime13.getText()) + 12), (Integer.parseInt(textFieldNDEndTime13.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea13.getSelectedItem() + comboBoxNDRank13.getSelectedItem() + textFieldNDStartTime13.getText()
                                 + comboBoxNDStartTime13.getSelectedItem() + textFieldNDEndTime13.getText() + comboBoxNDEndTime13.getSelectedItem();
                         //System.out.println(shiftName);
@@ -748,15 +762,16 @@ public class GUI extends Container {
                 //SHIFT 14
                 if(!textFieldNDNumberShifts14.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts14.getText());
-                    if (comboBoxNDStartTime14.getSelectedItem() == "AM" && comboBoxNDEndTime14.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime14.getText()), Integer.parseInt(textFieldNDEndTime14.getText())));
-                    } else if (comboBoxNDStartTime14.getSelectedItem() == "AM" && comboBoxNDEndTime14.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime14.getText()), (Integer.parseInt(textFieldNDEndTime14.getText()) + 12)));
-                    } else if (comboBoxNDStartTime14.getSelectedItem() == "PM" && comboBoxNDEndTime14.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime14.getText()) + 12), (Integer.parseInt(textFieldNDEndTime14.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts14.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime14.getSelectedItem() == "AM" && comboBoxNDEndTime14.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime14.getText()), Integer.parseInt(textFieldNDEndTime14.getText())));
+                        } else if (comboBoxNDStartTime14.getSelectedItem() == "AM" && comboBoxNDEndTime14.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime14.getText()), (Integer.parseInt(textFieldNDEndTime14.getText()) + 12)));
+                        } else if (comboBoxNDStartTime14.getSelectedItem() == "PM" && comboBoxNDEndTime14.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime14.getText()) + 12), (Integer.parseInt(textFieldNDEndTime14.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea14.getSelectedItem() + comboBoxNDRank14.getSelectedItem() + textFieldNDStartTime14.getText()
                                 + comboBoxNDStartTime14.getSelectedItem() + textFieldNDEndTime14.getText() + comboBoxNDEndTime14.getSelectedItem();
                         //System.out.println(shiftName);
@@ -772,15 +787,16 @@ public class GUI extends Container {
                 //SHIFT 15
                 if(!textFieldNDNumberShifts15.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts15.getText());
-                    if (comboBoxNDStartTime15.getSelectedItem() == "AM" && comboBoxNDEndTime15.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime15.getText()), Integer.parseInt(textFieldNDEndTime15.getText())));
-                    } else if (comboBoxNDStartTime15.getSelectedItem() == "AM" && comboBoxNDEndTime15.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime15.getText()), (Integer.parseInt(textFieldNDEndTime15.getText()) + 12)));
-                    } else if (comboBoxNDStartTime15.getSelectedItem() == "PM" && comboBoxNDEndTime15.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime15.getText()) + 12), (Integer.parseInt(textFieldNDEndTime15.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts15.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime15.getSelectedItem() == "AM" && comboBoxNDEndTime15.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime15.getText()), Integer.parseInt(textFieldNDEndTime15.getText())));
+                        } else if (comboBoxNDStartTime15.getSelectedItem() == "AM" && comboBoxNDEndTime15.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime15.getText()), (Integer.parseInt(textFieldNDEndTime15.getText()) + 12)));
+                        } else if (comboBoxNDStartTime15.getSelectedItem() == "PM" && comboBoxNDEndTime15.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime15.getText()) + 12), (Integer.parseInt(textFieldNDEndTime15.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea15.getSelectedItem() + comboBoxNDRank15.getSelectedItem() + textFieldNDStartTime15.getText()
                                 + comboBoxNDStartTime15.getSelectedItem() + textFieldNDEndTime15.getText() + comboBoxNDEndTime15.getSelectedItem();
                         //System.out.println(shiftName);
@@ -796,15 +812,16 @@ public class GUI extends Container {
                 //SHIFT 16
                 if(!textFieldNDNumberShifts16.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts16.getText());
-                    if (comboBoxNDStartTime16.getSelectedItem() == "AM" && comboBoxNDEndTime16.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime16.getText()), Integer.parseInt(textFieldNDEndTime16.getText())));
-                    } else if (comboBoxNDStartTime16.getSelectedItem() == "AM" && comboBoxNDEndTime16.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime16.getText()), (Integer.parseInt(textFieldNDEndTime16.getText()) + 12)));
-                    } else if (comboBoxNDStartTime16.getSelectedItem() == "PM" && comboBoxNDEndTime16.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime16.getText()) + 12), (Integer.parseInt(textFieldNDEndTime16.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts16.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime16.getSelectedItem() == "AM" && comboBoxNDEndTime16.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime16.getText()), Integer.parseInt(textFieldNDEndTime16.getText())));
+                        } else if (comboBoxNDStartTime16.getSelectedItem() == "AM" && comboBoxNDEndTime16.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime16.getText()), (Integer.parseInt(textFieldNDEndTime16.getText()) + 12)));
+                        } else if (comboBoxNDStartTime16.getSelectedItem() == "PM" && comboBoxNDEndTime16.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime16.getText()) + 12), (Integer.parseInt(textFieldNDEndTime16.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea16.getSelectedItem() + comboBoxNDRank16.getSelectedItem() + textFieldNDStartTime16.getText()
                                 + comboBoxNDStartTime16.getSelectedItem() + textFieldNDEndTime16.getText() + comboBoxNDEndTime16.getSelectedItem();
                         //System.out.println(shiftName);
@@ -820,15 +837,16 @@ public class GUI extends Container {
                 //SHIFT 17
                 if(!textFieldNDNumberShifts17.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts17.getText());
-                    if (comboBoxNDStartTime17.getSelectedItem() == "AM" && comboBoxNDEndTime17.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime17.getText()), Integer.parseInt(textFieldNDEndTime17.getText())));
-                    } else if (comboBoxNDStartTime17.getSelectedItem() == "AM" && comboBoxNDEndTime17.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime17.getText()), (Integer.parseInt(textFieldNDEndTime17.getText()) + 12)));
-                    } else if (comboBoxNDStartTime17.getSelectedItem() == "PM" && comboBoxNDEndTime17.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime17.getText()) + 12), (Integer.parseInt(textFieldNDEndTime17.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts17.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime17.getSelectedItem() == "AM" && comboBoxNDEndTime17.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime17.getText()), Integer.parseInt(textFieldNDEndTime17.getText())));
+                        } else if (comboBoxNDStartTime17.getSelectedItem() == "AM" && comboBoxNDEndTime17.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime17.getText()), (Integer.parseInt(textFieldNDEndTime17.getText()) + 12)));
+                        } else if (comboBoxNDStartTime17.getSelectedItem() == "PM" && comboBoxNDEndTime17.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime17.getText()) + 12), (Integer.parseInt(textFieldNDEndTime17.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea17.getSelectedItem() + comboBoxNDRank17.getSelectedItem() + textFieldNDStartTime17.getText()
                                 + comboBoxNDStartTime17.getSelectedItem() + textFieldNDEndTime17.getText() + comboBoxNDEndTime17.getSelectedItem();
                         //System.out.println(shiftName);
@@ -844,15 +862,16 @@ public class GUI extends Container {
                 //SHIFT 18
                 if(!textFieldNDNumberShifts18.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts18.getText());
-                    if (comboBoxNDStartTime18.getSelectedItem() == "AM" && comboBoxNDEndTime18.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime18.getText()), Integer.parseInt(textFieldNDEndTime18.getText())));
-                    } else if (comboBoxNDStartTime18.getSelectedItem() == "AM" && comboBoxNDEndTime18.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime18.getText()), (Integer.parseInt(textFieldNDEndTime18.getText()) + 12)));
-                    } else if (comboBoxNDStartTime18.getSelectedItem() == "PM" && comboBoxNDEndTime18.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime18.getText()) + 12), (Integer.parseInt(textFieldNDEndTime18.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts18.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime18.getSelectedItem() == "AM" && comboBoxNDEndTime18.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime18.getText()), Integer.parseInt(textFieldNDEndTime18.getText())));
+                        } else if (comboBoxNDStartTime18.getSelectedItem() == "AM" && comboBoxNDEndTime18.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime18.getText()), (Integer.parseInt(textFieldNDEndTime18.getText()) + 12)));
+                        } else if (comboBoxNDStartTime18.getSelectedItem() == "PM" && comboBoxNDEndTime18.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime18.getText()) + 12), (Integer.parseInt(textFieldNDEndTime18.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea18.getSelectedItem() + comboBoxNDRank18.getSelectedItem() + textFieldNDStartTime18.getText()
                                 + comboBoxNDStartTime18.getSelectedItem() + textFieldNDEndTime18.getText() + comboBoxNDEndTime18.getSelectedItem();
                         //System.out.println(shiftName);
@@ -868,15 +887,16 @@ public class GUI extends Container {
                 //SHIFT 19
                 if(!textFieldNDNumberShifts19.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts19.getText());
-                    if (comboBoxNDStartTime19.getSelectedItem() == "AM" && comboBoxNDEndTime19.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime19.getText()), Integer.parseInt(textFieldNDEndTime19.getText())));
-                    } else if (comboBoxNDStartTime19.getSelectedItem() == "AM" && comboBoxNDEndTime19.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime19.getText()), (Integer.parseInt(textFieldNDEndTime19.getText()) + 12)));
-                    } else if (comboBoxNDStartTime19.getSelectedItem() == "PM" && comboBoxNDEndTime19.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime19.getText()) + 12), (Integer.parseInt(textFieldNDEndTime19.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts19.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime19.getSelectedItem() == "AM" && comboBoxNDEndTime19.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime19.getText()), Integer.parseInt(textFieldNDEndTime19.getText())));
+                        } else if (comboBoxNDStartTime19.getSelectedItem() == "AM" && comboBoxNDEndTime19.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime19.getText()), (Integer.parseInt(textFieldNDEndTime19.getText()) + 12)));
+                        } else if (comboBoxNDStartTime19.getSelectedItem() == "PM" && comboBoxNDEndTime19.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime19.getText()) + 12), (Integer.parseInt(textFieldNDEndTime19.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea19.getSelectedItem() + comboBoxNDRank19.getSelectedItem() + textFieldNDStartTime19.getText()
                                 + comboBoxNDStartTime19.getSelectedItem() + textFieldNDEndTime19.getText() + comboBoxNDEndTime19.getSelectedItem();
                         //System.out.println(shiftName);
@@ -892,15 +912,16 @@ public class GUI extends Container {
                 //SHIFT 20
                 if(!textFieldNDNumberShifts20.getText().contains("0")) {
                     System.out.println(textFieldNDNumberShifts20.getText());
-                    if (comboBoxNDStartTime20.getSelectedItem() == "AM" && comboBoxNDEndTime20.getSelectedItem() == "AM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime20.getText()), Integer.parseInt(textFieldNDEndTime20.getText())));
-                    } else if (comboBoxNDStartTime20.getSelectedItem() == "AM" && comboBoxNDEndTime20.getSelectedItem() == "PM") {
-                        shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime20.getText()), (Integer.parseInt(textFieldNDEndTime20.getText()) + 12)));
-                    } else if (comboBoxNDStartTime20.getSelectedItem() == "PM" && comboBoxNDEndTime20.getSelectedItem() == "PM") {
-                        shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime20.getText()) + 12), (Integer.parseInt(textFieldNDEndTime20.getText()) + 12)));
-                    }
                     for (int i = 0; i < Integer.parseInt(textFieldNDNumberShifts20.getText()); i++) //create loop for all duplicate shifts
                     {
+                        shift = new Shift();
+                        if (comboBoxNDStartTime20.getSelectedItem() == "AM" && comboBoxNDEndTime20.getSelectedItem() == "AM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime20.getText()), Integer.parseInt(textFieldNDEndTime20.getText())));
+                        } else if (comboBoxNDStartTime20.getSelectedItem() == "AM" && comboBoxNDEndTime20.getSelectedItem() == "PM") {
+                            shift.setTime(new Time(Integer.parseInt(textFieldNDStartTime20.getText()), (Integer.parseInt(textFieldNDEndTime20.getText()) + 12)));
+                        } else if (comboBoxNDStartTime20.getSelectedItem() == "PM" && comboBoxNDEndTime20.getSelectedItem() == "PM") {
+                            shift.setTime(new Time((Integer.parseInt(textFieldNDStartTime20.getText()) + 12), (Integer.parseInt(textFieldNDEndTime20.getText()) + 12)));
+                        }
                         shiftName = String.valueOf(num) + String.valueOf(i) + comboBoxNDArea20.getSelectedItem() + comboBoxNDRank20.getSelectedItem() + textFieldNDStartTime20.getText()
                                 + comboBoxNDStartTime20.getSelectedItem() + textFieldNDEndTime20.getText() + comboBoxNDEndTime20.getSelectedItem();
                         //System.out.println(shiftName);
