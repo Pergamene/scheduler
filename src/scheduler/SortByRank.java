@@ -2,6 +2,9 @@ package scheduler;
 
 import java.util.Comparator;
 
+/**
+ * Sorts the employee priority according to the rank an employee has
+ */
 public class SortByRank implements Comparator<Shift> {
 
     @Override
