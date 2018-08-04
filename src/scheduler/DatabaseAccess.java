@@ -19,7 +19,7 @@ public class DatabaseAccess {
     public DatabaseAccess() {
         dataSource = new MysqlDataSource();
         dataSource.setUser("austin");
-        dataSource.setPassword("ret2fli9");
+        dataSource.setPassword("filler");    // @TODO: Fill password
         dataSource.setServerName("shardrealms.com");
         dataSource.setDatabaseName("austin_stuff");
     }
